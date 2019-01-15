@@ -1,0 +1,24 @@
+h1{
+  text-align:center;
+  font-family: 'Roboto Slab', serif;
+  color: white;
+}
+p{
+  text-align:center;
+  font-family: 'Roboto Slab', serif;
+  color: white;
+}
+form{
+  text-align:center;
+  font-family: 'Roboto Slab', serif;
+  color: white;
+}
+
+body{
+  background-image: url('/Users/buffjeremy/Desktop/Web-Dev-Projects/Metal--Mock-up.jpg');
+}
+
+.button{
+  text-align: center;
+  color: blue;
+}
