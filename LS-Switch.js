@@ -6,7 +6,7 @@ function getSong(){
 
     switch (myInput){
       case 'VT813':
-        document.write("<a  download = 'Falterboy-Vine Tree-MP3.mp3' href = 'http:\/\/localhost:8888/Falterboy-Vine Tree-MP3.mp3'> clicking here will download your song </a> ");
+        document.write("<a  download = 'Falterboy-Vine Tree-MP3.mp3' href = 'Falterboy-Vine Tree-MP3.mp3'> clicking here will download your song </a> ");
         break;
       case 'CMKM813':
         document.write("<a  download = 'Falterboy-Cure Me Kill Me MP3.mp3' href = 'http:\/\/localhost:8888/Falterboy-Cure Me Kill Me MP3.mp3'> clicking here will download your song </a> ");
