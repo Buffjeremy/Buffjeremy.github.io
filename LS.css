@@ -10,15 +10,17 @@ a{
   text-align: center;
   color: white;
 }
-button{
+.holder{
   text-align: center;
-  color: black;
+  
 }
 p{
   text-align: center;
   color: white;
 }
 body{
-  background-image:url("https://images/Metal--Mock-up.jpg");
+  background-image:url("images/Metal--Mock-up.jpg");
   background-color: gray;
+  background-attachment: fixed; 
+  background-position: center;
 }
