@@ -12,15 +12,14 @@ a{
 }
 .holder{
   text-align: center;
-  
 }
-p{
+h3{
   text-align: center;
   color: white;
 }
-body{
+body {
   background-image:url("images/Metal--Mock-up.jpg");
-  background-color: gray;
-  background-attachment: fixed; 
+  background-attachment: fixed;
   background-position: center;
+  background-size: cover;
 }
