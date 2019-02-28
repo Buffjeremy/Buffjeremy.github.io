@@ -27,7 +27,9 @@ p{
   text-align: center;
   color: white;
 }
-body{
-  background-color: gray;
-  background-image: url('http://localhost:8888/Metal--Mock-up.jpg');
+body {
+  background-image:url("images/Metal--Mock-up.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
 }
