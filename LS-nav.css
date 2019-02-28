@@ -1,0 +1,33 @@
+.topnav {
+    text-align: center;
+    color: white;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+}
+h3 {
+  text-align: center;
+  color: white;
+}
+form {
+  text-align: center;
+  color: white;
+}
+a{
+  text-align: center;
+  color: white;
+}
+.holder{
+  text-align: center;
+  color: black;
+}
+p{
+  text-align: center;
+  color: white;
+}
+body{
+  background-color: gray;
+  background-image: url('http://localhost:8888/Metal--Mock-up.jpg');
+}
