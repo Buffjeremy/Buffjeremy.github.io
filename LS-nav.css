@@ -1,6 +1,7 @@
 .topnav {
     text-align: center;
     color: white;
+    margin-bottom: 80px
 }
 
 h1 {
@@ -18,6 +19,11 @@ form {
 a{
   text-align: center;
   color: white;
+}
+.Local {
+  text-align: center;
+  color: white;
+  margin-top: 250px
 }
 .holder{
   text-align: center;
