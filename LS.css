@@ -17,6 +17,10 @@ h3 {
   text-align: center;
   color: white;
 }
+h2 {
+  text-align: center;
+  color: white;
+}
 body {
   background-image:url("images/Metal--Mock-up.jpg");
   background-attachment: fixed;
