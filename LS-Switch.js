@@ -68,6 +68,18 @@ function getSong(){
       case 'CBUTS616':
         document.write("<a  download = 'Cassidy-Bishop Underneath The Stars.mp3' href = 'Cassidy-Bisher Underneath The Stars.mp3'> clicking here will download your song </a> ");
       break;
+        case 'NJTAJW616':
+        document.write("<a  download = 'Nicholas-Thomasma Johnny Appleweed.mp3' href = '01 Johnny Appleweed.mp3'> clicking here will download your song </a> ");
+      break;
+        case 'NJTBL616':
+        document.write("<a  download = 'Nicholas-Thomasma Bus Life.mp3' href = '02 Bus Life.mp3'> clicking here will download your song </a> ");
+      break;
+        case 'NJTE616':
+        document.write("<a  download = 'Nicholas-Thomasma 03 Eighteen.mp3' href = '03 Eighteen.mp3'> clicking here will download your song </a> ");
+      break;
+        case 'NJTKOS616':
+        document.write("<a  download = 'Nicholas-Thomasma 10 Kindness Of Strangers.mp3' href = '10 Kindness Of Strangers.mp3'> clicking here will download your song </a> ");
+      break;
     default:
       alert('please enter a valid code');
 }
