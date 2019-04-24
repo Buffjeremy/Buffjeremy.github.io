@@ -32,6 +32,8 @@ a{
 .holder{
   text-align: center;
   color: black;
+  position: absolute; 
+    top: 30px; 
 }
 p{
   text-align: center;
