@@ -54,12 +54,13 @@ body {
 }
 .readable-bands {
   background-color: black;
-  margin: 50px;
+  margin: 50px 300px 50px 300px;
   text-align: center; 
   color: white; 
   border-style: solid;
   border-width: 2px;
-  border-color: white; 
+  border-color: white;
+  opacity: .4;
 }
 .readable-contact {
   background-color: black;
