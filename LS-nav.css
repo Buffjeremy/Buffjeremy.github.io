@@ -46,9 +46,25 @@ body {
   background-position: center;
   background-size: cover;
 }
-.readable {
+.readable-about {
   background-color: black;
   padding: 20px;
   text-align: center; 
   color: white; 
 }
+.readable-bands {
+  background-color: black;
+  margin: 50px;
+  text-align: center; 
+  color: white; 
+  border-style: solid;
+  border-width: 2px;
+  border-color: white; 
+}
+.readable-contact {
+  background-color: black;
+  padding: 20px;
+  text-align: center; 
+  color: white; 
+}
+
