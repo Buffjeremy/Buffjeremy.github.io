@@ -1,7 +1,7 @@
 ```html
 <!-- LOCAL SHUFFLE — ARTIST APPLICATION & AGREEMENT -->
 <section id="local-shuffle-artist" class="ls-artist-form">
-
+<form id="local-shuffle-artist-form">
   <style>
     .ls-artist-form {
       max-width: 850px;
@@ -612,6 +612,108 @@
   <button type="submit" class="ls-submit">
     Submit Local Shuffle Artist Application
   </button>
+</form>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+<script>
+const SUPABASE_URL = 'https://yaqhqnuvlxfgfpnwufyw.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_Lo-gi0FFqCWN6JrZRumUIw_CK3yk9-i';
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
+
+const form = document.getElementById('local-shuffle-artist-form');
+
+form.addEventListener('submit', async function(event) {
+  event.preventDefault();
+
+  const submitButton = form.querySelector('.ls-submit');
+  const originalText = submitButton.textContent;
+
+  submitButton.disabled = true;
+  submitButton.textContent = 'Submitting...';
+
+  const getValue = (name) => {
+    const field = form.elements[name];
+    return field ? field.value.trim() : null;
+  };
+
+  const isChecked = (name) => {
+    const field = form.elements[name];
+    return field ? field.checked : false;
+  };
+
+  const application = {
+    artist_name: getValue('artist_name'),
+    contact_name: getValue('contact_name'),
+    email: getValue('email'),
+    phone: getValue('phone'),
+
+    website: getValue('website'),
+    instagram: getValue('instagram'),
+    facebook: getValue('facebook'),
+
+    city: getValue('city'),
+    zip_code: getValue('zip_code'),
+
+    genre: getValue('genre'),
+    bio: getValue('artist_bio'),
+    primary_music_link: getValue('music_link'),
+
+    song_title: getValue('song_title'),
+    release_date: getValue('release_date'),
+    official_song_url: getValue('song_link'),
+    distribution_platforms: getValue('distribution'),
+
+    payment_email: getValue('payment_email'),
+
+    local_residency_confirmed: isChecked('local_residency'),
+    local_release_confirmed: isChecked('local_release'),
+    geographic_changes_confirmed: isChecked('geographic_changes'),
+
+    song_released_confirmed: isChecked('song_released'),
+    song_rights_confirmed: isChecked('song_rights'),
+    license_agreement_confirmed: isChecked('license_agreement'),
+
+    payment_setup_confirmed: isChecked('payment_setup'),
+    final_agreement_confirmed: isChecked('final_agreement'),
+    accuracy_confirmed: isChecked('accuracy'),
+
+    signature_name: getValue('signature_name'),
+    signature_date: getValue('signature_date'),
+    electronic_signature: getValue('signature'),
+
+    applicant_signature_timestamp: new Date().toISOString()
+  };
+
+  const { error } = await supabaseClient
+    .from('artist_applications')
+    .insert([application]);
+
+  if (error) {
+    console.error(error);
+
+    submitButton.disabled = false;
+    submitButton.textContent = originalText;
+
+    alert(
+      'There was a problem submitting your application. Please try again.'
+    );
+
+    return;
+  }
+
+  form.reset();
+
+  submitButton.disabled = false;
+  submitButton.textContent = originalText;
+
+  alert(
+    'Thank you! Your Local Shuffle artist application has been submitted.'
+  );
+});
+</script>
 </section>
 ```
