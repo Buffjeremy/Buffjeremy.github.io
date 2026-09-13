@@ -12,8 +12,7 @@
  */
 
 const REDEEM_FUNCTION_URL =
-  "https://YOUR-PROJECT-REF.supabase.co/functions/v1/redeem";
-
+  "https://yaqhqnuvlxfgfpnwufyw.supabase.co/functions/v1/redeem";
 
 const input = document.getElementById("myInput");
 const button = document.getElementById("myButton");
