@@ -1,71 +1,183 @@
 .topnav {
-    text-align: center;
-    color: white;
-    margin-bottom: 40px
+  text-align: center;
+  color: white;
+  margin-bottom: 40px;
+}
+
+.topnav a {
+  text-align: center;
+  color: white;
+  margin: 0 10px;
 }
 
 h1 {
   text-align: center;
   color: white;
 }
-h3 {
-  text-align: center;
-  color: white;
-}
+
 h2 {
   text-align: center;
   color: white;
 }
+
+h3 {
+  text-align: center;
+  color: white;
+}
+
 form {
   text-align: center;
   color: white;
 }
-a{
+
+a {
   text-align: center;
   color: white;
 }
+
+p {
+  text-align: center;
+  color: white;
+}
+
 .Local {
   text-align: center;
   color: white;
   margin-top: 350px;
-  position: absolute 
-      top: 10px;
+  position: absolute;
+  top: 10px;
+  width: 100%;
 }
-.holder{
+
+.holder {
   text-align: center;
   color: black;
-  
+  margin-top: 40px;
 }
-p{
-  text-align: center;
-  color: white;
-}
+
 body {
-  background-image:url("images/Metal--Mock-up.jpg");
+  background-image: url("images/Metal--Mock-up.jpg");
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
-}
-.readable-about {
-  background-color: black;
-  padding: 20px;
-  text-align: center; 
-  color: white; 
-}
-.readable-bands {
-  background-color: black;
-  margin: 50px 350px 50px 350px;
-  text-align: center; 
-  color: white; 
-  border-style: solid;
-  border-width: 2px;
-  border-color: white;
-  opacity: .6;
-}
-.readable-contact {
-  background-color: black;
-  padding: 20px;
-  text-align: center; 
-  color: white; 
+  min-height: 100vh;
 }
 
+/* Redemption area */
+
+.holder label {
+  display: block;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.download-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+#myInput {
+  width: 220px;
+  padding: 10px;
+  border: 2px solid white;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+  text-align: center;
+}
+
+#myInput::placeholder {
+  color: #cccccc;
+}
+
+#myButton {
+  padding: 10px 18px;
+  border: 2px solid white;
+  border-radius: 4px;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#myButton:hover {
+  background-color: #333333;
+}
+
+#myButton:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+/* Status message */
+
+.status {
+  color: white;
+  font-weight: bold;
+  margin-top: 20px;
+  min-height: 25px;
+}
+
+.status.error {
+  color: #ffaaaa;
+}
+
+.status.success {
+  color: #aaffaa;
+}
+
+/* Song download area */
+
+.download-area {
+  background-color: rgba(0, 0, 0, 0.75);
+  border: 2px solid white;
+  margin: 25px auto;
+  padding: 20px;
+  max-width: 500px;
+}
+
+.download-area h2 {
+  margin-top: 0;
+}
+
+.download-button {
+  display: inline-block;
+  padding: 12px 20px;
+  background-color: black;
+  border: 2px solid white;
+  border-radius: 4px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.download-button:hover {
+  background-color: #333333;
+  color: white;
+  text-decoration: none;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+  .Local {
+    margin-top: 250px;
+  }
+
+  .download-box {
+    flex-direction: column;
+  }
+
+  #myInput {
+    width: 80%;
+  }
+
+  #myButton {
+    width: auto;
+  }
+}
