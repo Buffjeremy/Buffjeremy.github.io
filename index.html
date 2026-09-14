@@ -1,74 +1,139 @@
 
+```html
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<html lang="en" dir="ltr">
 
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-      crossorigin="anonymous"
-    >
+<head>
 
-    <title>Local Shuffle</title>
+  <meta charset="utf-8">
 
-    <link rel="stylesheet" href="LS-nav.css">
-  </head>
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <body>
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzqZFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
 
-    <div class="topnav">
-      <a class="active" href="#home">Home</a>
-      <a href="ls-bands.html">Bands</a>
-      <a href="ls-Contact.html">Contact</a>
-      <a href="ls-about.html">About</a>
+  <title>Local Shuffle</title>
+
+  <link rel="stylesheet" href="LS-nav.css">
+
+</head>
+
+
+<body>
+
+
+  <!-- ==========================================
+       NAVIGATION
+       ========================================== -->
+
+  <div class="topnav">
+
+    <a class="active" href="index.html">Home</a>
+
+    <a href="ls-bands.html">Bands</a>
+
+    <a href="artist-submit-form.html">Artists</a>
+
+    <a href="Business-Application.html">Businesses</a>
+
+    <a href="ls-Contact.html">Contact</a>
+
+    <a href="ls-about.html">About</a>
+
+  </div>
+
+
+  <!-- ==========================================
+       REDEMPTION AREA
+       ========================================== -->
+
+  <div class="holder">
+
+    <label for="myInput">
+      Enter your redemption code:
+    </label>
+
+
+    <div class="download-box">
+
+      <input
+        id="myInput"
+        type="text"
+        autocomplete="off"
+        placeholder="Redemption Code">
+
+
+      <button
+        id="myButton"
+        type="button">
+
+        Download Now!
+
+      </button>
+
     </div>
 
-    <div class="welcome">
-      <h1>Welcome to the Local Shuffle</h1>
+
+    <!-- Status messages appear here -->
+
+    <div
+      id="status"
+      class="status"
+      aria-live="polite">
     </div>
 
-    <div class="Local">
-      <h3>Local Music ... Local Listeners</h3>
-    </div>
 
-    <div class="holder">
+    <!-- Download information appears here after redemption -->
 
-      <label for="myInput">Enter your redemption code:</label>
+    <div
+      id="downloadArea"
+      class="download-area"
+      hidden>
 
-      <div class="download-box">
-        <input
-          id="myInput"
-          type="text"
-          autocomplete="off"
-          placeholder="Redemption Code"
-        >
+      <h2 id="songTitle">
+        Your song is ready!
+      </h2>
 
-        <button id="myButton" type="button">
-          Download Now!
-        </button>
-      </div>
+      <p id="artistName"></p>
 
-      <div id="status" class="status" aria-live="polite"></div>
+      <a
+        id="downloadLink"
+        class="download-button"
+        href="#">
 
-      <div id="downloadArea" class="download-area" hidden>
-        <h2 id="songTitle">Your song is ready!</h2>
+        Download Song
 
-        <p id="artistName"></p>
-
-        <a id="downloadLink" class="download-button" href="#">
-          Download Song
-        </a>
-      </div>
+      </a>
 
     </div>
 
-    <!-- Local Shuffle JavaScript -->
-    <script src="LS-Switch.js"></script>
+  </div>
 
-  </body>
+
+  <!-- ==========================================
+       TAGLINE
+       ========================================== -->
+
+  <div class="Local">
+
+    <h3>
+      Local Music ... Local Listeners
+    </h3>
+
+  </div>
+
+
+  <!-- ==========================================
+       REDEMPTION SCRIPT
+       ========================================== -->
+
+  <script src="LS-Switch.js"></script>
+
+
+</body>
+
 </html>
-
+```
