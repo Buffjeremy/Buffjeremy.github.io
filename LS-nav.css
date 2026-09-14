@@ -1,3 +1,4 @@
+
 .topnav {
   text-align: center;
   color: white;
@@ -10,42 +11,20 @@
   margin: 0 10px;
 }
 
-h1 {
+h1, h2, h3, form, a, p {
   text-align: center;
   color: white;
 }
 
-h2 {
+.welcome {
   text-align: center;
-  color: white;
-}
-
-h3 {
-  text-align: center;
-  color: white;
-}
-
-form {
-  text-align: center;
-  color: white;
-}
-
-a {
-  text-align: center;
-  color: white;
-}
-
-p {
-  text-align: center;
-  color: white;
+  margin-top: 20px;
 }
 
 .Local {
   text-align: center;
   color: white;
-  margin-top: 350px;
-  position: absolute;
-  top: 10px;
+  margin-top: 20px;
   width: 100%;
 }
 
@@ -62,8 +41,6 @@ body {
   background-size: cover;
   min-height: 100vh;
 }
-
-/* Redemption area */
 
 .holder label {
   display: block;
@@ -113,8 +90,6 @@ body {
   cursor: wait;
 }
 
-/* Status message */
-
 .status {
   color: white;
   font-weight: bold;
@@ -129,8 +104,6 @@ body {
 .status.success {
   color: #aaffaa;
 }
-
-/* Song download area */
 
 .download-area {
   background-color: rgba(0, 0, 0, 0.75);
@@ -161,12 +134,9 @@ body {
   text-decoration: none;
 }
 
-/* Mobile */
-
 @media (max-width: 600px) {
-
   .Local {
-    margin-top: 250px;
+    margin-top: 20px;
   }
 
   .download-box {
@@ -181,3 +151,4 @@ body {
     width: auto;
   }
 }
+
