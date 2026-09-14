@@ -1,0 +1,494 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Local Shuffle - Business Application</title>
+
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzqZFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+
+  <link rel="stylesheet" href="LS-nav.css">
+
+  <style>
+
+    body {
+      background-image: url("images/Metal--Mock-up.jpg");
+      background-attachment: fixed;
+      background-position: center;
+      background-size: cover;
+      min-height: 100vh;
+    }
+
+    .form-container {
+      max-width: 700px;
+      margin: 50px auto;
+      padding: 30px;
+      background-color: rgba(0, 0, 0, 0.82);
+      border: 2px solid white;
+      border-radius: 6px;
+    }
+
+    .form-container h1 {
+      color: white;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .form-container h2 {
+      color: white;
+      text-align: center;
+      font-size: 22px;
+      margin-top: 30px;
+      margin-bottom: 15px;
+    }
+
+    .form-container p {
+      color: white;
+      text-align: center;
+    }
+
+    .intro {
+      margin-bottom: 30px;
+    }
+
+    label {
+      color: white;
+      font-weight: bold;
+    }
+
+    .form-control {
+      background-color: rgba(255, 255, 255, 0.95);
+      color: black;
+    }
+
+    .form-control:focus {
+      background-color: white;
+      color: black;
+    }
+
+    .terms {
+      background-color: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      padding: 20px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    .terms p,
+    .terms li {
+      text-align: left;
+      color: white;
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: white;
+      font-weight: normal;
+    }
+
+    .checkbox-label input {
+      margin-top: 5px;
+    }
+
+    .submit-button {
+      display: block;
+      margin: 25px auto 0 auto;
+      padding: 12px 25px;
+      background-color: black;
+      border: 2px solid white;
+      border-radius: 4px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .submit-button:hover {
+      background-color: #333333;
+    }
+
+    .required {
+      color: #ffaaaa;
+    }
+
+    .small-note {
+      font-size: 14px;
+      color: #cccccc !important;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="topnav">
+    <a href="index.html">Home</a>
+    <a href="ls-bands.html">Bands</a>
+    <a href="ls-Contact.html">Contact</a>
+    <a href="ls-about.html">About</a>
+  </div>
+
+
+  <div class="form-container">
+
+    <h1>Become a Local Shuffle Business</h1>
+
+    <div class="intro">
+      <p>
+        Help your customers discover the music being made right here in
+        our community.
+      </p>
+
+      <p>
+        Local Shuffle lets your customers purchase a locally made song
+        for just an extra $1 with their purchase.
+      </p>
+
+      <p>
+        You provide the customer with a Local Shuffle code.
+        They enter the code at LocalShuffle.com and receive a randomly
+        selected song from a participating local artist.
+      </p>
+    </div>
+
+
+    <form id="businessForm">
+
+      <h2>Business Information</h2>
+
+      <div class="form-group">
+        <label for="businessName">
+          Business Name <span class="required">*</span>
+        </label>
+
+        <input
+          type="text"
+          class="form-control"
+          id="businessName"
+          name="businessName"
+          required>
+      </div>
+
+
+      <div class="form-group">
+        <label for="businessType">
+          Type of Business <span class="required">*</span>
+        </label>
+
+        <select
+          class="form-control"
+          id="businessType"
+          name="businessType"
+          required>
+
+          <option value="">Select one</option>
+          <option value="bar">Bar</option>
+          <option value="brewery">Brewery</option>
+          <option value="coffee_shop">Coffee Shop</option>
+          <option value="restaurant">Restaurant</option>
+          <option value="music_venue">Music Venue</option>
+          <option value="retail">Retail</option>
+          <option value="other">Other</option>
+
+        </select>
+      </div>
+
+
+      <div class="form-group">
+        <label for="website">
+          Website
+        </label>
+
+        <input
+          type="url"
+          class="form-control"
+          id="website"
+          name="website"
+          placeholder="https://">
+      </div>
+
+
+      <div class="form-group">
+        <label for="address">
+          Business Address <span class="required">*</span>
+        </label>
+
+        <input
+          type="text"
+          class="form-control"
+          id="address"
+          name="address"
+          required>
+      </div>
+
+
+      <div class="form-row">
+
+        <div class="form-group col-md-6">
+          <label for="city">
+            City <span class="required">*</span>
+          </label>
+
+          <input
+            type="text"
+            class="form-control"
+            id="city"
+            name="city"
+            required>
+        </div>
+
+
+        <div class="form-group col-md-3">
+          <label for="state">
+            State <span class="required">*</span>
+          </label>
+
+          <input
+            type="text"
+            class="form-control"
+            id="state"
+            name="state"
+            value="FL"
+            required>
+        </div>
+
+
+        <div class="form-group col-md-3">
+          <label for="zip">
+            ZIP Code <span class="required">*</span>
+          </label>
+
+          <input
+            type="text"
+            class="form-control"
+            id="zip"
+            name="zip"
+            required>
+        </div>
+
+      </div>
+
+
+      <h2>Contact Information</h2>
+
+
+      <div class="form-group">
+        <label for="contactName">
+          Contact Name <span class="required">*</span>
+        </label>
+
+        <input
+          type="text"
+          class="form-control"
+          id="contactName"
+          name="contactName"
+          required>
+      </div>
+
+
+      <div class="form-group">
+        <label for="email">
+          Email Address <span class="required">*</span>
+        </label>
+
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          name="email"
+          required>
+      </div>
+
+
+      <div class="form-group">
+        <label for="phone">
+          Phone Number
+        </label>
+
+        <input
+          type="tel"
+          class="form-control"
+          id="phone"
+          name="phone">
+      </div>
+
+
+      <h2>Tell Us About Your Business</h2>
+
+
+      <div class="form-group">
+        <label for="social">
+          Social Media
+        </label>
+
+        <input
+          type="text"
+          class="form-control"
+          id="social"
+          name="social"
+          placeholder="Instagram, Facebook, etc.">
+      </div>
+
+
+      <div class="form-group">
+        <label for="comments">
+          Anything Else You'd Like Us to Know?
+        </label>
+
+        <textarea
+          class="form-control"
+          id="comments"
+          name="comments"
+          rows="4"
+          placeholder="Tell us about your business, your customers, or how you think Local Shuffle could fit in."></textarea>
+      </div>
+
+
+      <h2>How Local Shuffle Works</h2>
+
+
+      <div class="terms">
+
+        <p>
+          Local Shuffle is designed to give customers an easy way to
+          discover local music while giving participating businesses
+          an opportunity to support their local music community.
+        </p>
+
+        <ul>
+
+          <li>
+            The customer pays an additional $1 for a Local Shuffle song.
+          </li>
+
+          <li>
+            The customer receives a unique redemption code.
+          </li>
+
+          <li>
+            The code is entered at LocalShuffle.com.
+          </li>
+
+          <li>
+            Local Shuffle randomly selects a participating local song.
+          </li>
+
+          <li>
+            The customer receives the song as a downloadable MP3.
+          </li>
+
+        </ul>
+
+        <p>
+          The current proposed distribution of each $1 Local Shuffle
+          purchase is:
+        </p>
+
+        <ul>
+
+          <li><strong>75%</strong> to the participating business</li>
+
+          <li><strong>15%</strong> distributed equally among participating
+              local artists</li>
+
+          <li><strong>10%</strong> retained by Local Shuffle</li>
+
+        </ul>
+
+        <p class="small-note">
+          Local Shuffle is currently in its development and testing
+          phase. Program details, payment procedures, and participation
+          requirements may be updated before the program officially
+          launches.
+        </p>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label class="checkbox-label">
+
+          <input
+            type="checkbox"
+            id="agreement"
+            name="agreement"
+            required>
+
+          <span>
+            I have read and understand how Local Shuffle works and would
+            like my business to be considered for participation.
+            <span class="required">*</span>
+          </span>
+
+        </label>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label class="checkbox-label">
+
+          <input
+            type="checkbox"
+            id="contactPermission"
+            name="contactPermission"
+            required>
+
+          <span>
+            I agree that Local Shuffle may contact me regarding this
+            application and participation in the program.
+            <span class="required">*</span>
+          </span>
+
+        </label>
+
+      </div>
+
+
+      <button
+        type="submit"
+        class="submit-button">
+        Submit Business Application
+      </button>
+
+
+      <div id="formStatus"></div>
+
+    </form>
+
+  </div>
+
+
+  <script>
+
+    const businessForm =
+      document.getElementById("businessForm");
+
+    const formStatus =
+      document.getElementById("formStatus");
+
+
+    businessForm.addEventListener("submit", function(event) {
+
+      event.preventDefault();
+
+      formStatus.innerHTML =
+        '<p style="color:white; margin-top:20px;">' +
+        'Thanks! Your business application has been received.' +
+        '</p>';
+
+    });
+
+  </script>
+
+</body>
+</html>
+
