@@ -1,4 +1,5 @@
 
+```css
 .topnav {
   text-align: center;
   color: white;
@@ -24,14 +25,14 @@ h1, h2, h3, form, a, p {
 .Local {
   text-align: center;
   color: white;
-  margin-top: 20px;
   width: 100%;
+  margin-top: 40px;
 }
 
 .holder {
   text-align: center;
   color: black;
-  margin-top: 40px;
+  margin-top: 80px;
 }
 
 body {
@@ -135,8 +136,13 @@ body {
 }
 
 @media (max-width: 600px) {
+
+  .holder {
+    margin-top: 50px;
+  }
+
   .Local {
-    margin-top: 20px;
+    margin-top: 30px;
   }
 
   .download-box {
@@ -151,4 +157,5 @@ body {
     width: auto;
   }
 }
+```
 
