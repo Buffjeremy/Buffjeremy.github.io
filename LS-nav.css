@@ -1,46 +1,53 @@
 
-```css
+/* ==========================================
+   NAVIGATION
+   ========================================== */
+
 .topnav {
   text-align: center;
   color: white;
   margin-bottom: 40px;
+  padding-top: 20px;
 }
 
 .topnav a {
   text-align: center;
   color: white;
   margin: 0 10px;
+  text-decoration: none;
 }
 
-h1, h2, h3, form, a, p {
-  text-align: center;
-  color: white;
+.topnav a:hover {
+  color: #cccccc;
+  text-decoration: underline;
 }
 
-.welcome {
-  text-align: center;
-  margin-top: 20px;
-}
 
-.Local {
-  text-align: center;
-  color: white;
-  width: 100%;
-  margin-top: 40px;
-}
-
-.holder {
-  text-align: center;
-  color: black;
-  margin-top: 80px;
-}
+/* ==========================================
+   PAGE
+   ========================================== */
 
 body {
   background-image: url("images/Metal--Mock-up.jpg");
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
   min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* ==========================================
+   REDEMPTION AREA
+   ========================================== */
+
+.holder {
+  text-align: center;
+  color: black;
+  margin-top: 80px;
+  width: 100%;
 }
 
 .holder label {
@@ -49,6 +56,11 @@ body {
   font-weight: bold;
   margin-bottom: 8px;
 }
+
+
+/* ==========================================
+   INPUT AND DOWNLOAD BUTTON
+   ========================================== */
 
 .download-box {
   display: flex;
@@ -66,6 +78,7 @@ body {
   background-color: rgba(0, 0, 0, 0.75);
   color: white;
   text-align: center;
+  box-sizing: border-box;
 }
 
 #myInput::placeholder {
@@ -91,6 +104,11 @@ body {
   cursor: wait;
 }
 
+
+/* ==========================================
+   STATUS MESSAGES
+   ========================================== */
+
 .status {
   color: white;
   font-weight: bold;
@@ -106,12 +124,18 @@ body {
   color: #aaffaa;
 }
 
+
+/* ==========================================
+   DOWNLOAD RESULT
+   ========================================== */
+
 .download-area {
   background-color: rgba(0, 0, 0, 0.75);
   border: 2px solid white;
   margin: 25px auto;
   padding: 20px;
   max-width: 500px;
+  box-sizing: border-box;
 }
 
 .download-area h2 {
@@ -135,14 +159,55 @@ body {
   text-decoration: none;
 }
 
+
+/* ==========================================
+   GENERAL TEXT
+   ========================================== */
+
+h1,
+h2,
+h3,
+form,
+a,
+p {
+  text-align: center;
+  color: white;
+}
+
+
+/* ==========================================
+   TAGLINE
+   ========================================== */
+
+.Local {
+  text-align: center;
+  color: white;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.Local h3 {
+  margin-bottom: 0;
+}
+
+
+/* ==========================================
+   MOBILE
+   ========================================== */
+
 @media (max-width: 600px) {
+
+  .topnav {
+    margin-bottom: 25px;
+    padding-top: 15px;
+  }
+
+  .topnav a {
+    margin: 0 5px;
+  }
 
   .holder {
     margin-top: 50px;
-  }
-
-  .Local {
-    margin-top: 30px;
   }
 
   .download-box {
@@ -151,11 +216,16 @@ body {
 
   #myInput {
     width: 80%;
+    max-width: 300px;
   }
 
   #myButton {
     width: auto;
   }
+
+  .Local {
+    margin-top: 30px;
+  }
+
 }
-```
 
