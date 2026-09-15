@@ -6,6 +6,235 @@
 .topnav {
   text-align: center;
   color: white;
+  margin-bottom: 10px;
+  padding-top: 20px;
+}
+
+.topnav a {
+  text-align: center;
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.topnav a:hover {
+  color: #cccccc;
+  text-decoration: underline;
+}
+
+
+/* ==========================================
+   PAGE
+   ========================================== */
+
+body {
+  background-image: url("images/Metal--Mock-up.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* ==========================================
+   TAGLINE
+   ========================================== */
+
+.Local {
+  text-align: center;
+  color: white;
+  width: 100%;
+  margin: 0 0 30px 0;
+  padding: 0;
+}
+
+.Local h3 {
+  margin: 0;
+  padding: 0;
+}
+
+
+/* ==========================================
+   REDEMPTION AREA
+   ========================================== */
+
+.holder {
+  text-align: center;
+  color: black;
+  margin-top: 0;
+  width: 100%;
+}
+
+.holder label {
+  display: block;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+
+/* ==========================================
+   INPUT AND DOWNLOAD BUTTON
+   ========================================== */
+
+.download-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+#myInput {
+  width: 220px;
+  padding: 10px;
+  border: 2px solid white;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+#myInput::placeholder {
+  color: #cccccc;
+}
+
+#myButton {
+  padding: 10px 18px;
+  border: 2px solid white;
+  border-radius: 4px;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#myButton:hover {
+  background-color: #333333;
+}
+
+#myButton:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+
+/* ==========================================
+   STATUS MESSAGES
+   ========================================== */
+
+.status {
+  color: white;
+  font-weight: bold;
+  margin-top: 20px;
+  min-height: 25px;
+}
+
+.status.error {
+  color: #ffaaaa;
+}
+
+.status.success {
+  color: #aaffaa;
+}
+
+
+/* ==========================================
+   DOWNLOAD RESULT
+   ========================================== */
+
+.download-area {
+  background-color: rgba(0, 0, 0, 0.75);
+  border: 2px solid white;
+  margin: 25px auto;
+  padding: 20px;
+  max-width: 500px;
+  box-sizing: border-box;
+}
+
+.download-area h2 {
+  margin-top: 0;
+}
+
+.download-button {
+  display: inline-block;
+  padding: 12px 20px;
+  background-color: black;
+  border: 2px solid white;
+  border-radius: 4px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.download-button:hover {
+  background-color: #333333;
+  color: white;
+  text-decoration: none;
+}
+
+
+/* ==========================================
+   GENERAL TEXT
+   ========================================== */
+
+h1,
+h2,
+h3,
+form,
+a,
+p {
+  text-align: center;
+  color: white;
+}
+
+
+/* ==========================================
+   MOBILE
+   ========================================== */
+
+@media (max-width: 600px) {
+
+  .topnav {
+    padding-top: 15px;
+    margin-bottom: 10px;
+  }
+
+  .topnav a {
+    margin: 0 5px;
+  }
+
+  .Local {
+    margin-bottom: 25px;
+  }
+
+  .download-box {
+    flex-direction: column;
+  }
+
+  #myInput {
+    width: 80%;
+    max-width: 300px;
+  }
+
+  #myButton {
+    width: auto;
+  }
+
+}
+```
+
+/* ==========================================
+   NAVIGATION
+   ========================================== */
+
+.topnav {
+  text-align: center;
+  color: white;
   margin-bottom: 40px;
   padding-top: 20px;
 }
