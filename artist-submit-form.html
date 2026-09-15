@@ -1,7 +1,13 @@
 
-<!-- LOCAL SHUFFLE — ARTIST APPLICATION & AGREEMENT -->
-<section id="local-shuffle-artist" class="ls-artist-form">
-<form id="local-shuffle-artist-form">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Local Shuffle - Artist Application</title>
+
   <style>
     .ls-artist-form {
       max-width: 850px;
@@ -18,6 +24,7 @@
     .ls-artist-form h1 {
       margin-bottom: 5px;
       font-size: 2.2em;
+      color: #222222;
     }
 
     .ls-artist-form h2 {
@@ -63,6 +70,7 @@
       border-radius: 5px;
       font-size: 1em;
       background: #fff;
+      color: #222;
     }
 
     .ls-field textarea {
@@ -120,6 +128,11 @@
       opacity: 0.9;
     }
 
+    .ls-submit:disabled {
+      opacity: 0.6;
+      cursor: wait;
+    }
+
     .ls-small {
       font-size: 0.9em;
       color: #666666;
@@ -136,10 +149,19 @@
       }
     }
   </style>
+</head>
 
+<body>
+
+<section id="local-shuffle-artist" class="ls-artist-form">
+
+<form id="local-shuffle-artist-form">
 
   <h1>Local Shuffle</h1>
-  <p><strong>Artist Application &amp; Participation Agreement</strong></p>
+
+  <p>
+    <strong>Artist Application &amp; Participation Agreement</strong>
+  </p>
 
   <p class="ls-intro">
     Local Shuffle connects local musicians with customers at participating
@@ -150,7 +172,9 @@
 
 
   <div class="ls-highlight">
+
     <strong>How Local Shuffle works:</strong>
+
     <ul>
       <li>Customers pay $1 for access to one randomly selected local song.</li>
       <li>The participating business keeps 75% of the purchase.</li>
@@ -159,6 +183,7 @@
       <li>The Artist Pool is divided equally among eligible participating artists.</li>
       <li>Artists do not receive a larger share because their song happens to be selected more often.</li>
     </ul>
+
   </div>
 
 
@@ -207,9 +232,9 @@
   <h2>2. Local Eligibility</h2>
 
   <p>
-    Local Shuffle initially operates within the <strong>Tampa Bay geographic
-    zone</strong>. As Local Shuffle grows, this zone may be divided into
-    smaller geographic zones.
+    Local Shuffle initially operates within the
+    <strong>Tampa Bay geographic zone</strong>.
+    As Local Shuffle grows, this zone may be divided into smaller geographic zones.
   </p>
 
   <p>
@@ -261,13 +286,21 @@
 
   <div class="ls-field">
     <label for="description">Describe your music</label>
-    <textarea id="description" name="description"
-      placeholder="Tell listeners a little about your music."></textarea>
+    <textarea
+      id="description"
+      name="description"
+      placeholder="Tell listeners a little about your music."
+    ></textarea>
   </div>
 
   <div class="ls-field">
     <label for="music_link">Primary Music Profile / Streaming Link *</label>
-    <input type="url" id="music_link" name="music_link" required>
+    <input
+      type="url"
+      id="music_link"
+      name="music_link"
+      required
+    >
   </div>
 
 
@@ -276,7 +309,8 @@
   <h2>4. Song Submission</h2>
 
   <p>
-    A Local Shuffle song must be a <strong>released and distributed song</strong>.
+    A Local Shuffle song must be a
+    <strong>released and distributed song</strong>.
     Unreleased demos or unreleased recordings are not eligible.
   </p>
 
@@ -303,14 +337,26 @@
 
   <div class="ls-field">
     <label for="song_link">Officially Released Song Link *</label>
-    <input type="url" id="song_link" name="song_link"
-      placeholder="Spotify, Apple Music, Bandcamp, etc." required>
+    <input
+      type="url"
+      id="song_link"
+      name="song_link"
+      placeholder="Spotify, Apple Music, Bandcamp, etc."
+      required
+    >
   </div>
 
   <div class="ls-field">
-    <label for="distribution">Where is the song officially distributed?</label>
-    <input type="text" id="distribution" name="distribution"
-      placeholder="Spotify, Apple Music, Bandcamp, etc.">
+    <label for="distribution">
+      Where is the song officially distributed?
+    </label>
+
+    <input
+      type="text"
+      id="distribution"
+      name="distribution"
+      placeholder="Spotify, Apple Music, Bandcamp, etc."
+    >
   </div>
 
   <div class="ls-checkbox">
@@ -343,13 +389,40 @@
     <p>This license permits Local Shuffle to:</p>
 
     <ol>
-      <li>Include the submitted song in the Local Shuffle music catalog.</li>
-      <li>Select one eligible song from the artist for inclusion in the active Local Shuffle rotation.</li>
-      <li>Make the active song available to customers who have legitimately redeemed a Local Shuffle purchase.</li>
-      <li>Stream or digitally deliver the song through the Local Shuffle website or associated technology.</li>
-      <li>Identify the artist and song title to customers.</li>
-      <li>Display the artist's name, approved biography, photograph, artwork, website, and social-media links for Local Shuffle-related purposes.</li>
-      <li>Promote the artist and Local Shuffle participation through Local Shuffle marketing.</li>
+
+      <li>
+        Include the submitted song in the Local Shuffle music catalog.
+      </li>
+
+      <li>
+        Select one eligible song from the artist for inclusion in the active
+        Local Shuffle rotation.
+      </li>
+
+      <li>
+        Make the active song available to customers who have legitimately
+        redeemed a Local Shuffle purchase.
+      </li>
+
+      <li>
+        Stream or digitally deliver the song through the Local Shuffle website
+        or associated technology.
+      </li>
+
+      <li>
+        Identify the artist and song title to customers.
+      </li>
+
+      <li>
+        Display the artist's name, approved biography, photograph, artwork,
+        website, and social-media links for Local Shuffle-related purposes.
+      </li>
+
+      <li>
+        Promote the artist and Local Shuffle participation through Local
+        Shuffle marketing.
+      </li>
+
     </ol>
 
     <p>
@@ -367,10 +440,13 @@
   </div>
 
   <div class="ls-checkbox">
+
     <label>
       <input type="checkbox" name="license_agreement" required>
+
       I agree to grant Local Shuffle the non-exclusive license described above.
     </label>
+
   </div>
 
 
@@ -384,15 +460,30 @@
   </p>
 
   <div class="ls-field">
+
     <label for="artist_bio">Artist Bio</label>
-    <textarea id="artist_bio" name="artist_bio"
-      placeholder="50–150 words recommended."></textarea>
+
+    <textarea
+      id="artist_bio"
+      name="artist_bio"
+      placeholder="50–150 words recommended."
+    ></textarea>
+
   </div>
 
   <div class="ls-field">
-    <label for="artist_photo">Artist / Band Photo</label>
-    <input type="file" id="artist_photo" name="artist_photo"
-      accept="image/*">
+
+    <label for="artist_photo">
+      Artist / Band Photo
+    </label>
+
+    <input
+      type="file"
+      id="artist_photo"
+      name="artist_photo"
+      accept="image/*"
+    >
+
   </div>
 
 
@@ -408,8 +499,9 @@
     </p>
 
     <p>
-      The Artist Pool is divided <strong>equally among all eligible active
-      Local Shuffle Artists</strong> for the applicable monthly payout period.
+      The Artist Pool is divided
+      <strong>equally among all eligible active Local Shuffle Artists</strong>
+      for the applicable monthly payout period.
     </p>
 
     <p>
@@ -449,20 +541,40 @@
 
   <p>
     When payment processing is activated, artists may be directed to a secure
-    third-party payment provider to complete identity and payment
-    verification.
+    third-party payment provider to complete identity and payment verification.
   </p>
 
   <div class="ls-field">
-    <label for="payment_email">Payment Email *</label>
-    <input type="email" id="payment_email" name="payment_email" required>
+
+    <label for="payment_email">
+      Payment Email *
+    </label>
+
+    <input
+      type="email"
+      id="payment_email"
+      name="payment_email"
+      required
+    >
+
   </div>
 
   <div class="ls-checkbox">
+
     <label>
-      <input type="checkbox" name="payment_setup" required>
-      I understand that additional information may be required through a secure third-party payment provider before Local Shuffle can issue payments to me.
+
+      <input
+        type="checkbox"
+        name="payment_setup"
+        required
+      >
+
+      I understand that additional information may be required through a
+      secure third-party payment provider before Local Shuffle can issue
+      payments to me.
+
     </label>
+
   </div>
 
 
@@ -473,7 +585,10 @@
   <div class="ls-terms">
 
     <ul>
-      <li>Participation in Local Shuffle is voluntary.</li>
+
+      <li>
+        Participation in Local Shuffle is voluntary.
+      </li>
 
       <li>
         Local Shuffle may review and approve or reject artist and song
@@ -497,8 +612,7 @@
 
       <li>
         Local Shuffle may temporarily suspend a song or artist if eligibility,
-        rights ownership, or other participation requirements become
-        uncertain.
+        rights ownership, or other participation requirements become uncertain.
       </li>
 
       <li>
@@ -516,6 +630,7 @@
         Artists are responsible for any taxes or other obligations associated
         with payments they receive from Local Shuffle.
       </li>
+
     </ul>
 
   </div>
@@ -530,6 +645,7 @@
   </p>
 
   <ul>
+
     <li>
       I am the artist or an authorized representative of the artist named in
       this application.
@@ -554,6 +670,7 @@
       I will notify Local Shuffle if my ownership or authorization concerning
       a submitted song changes.
     </li>
+
   </ul>
 
 
@@ -562,17 +679,38 @@
   <h2>10. Final Agreement</h2>
 
   <div class="ls-checkbox">
+
     <label>
-      <input type="checkbox" name="final_agreement" required>
-      I have read and understand this Local Shuffle Artist Application &amp; Participation Agreement and agree to its terms.
+
+      <input
+        type="checkbox"
+        name="final_agreement"
+        required
+      >
+
+      I have read and understand this Local Shuffle Artist Application &
+      Participation Agreement and agree to its terms.
+
     </label>
+
   </div>
 
   <div class="ls-checkbox">
+
     <label>
-      <input type="checkbox" name="accuracy" required>
-      I certify that the information I have provided is accurate and that I have the authority to submit this application and grant the permissions described above.
+
+      <input
+        type="checkbox"
+        name="accuracy"
+        required
+      >
+
+      I certify that the information I have provided is accurate and that I
+      have the authority to submit this application and grant the permissions
+      described above.
+
     </label>
+
   </div>
 
 
@@ -583,136 +721,341 @@
   <div class="ls-signature">
 
     <div class="ls-field">
-      <label for="signature_name">Artist / Authorized Representative Name *</label>
-      <input type="text" id="signature_name" name="signature_name" required>
+
+      <label for="signature_name">
+        Artist / Authorized Representative Name *
+      </label>
+
+      <input
+        type="text"
+        id="signature_name"
+        name="signature_name"
+        required
+      >
+
     </div>
 
     <div class="ls-field">
-      <label for="signature_date">Date *</label>
-      <input type="date" id="signature_date" name="signature_date" required>
+
+      <label for="signature_date">
+        Date *
+      </label>
+
+      <input
+        type="date"
+        id="signature_date"
+        name="signature_date"
+        required
+      >
+
     </div>
 
   </div>
 
   <div class="ls-field">
-    <label for="signature">Electronic Signature *</label>
-    <input type="text" id="signature" name="signature"
-      placeholder="Type your full legal name" required>
+
+    <label for="signature">
+      Electronic Signature *
+    </label>
+
+    <input
+      type="text"
+      id="signature"
+      name="signature"
+      placeholder="Type your full legal name"
+      required
+    >
+
   </div>
 
   <p class="ls-small">
+
     By typing my name above and submitting this application, I intend for my
     electronic signature to have the same meaning as a handwritten signature,
     to the extent permitted by applicable law.
+
   </p>
 
 
   <!-- SUBMIT -->
 
-  <button type="submit" class="ls-submit">
+  <button
+    type="submit"
+    class="ls-submit"
+  >
     Submit Local Shuffle Artist Application
   </button>
+
 </form>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<!-- SUPABASE -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-const SUPABASE_URL = 'https://yaqhqnuvlxfgfpnwufyw.supabase.co';
-const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_Lo-gi0FFqCWN6JrZRumUIw_CK3yk9-i';
 
-const supabaseClient = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_PUBLISHABLE_KEY
-);
+const SUPABASE_URL =
+  'https://yaqhqnuvlxfgfpnwufyw.supabase.co';
 
-const form = document.getElementById('local-shuffle-artist-form');
+const SUPABASE_PUBLISHABLE_KEY =
+  'sb_publishable_Lo-gi0FFqCWN6JrZRumUIw_CK3yk9-i';
 
-form.addEventListener('submit', async function(event) {
-  event.preventDefault();
+const supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
 
-  const submitButton = form.querySelector('.ls-submit');
-  const originalText = submitButton.textContent;
 
-  submitButton.disabled = true;
-  submitButton.textContent = 'Submitting...';
+const form =
+  document.getElementById(
+    'local-shuffle-artist-form'
+  );
 
-  const getValue = (name) => {
-    const field = form.elements[name];
-    return field ? field.value.trim() : null;
-  };
 
-  const isChecked = (name) => {
-    const field = form.elements[name];
-    return field ? field.checked : false;
-  };
+form.addEventListener(
+  'submit',
+  async function(event) {
 
-  const application = {
-    artist_name: getValue('artist_name'),
-    contact_name: getValue('contact_name'),
-    email: getValue('email'),
-    phone: getValue('phone'),
+    event.preventDefault();
 
-    website: getValue('website'),
-    instagram: getValue('instagram'),
-    facebook: getValue('facebook'),
+    const submitButton =
+      form.querySelector('.ls-submit');
 
-    city: getValue('city'),
-    zip_code: getValue('zip_code'),
+    const originalText =
+      submitButton.textContent;
 
-    genre: getValue('genre'),
-    bio: getValue('artist_bio'),
-    primary_music_link: getValue('music_link'),
+    submitButton.disabled = true;
 
-    song_title: getValue('song_title'),
-    release_date: getValue('release_date'),
-    official_song_url: getValue('song_link'),
-    distribution_platforms: getValue('distribution'),
+    submitButton.textContent =
+      'Submitting...';
 
-    payment_email: getValue('payment_email'),
 
-    local_residency_confirmed: isChecked('local_residency'),
-    local_release_confirmed: isChecked('local_release'),
-    geographic_changes_confirmed: isChecked('geographic_changes'),
+    const getValue = (name) => {
 
-    song_released_confirmed: isChecked('song_released'),
-    song_rights_confirmed: isChecked('song_rights'),
-    license_agreement_confirmed: isChecked('license_agreement'),
+      const field =
+        form.elements[name];
 
-    payment_setup_confirmed: isChecked('payment_setup'),
-    final_agreement_confirmed: isChecked('final_agreement'),
-    accuracy_confirmed: isChecked('accuracy'),
+      return field
+        ? field.value.trim()
+        : null;
 
-    signature_name: getValue('signature_name'),
-    signature_date: getValue('signature_date'),
-    electronic_signature: getValue('signature'),
+    };
 
-    applicant_signature_timestamp: new Date().toISOString()
-  };
 
-  const { error } = await supabaseClient
-    .from('artist_applications')
-    .insert([application]);
+    const isChecked = (name) => {
 
-  if (error) {
-    console.error(error);
+      const field =
+        form.elements[name];
 
-    submitButton.disabled = false;
-    submitButton.textContent = originalText;
+      return field
+        ? field.checked
+        : false;
 
-    alert(
-      'There was a problem submitting your application. Please try again.'
-    );
+    };
 
-    return;
+
+    const application = {
+
+      /* Artist information */
+
+      artist_name:
+        getValue('artist_name'),
+
+      contact_name:
+        getValue('contact_name'),
+
+      email:
+        getValue('email'),
+
+      phone:
+        getValue('phone'),
+
+      website:
+        getValue('website'),
+
+      instagram:
+        getValue('instagram'),
+
+      facebook:
+        getValue('facebook'),
+
+
+      /* Location */
+
+      city:
+        getValue('city'),
+
+      zip_code:
+        getValue('zip_code'),
+
+
+      /* Music */
+
+      genre:
+        getValue('genre'),
+
+      bio:
+        getValue('artist_bio'),
+
+      primary_music_link:
+        getValue('music_link'),
+
+
+      /* Song */
+
+      song_title:
+        getValue('song_title'),
+
+      release_date:
+        getValue('release_date'),
+
+      official_song_url:
+        getValue('song_link'),
+
+      distribution_platforms:
+        getValue('distribution'),
+
+
+      /* Payment */
+
+      payment_email:
+        getValue('payment_email'),
+
+
+      /* Required confirmations */
+
+      rights_confirmed:
+        isChecked('song_rights'),
+
+      local_residency_confirmed:
+        isChecked('local_residency'),
+
+      local_release_confirmed:
+        isChecked('local_release'),
+
+      agreement_accepted:
+        isChecked('final_agreement'),
+
+
+      /* Additional confirmations */
+
+      geographic_changes_confirmed:
+        isChecked('geographic_changes'),
+
+      song_released_confirmed:
+        isChecked('song_released'),
+
+      song_rights_confirmed:
+        isChecked('song_rights'),
+
+      license_agreement_confirmed:
+        isChecked('license_agreement'),
+
+      payment_setup_confirmed:
+        isChecked('payment_setup'),
+
+      final_agreement_confirmed:
+        isChecked('final_agreement'),
+
+      accuracy_confirmed:
+        isChecked('accuracy'),
+
+
+      /* Signature */
+
+      signature_name:
+        getValue('signature_name'),
+
+      signature_date:
+        getValue('signature_date'),
+
+      electronic_signature:
+        getValue('signature'),
+
+      applicant_signature_timestamp:
+        new Date().toISOString(),
+
+
+      /* Application status */
+
+      status:
+        'pending'
+
+    };
+
+
+    try {
+
+      const { error } =
+        await supabaseClient
+          .from('artist_applications')
+          .insert([application]);
+
+
+      if (error) {
+
+        console.error(
+          'Supabase artist application error:',
+          error
+        );
+
+        alert(
+          'There was a problem submitting your application:\n\n' +
+          error.message
+        );
+
+        submitButton.disabled = false;
+
+        submitButton.textContent =
+          originalText;
+
+        return;
+
+      }
+
+
+      form.reset();
+
+      submitButton.disabled = false;
+
+      submitButton.textContent =
+        originalText;
+
+
+      alert(
+        'Thank you! Your Local Shuffle artist application has been submitted and is now pending review.'
+      );
+
+    }
+
+    catch (error) {
+
+      console.error(
+        'Unexpected artist application error:',
+        error
+      );
+
+      alert(
+        'Something went wrong while submitting your application. Please try again.'
+      );
+
+      submitButton.disabled = false;
+
+      submitButton.textContent =
+        originalText;
+
+    }
+
   }
 
-  form.reset();
+);
 
-  submitButton.disabled = false;
-  submitButton.textContent = originalText;
-
-  alert(
-    'Thank you! Your Local Shuffle artist application has been submitted.'
-  );
-});
 </script>
+
 </section>
+
+</body>
+
+</html>
