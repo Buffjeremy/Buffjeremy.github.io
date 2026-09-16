@@ -1,451 +1,475 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Local Shuffle - Business Application</title>
 
-  <link rel="stylesheet"
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-        integrity="sha384-GJzqZFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-        crossorigin="anonymous">
-
   <link rel="stylesheet" href="LS-nav.css">
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       background-image: url("images/Metal--Mock-up.jpg");
       background-attachment: fixed;
       background-position: center;
       background-size: cover;
+      background-repeat: no-repeat;
       min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: white;
     }
 
-    .form-container {
-      max-width: 700px;
-      margin: 50px auto;
+    .topnav {
+      text-align: center;
+      padding-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    .topnav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    .topnav a:hover {
+      color: #cccccc;
+      text-decoration: underline;
+    }
+
+    .Local {
+      text-align: center;
+      margin: 0 0 25px 0;
+    }
+
+    .Local h3 {
+      margin: 0;
+    }
+
+    .application-container {
+      width: 95%;
+      max-width: 800px;
+      margin: 0 auto 50px auto;
       padding: 30px;
       background-color: rgba(0, 0, 0, 0.82);
       border: 2px solid white;
       border-radius: 6px;
     }
 
-    .form-container h1 {
-      color: white;
+    h1 {
       text-align: center;
-      margin-bottom: 10px;
+      margin-top: 0;
+      color: #964c4b;
     }
 
-    .form-container h2 {
-      color: white;
-      text-align: center;
-      font-size: 22px;
+    h2 {
+      color: #964c4b;
+      border-bottom: 1px solid #964c4b;
+      padding-bottom: 6px;
       margin-top: 30px;
-      margin-bottom: 15px;
     }
 
-    .form-container p {
-      color: white;
-      text-align: center;
+    p {
+      line-height: 1.5;
     }
 
     .intro {
+      text-align: center;
       margin-bottom: 30px;
     }
 
-    label {
-      color: white;
-      font-weight: bold;
-    }
-
-    .form-control {
-      background-color: rgba(255, 255, 255, 0.95);
-      color: black;
-    }
-
-    .form-control:focus {
-      background-color: white;
-      color: black;
-    }
-
-    .terms {
-      background-color: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.4);
+    .split-box {
+      margin: 25px 0;
       padding: 20px;
-      margin-top: 20px;
-      margin-bottom: 20px;
+      border: 1px solid #964c4b;
+      background-color: rgba(150, 76, 75, 0.12);
+      text-align: center;
     }
 
-    .terms p,
-    .terms li {
-      text-align: left;
-      color: white;
+    .split-box h3 {
+      color: #964c4b;
+      margin-top: 0;
     }
 
-    .checkbox-label {
+    .split {
       display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      color: white;
-      font-weight: normal;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 15px;
     }
 
-    .checkbox-label input {
-      margin-top: 5px;
+    .split div {
+      min-width: 120px;
     }
 
-    .submit-button {
+    .split strong {
       display: block;
-      margin: 25px auto 0 auto;
-      padding: 12px 25px;
-      background-color: black;
+      font-size: 24px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-top: 16px;
+      margin-bottom: 6px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 11px;
       border: 2px solid white;
       border-radius: 4px;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
+      background-color: rgba(255, 255, 255, 0.95);
+      color: black;
+      font-size: 15px;
     }
 
-    .submit-button:hover {
-      background-color: #333333;
+    textarea {
+      min-height: 110px;
+      resize: vertical;
     }
 
     .required {
       color: #ffaaaa;
     }
 
-    .small-note {
-      font-size: 14px;
-      color: #cccccc !important;
+    .checkbox-area {
+      margin-top: 25px;
+      padding: 18px;
+      border: 1px solid #666;
+      background-color: rgba(255, 255, 255, 0.05);
     }
 
+    .checkbox-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-weight: normal;
+      margin-top: 12px;
+    }
+
+    .checkbox-label input {
+      width: auto;
+      margin-top: 4px;
+      flex-shrink: 0;
+    }
+
+    .submit-button {
+      display: block;
+      margin: 30px auto 10px auto;
+      padding: 13px 25px;
+      border: 2px solid white;
+      border-radius: 4px;
+      background-color: #964c4b;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .submit-button:hover {
+      background-color: #7c3e3d;
+    }
+
+    .submit-button:disabled {
+      opacity: 0.5;
+      cursor: wait;
+    }
+
+    #status {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 20px;
+      min-height: 25px;
+    }
+
+    #status.success {
+      color: #aaffaa;
+    }
+
+    #status.error {
+      color: #ffaaaa;
+    }
+
+    .small-note {
+      font-size: 13px;
+      color: #cccccc;
+    }
+
+    @media (max-width: 600px) {
+      .topnav a {
+        margin: 0 5px;
+      }
+
+      .application-container {
+        width: 94%;
+        padding: 20px;
+      }
+
+      .split {
+        gap: 15px;
+      }
+    }
   </style>
 </head>
 
 <body>
 
+  <!-- Navigation -->
   <div class="topnav">
     <a href="index.html">Home</a>
     <a href="ls-bands.html">Bands</a>
+    <a href="artist-submit-form.html">Artists</a>
+    <a class="active" href="Business-Application.html">Businesses</a>
     <a href="ls-Contact.html">Contact</a>
     <a href="ls-about.html">About</a>
   </div>
 
+  <!-- Tagline -->
+  <div class="Local">
+    <h3>Local Music ... Local Listeners</h3>
+  </div>
 
-  <div class="form-container">
+
+  <div class="application-container">
 
     <h1>Become a Local Shuffle Business</h1>
 
     <div class="intro">
       <p>
-        Help your customers discover the music being made right here in
-        our community.
+        Local Shuffle helps local businesses introduce their customers
+        to local music.
       </p>
 
       <p>
-        Local Shuffle lets your customers purchase a locally made song
-        for just an extra $1 with their purchase.
+        Customers purchase a drink, meal, or other qualifying item from
+        your business and can add <strong>$1</strong> for a randomly
+        selected song from a local artist.
       </p>
 
       <p>
-        You provide the customer with a Local Shuffle code.
-        They enter the code at LocalShuffle.com and receive a randomly
-        selected song from a participating local artist.
+        You provide the customer with a Local Shuffle redemption code.
+        They enter the code on the Local Shuffle website and receive
+        their randomly selected song as an MP3 download.
       </p>
+    </div>
+
+
+    <!-- Money Split -->
+    <div class="split-box">
+
+      <h3>How the $1 is Split</h3>
+
+      <div class="split">
+
+        <div>
+          <strong>75%</strong>
+          Business
+        </div>
+
+        <div>
+          <strong>15%</strong>
+          Local Artists
+        </div>
+
+        <div>
+          <strong>10%</strong>
+          Local Shuffle
+        </div>
+
+      </div>
+
+      <p class="small-note">
+        The business keeps 75% of every Local Shuffle dollar.
+        The artist portion is pooled and divided equally among
+        participating artists according to the Local Shuffle
+        artist agreement.
+      </p>
+
     </div>
 
 
     <form id="businessForm">
 
+      <!-- Business Information -->
       <h2>Business Information</h2>
 
-      <div class="form-group">
-        <label for="businessName">
-          Business Name <span class="required">*</span>
-        </label>
+      <label for="business_name">
+        Business Name <span class="required">*</span>
+      </label>
 
-        <input
-          type="text"
-          class="form-control"
-          id="businessName"
-          name="businessName"
-          required>
-      </div>
+      <input
+        type="text"
+        id="business_name"
+        name="business_name"
+        required
+      >
 
 
-      <div class="form-group">
-        <label for="businessType">
-          Type of Business <span class="required">*</span>
-        </label>
+      <label for="website">
+        Business Website
+      </label>
 
-        <select
-          class="form-control"
-          id="businessType"
-          name="businessType"
-          required>
-
-          <option value="">Select one</option>
-          <option value="bar">Bar</option>
-          <option value="brewery">Brewery</option>
-          <option value="coffee_shop">Coffee Shop</option>
-          <option value="restaurant">Restaurant</option>
-          <option value="music_venue">Music Venue</option>
-          <option value="retail">Retail</option>
-          <option value="other">Other</option>
-
-        </select>
-      </div>
+      <input
+        type="url"
+        id="website"
+        name="website"
+        placeholder="https://"
+      >
 
 
-      <div class="form-group">
-        <label for="website">
-          Website
-        </label>
+      <label for="address">
+        Street Address <span class="required">*</span>
+      </label>
 
-        <input
-          type="url"
-          class="form-control"
-          id="website"
-          name="website"
-          placeholder="https://">
-      </div>
+      <input
+        type="text"
+        id="address"
+        name="address"
+        required
+      >
 
 
-      <div class="form-group">
-        <label for="address">
-          Business Address <span class="required">*</span>
-        </label>
+      <label for="city">
+        City <span class="required">*</span>
+      </label>
 
-        <input
-          type="text"
-          class="form-control"
-          id="address"
-          name="address"
-          required>
-      </div>
+      <input
+        type="text"
+        id="city"
+        name="city"
+        required
+      >
 
 
-      <div class="form-row">
+      <label for="state">
+        State <span class="required">*</span>
+      </label>
 
-        <div class="form-group col-md-6">
-          <label for="city">
-            City <span class="required">*</span>
-          </label>
-
-          <input
-            type="text"
-            class="form-control"
-            id="city"
-            name="city"
-            required>
-        </div>
+      <input
+        type="text"
+        id="state"
+        name="state"
+        value="FL"
+        required
+      >
 
 
-        <div class="form-group col-md-3">
-          <label for="state">
-            State <span class="required">*</span>
-          </label>
+      <label for="zip_code">
+        ZIP Code <span class="required">*</span>
+      </label>
 
-          <input
-            type="text"
-            class="form-control"
-            id="state"
-            name="state"
-            value="FL"
-            required>
-        </div>
-
-
-        <div class="form-group col-md-3">
-          <label for="zip">
-            ZIP Code <span class="required">*</span>
-          </label>
-
-          <input
-            type="text"
-            class="form-control"
-            id="zip"
-            name="zip"
-            required>
-        </div>
-
-      </div>
+      <input
+        type="text"
+        id="zip_code"
+        name="zip_code"
+        pattern="[0-9]{5}"
+        maxlength="5"
+        placeholder="335xx or 336xx"
+        required
+      >
 
 
+      <!-- Contact Information -->
       <h2>Contact Information</h2>
 
+      <label for="contact_name">
+        Contact Name <span class="required">*</span>
+      </label>
 
-      <div class="form-group">
-        <label for="contactName">
-          Contact Name <span class="required">*</span>
-        </label>
-
-        <input
-          type="text"
-          class="form-control"
-          id="contactName"
-          name="contactName"
-          required>
-      </div>
+      <input
+        type="text"
+        id="contact_name"
+        name="contact_name"
+        required
+      >
 
 
-      <div class="form-group">
-        <label for="email">
-          Email Address <span class="required">*</span>
-        </label>
+      <label for="email">
+        Email Address <span class="required">*</span>
+      </label>
 
-        <input
-          type="email"
-          class="form-control"
-          id="email"
-          name="email"
-          required>
-      </div>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+      >
 
 
-      <div class="form-group">
-        <label for="phone">
-          Phone Number
-        </label>
+      <label for="phone">
+        Phone Number
+      </label>
 
-        <input
-          type="tel"
-          class="form-control"
-          id="phone"
-          name="phone">
-      </div>
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+      >
 
 
-      <h2>Tell Us About Your Business</h2>
+      <!-- Agreement -->
+      <h2>Before You Submit</h2>
 
-
-      <div class="form-group">
-        <label for="social">
-          Social Media
-        </label>
-
-        <input
-          type="text"
-          class="form-control"
-          id="social"
-          name="social"
-          placeholder="Instagram, Facebook, etc.">
-      </div>
-
-
-      <div class="form-group">
-        <label for="comments">
-          Anything Else You'd Like Us to Know?
-        </label>
-
-        <textarea
-          class="form-control"
-          id="comments"
-          name="comments"
-          rows="4"
-          placeholder="Tell us about your business, your customers, or how you think Local Shuffle could fit in."></textarea>
-      </div>
-
-
-      <h2>How Local Shuffle Works</h2>
-
-
-      <div class="terms">
-
-        <p>
-          Local Shuffle is designed to give customers an easy way to
-          discover local music while giving participating businesses
-          an opportunity to support their local music community.
-        </p>
-
-        <ul>
-
-          <li>
-            The customer pays an additional $1 for a Local Shuffle song.
-          </li>
-
-          <li>
-            The customer receives a unique redemption code.
-          </li>
-
-          <li>
-            The code is entered at LocalShuffle.com.
-          </li>
-
-          <li>
-            Local Shuffle randomly selects a participating local song.
-          </li>
-
-          <li>
-            The customer receives the song as a downloadable MP3.
-          </li>
-
-        </ul>
-
-        <p>
-          The current proposed distribution of each $1 Local Shuffle
-          purchase is:
-        </p>
-
-        <ul>
-
-          <li><strong>75%</strong> to the participating business</li>
-
-          <li><strong>15%</strong> distributed equally among participating
-              local artists</li>
-
-          <li><strong>10%</strong> retained by Local Shuffle</li>
-
-        </ul>
-
-        <p class="small-note">
-          Local Shuffle is currently in its development and testing
-          phase. Program details, payment procedures, and participation
-          requirements may be updated before the program officially
-          launches.
-        </p>
-
-      </div>
-
-
-      <div class="form-group">
+      <div class="checkbox-area">
 
         <label class="checkbox-label">
 
           <input
             type="checkbox"
-            id="agreement"
-            name="agreement"
-            required>
+            id="understand_program"
+            required
+          >
 
           <span>
-            I have read and understand how Local Shuffle works and would
-            like my business to be considered for participation.
-            <span class="required">*</span>
+            I understand that Local Shuffle is a local music discovery
+            program and that participating customers will receive a
+            randomly selected song from an eligible Local Shuffle artist.
           </span>
 
         </label>
 
-      </div>
-
-
-      <div class="form-group">
 
         <label class="checkbox-label">
 
           <input
             type="checkbox"
-            id="contactPermission"
-            name="contactPermission"
-            required>
+            id="understand_split"
+            required
+          >
 
           <span>
-            I agree that Local Shuffle may contact me regarding this
-            application and participation in the program.
-            <span class="required">*</span>
+            I understand the proposed $1 split:
+            75% to the participating business,
+            15% to participating local artists,
+            and 10% to Local Shuffle.
+          </span>
+
+        </label>
+
+
+        <label class="checkbox-label">
+
+          <input
+            type="checkbox"
+            id="contact_permission"
+            required
+          >
+
+          <span>
+            I give Local Shuffle permission to contact me regarding
+            this application and participation in the program.
           </span>
 
         </label>
@@ -455,40 +479,176 @@
 
       <button
         type="submit"
-        class="submit-button">
+        id="submitButton"
+        class="submit-button"
+      >
         Submit Business Application
       </button>
 
-
-      <div id="formStatus"></div>
+      <div id="status" aria-live="polite"></div>
 
     </form>
 
   </div>
 
 
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
   <script>
 
-    const businessForm =
-      document.getElementById("businessForm");
+    const SUPABASE_URL =
+      'https://yaqhqnuvlxfgfpnwufyw.supabase.co';
 
-    const formStatus =
-      document.getElementById("formStatus");
+    const SUPABASE_PUBLISHABLE_KEY =
+      'sb_publishable_Lo-gi0FFqCWN6JrZRumUIw_CK3yk9-i';
+
+    const supabaseClient =
+      window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+      );
 
 
-    businessForm.addEventListener("submit", function(event) {
+    const form =
+      document.getElementById('businessForm');
+
+    const submitButton =
+      document.getElementById('submitButton');
+
+    const status =
+      document.getElementById('status');
+
+
+    function showStatus(message, type = '') {
+
+      status.textContent = message;
+
+      status.className = '';
+
+      if (type) {
+        status.classList.add(type);
+      }
+
+    }
+
+
+    form.addEventListener('submit', async function(event) {
 
       event.preventDefault();
 
-      formStatus.innerHTML =
-        '<p style="color:white; margin-top:20px;">' +
-        'Thanks! Your business application has been received.' +
-        '</p>';
+      showStatus('');
+
+      submitButton.disabled = true;
+
+      submitButton.textContent = 'Submitting...';
+
+
+      const businessName =
+        document.getElementById('business_name').value.trim();
+
+      const website =
+        document.getElementById('website').value.trim();
+
+      const address =
+        document.getElementById('address').value.trim();
+
+      const city =
+        document.getElementById('city').value.trim();
+
+      const state =
+        document.getElementById('state').value.trim();
+
+      const zipCode =
+        document.getElementById('zip_code').value.trim();
+
+      const contactName =
+        document.getElementById('contact_name').value.trim();
+
+      const email =
+        document.getElementById('email').value.trim();
+
+      const phone =
+        document.getElementById('phone').value.trim();
+
+
+      try {
+
+        const { data, error } =
+          await supabaseClient
+            .from('businesses')
+            .insert([
+
+              {
+                business_name: businessName,
+                contact_name: contactName,
+                email: email,
+                phone: phone,
+                website: website || null,
+                address: address,
+                city: city,
+                state: state,
+                zip_code: zipCode,
+                status: 'pending'
+              }
+
+            ])
+            .select()
+            .single();
+
+
+        if (error) {
+
+          console.error(
+            'Business application error:',
+            error
+          );
+
+          throw error;
+
+        }
+
+
+        console.log(
+          'Business application submitted:',
+          data
+        );
+
+
+        form.reset();
+
+        document.getElementById('state').value = 'FL';
+
+        showStatus(
+          'Thank you! Your business application has been submitted and is pending review.',
+          'success'
+        );
+
+
+      } catch (error) {
+
+        console.error(error);
+
+        showStatus(
+          error.message ||
+          'Something went wrong submitting your application. Please try again.',
+          'error'
+        );
+
+      } finally {
+
+        submitButton.disabled = false;
+
+        submitButton.textContent =
+          'Submit Business Application';
+
+      }
 
     });
 
   </script>
 
 </body>
+
 </html>
 
