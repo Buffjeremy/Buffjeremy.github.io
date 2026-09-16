@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -7,880 +8,729 @@
 
   <title>Local Shuffle - Artist Application</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      background-image: url("images/Metal--Mock-up.jpg");
-      background-attachment: fixed;
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
-      min-height: 100vh;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      color: white;
-    }
-
-    /* NAVIGATION */
-
-    .topnav {
-      text-align: center;
-      padding-top: 20px;
-      margin-bottom: 10px;
-    }
-
-    .topnav a {
-      color: white;
-      margin: 0 10px;
-      text-decoration: none;
-    }
-
-    .topnav a:hover {
-      color: #cccccc;
-      text-decoration: underline;
-    }
-
-    /* TAGLINE */
-
-    .Local {
-      text-align: center;
-      margin: 0 0 25px 0;
-    }
-
-    .Local h3 {
-      margin: 0;
-    }
-
-    /* MAIN CONTAINER */
-
-    .application-container {
-      width: 95%;
-      max-width: 800px;
-      margin: 0 auto 50px auto;
-      padding: 30px;
-      background-color: rgba(0, 0, 0, 0.82);
-      border: 2px solid white;
-      border-radius: 6px;
-    }
-
-    h1 {
-      text-align: center;
-      margin-top: 0;
-      color: #964c4b;
-    }
-
-    h2 {
-      color: #964c4b;
-      border-bottom: 1px solid #964c4b;
-      padding-bottom: 6px;
-      margin-top: 30px;
-    }
-
-    h3 {
-      color: #964c4b;
-    }
-
-    p {
-      line-height: 1.5;
-    }
-
-    .intro {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    /* INFORMATION BOX */
-
-    .info-box {
-      margin: 25px 0;
-      padding: 20px;
-      border: 1px solid #964c4b;
-      background-color: rgba(150, 76, 75, 0.12);
-    }
-
-    .info-box h3 {
-      margin-top: 0;
-    }
-
-    /* FORM */
-
-    label {
-      display: block;
-      font-weight: bold;
-      margin-top: 16px;
-      margin-bottom: 6px;
-    }
-
-    input,
-    textarea,
-    select {
-      width: 100%;
-      padding: 11px;
-      border: 2px solid white;
-      border-radius: 4px;
-      background-color: rgba(255, 255, 255, 0.95);
-      color: black;
-      font-size: 15px;
-    }
-
-    textarea {
-      min-height: 110px;
-      resize: vertical;
-    }
-
-    .required {
-      color: #ffaaaa;
-    }
-
-    /* CHECKBOXES */
-
-    .checkbox-area {
-      margin-top: 25px;
-      padding: 18px;
-      border: 1px solid #666;
-      background-color: rgba(255, 255, 255, 0.05);
-    }
-
-    .checkbox-label {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-weight: normal;
-      margin-top: 12px;
-    }
-
-    .checkbox-label input {
-      width: auto;
-      margin-top: 4px;
-      flex-shrink: 0;
-    }
-
-    /* BUTTON */
-
-    .submit-button {
-      display: block;
-      margin: 30px auto 10px auto;
-      padding: 13px 25px;
-      border: 2px solid white;
-      border-radius: 4px;
-      background-color: #964c4b;
-      color: white;
-      font-weight: bold;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    .submit-button:hover {
-      background-color: #7c3e3d;
-    }
-
-    .submit-button:disabled {
-      opacity: 0.5;
-      cursor: wait;
-    }
-
-    /* STATUS MESSAGE */
-
-    #status {
-      text-align: center;
-      font-weight: bold;
-      margin-top: 20px;
-      min-height: 25px;
-    }
-
-    #status.success {
-      color: #aaffaa;
-    }
-
-    #status.error {
-      color: #ffaaaa;
-    }
-
-    .small-note {
-      font-size: 13px;
-      color: #cccccc;
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 600px) {
-
-      .topnav a {
-        margin: 0 5px;
-      }
-
-      .application-container {
-        width: 94%;
-        padding: 20px;
-      }
-
-    }
-  </style>
+  <link rel="stylesheet" href="artist-submit-form.css">
 </head>
-
 
 <body>
 
-
-  <!-- =========================================
-       NAVIGATION
-       ========================================= -->
-
   <div class="topnav">
-
-    <a href="index.html">
-      Home
-    </a>
-
-    <a href="ls-bands.html">
-      Bands
-    </a>
-
-    <a class="active" href="artist-submit-form.html">
-      Artists
-    </a>
-
-    <a href="Business-Application.html">
-      Businesses
-    </a>
-
-    <a href="ls-Contact.html">
-      Contact
-    </a>
-
-    <a href="ls-about.html">
-      About
-    </a>
-
+    <a href="index.html">Home</a>
+    <a href="ls-bands.html">Bands</a>
+    <a class="active" href="artist-submit-form.html">Artists</a>
+    <a href="Business-Application.html">Businesses</a>
+    <a href="ls-Contact.html">Contact</a>
+    <a href="ls-about.html">About</a>
   </div>
 
+  <section id="local-shuffle-artist" class="ls-artist-form">
 
-  <!-- =========================================
-       TAGLINE
-       ========================================= -->
+    <form id="local-shuffle-artist-form">
 
-  <div class="Local">
+      <h1>Local Shuffle</h1>
 
-    <h3>
-      Local Music ... Local Listeners
-    </h3>
-
-  </div>
-
-
-  <!-- =========================================
-       APPLICATION
-       ========================================= -->
-
-  <div class="application-container">
-
-
-    <h1>
-      Become a Local Shuffle Artist
-    </h1>
-
-
-    <div class="intro">
-
-      <p>
-        Local Shuffle helps local artists get their music into
-        the hands of people who live, work, and hang out in their
-        community.
+      <p style="text-align:center;">
+        <strong>Artist Application &amp; Participation Agreement</strong>
       </p>
 
-      <p>
-        Customers can add $1 to a qualifying purchase at a
-        participating business and receive a randomly selected
-        song from a Local Shuffle artist.
+      <p class="ls-intro">
+        Local Shuffle connects local musicians with customers at participating
+        coffee shops, breweries, bars, restaurants, and other local businesses.
+        Customers purchase a randomly selected local song for $1, helping support
+        both the participating business and the local music community.
       </p>
 
-    </div>
+      <div class="ls-highlight">
+        <strong>How Local Shuffle works:</strong>
+
+        <ul>
+          <li>Customers pay $1 for access to one randomly selected local song.</li>
+          <li>The participating business keeps 75% of the purchase.</li>
+          <li>15% goes into the Local Shuffle Artist Pool.</li>
+          <li>10% supports the operation and development of Local Shuffle.</li>
+          <li>The Artist Pool is divided equally among eligible participating artists.</li>
+          <li>Artists do not receive a larger share because their song happens to be selected more often.</li>
+        </ul>
+      </div>
 
 
-    <!-- =========================================
-         ARTIST FORM
-         ========================================= -->
+      <h2>1. Artist Information</h2>
 
-    <form id="artistForm">
+      <div class="ls-field">
+        <label for="artist_name">Artist / Band Name *</label>
+        <input type="text" id="artist_name" name="artist_name" required>
+      </div>
 
+      <div class="ls-field">
+        <label for="contact_name">Primary Contact Name *</label>
+        <input type="text" id="contact_name" name="contact_name" required>
+      </div>
 
-      <!-- ARTIST INFORMATION -->
+      <div class="ls-field">
+        <label for="email">Email Address *</label>
+        <input type="email" id="email" name="email" required>
+      </div>
 
-      <h2>
-        Artist Information
-      </h2>
+      <div class="ls-field">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone">
+      </div>
 
+      <div class="ls-field">
+        <label for="website">Artist Website</label>
+        <input type="url" id="website" name="website">
+      </div>
 
-      <label for="artist_name">
-        Artist or Band Name
-        <span class="required">*</span>
-      </label>
+      <div class="ls-field">
+        <label for="instagram">Instagram</label>
+        <input type="text" id="instagram" name="instagram">
+      </div>
 
-      <input
-        type="text"
-        id="artist_name"
-        name="artist_name"
-        required
-      >
-
-
-      <label for="contact_name">
-        Contact Name
-        <span class="required">*</span>
-      </label>
-
-      <input
-        type="text"
-        id="contact_name"
-        name="contact_name"
-        required
-      >
+      <div class="ls-field">
+        <label for="facebook">Facebook</label>
+        <input type="text" id="facebook" name="facebook">
+      </div>
 
 
-      <label for="email">
-        Email Address
-        <span class="required">*</span>
-      </label>
+      <h2>2. Artist Verification</h2>
 
-      <input
-        type="email"
-        id="email"
-        name="email"
-        required
-      >
-
-
-      <label for="phone">
-        Phone Number
-      </label>
-
-      <input
-        type="tel"
-        id="phone"
-        name="phone"
-      >
-
-
-      <label for="website">
-        Website
-      </label>
-
-      <input
-        type="url"
-        id="website"
-        name="website"
-        placeholder="https://"
-      >
-
-
-      <label for="instagram">
-        Instagram
-      </label>
-
-      <input
-        type="text"
-        id="instagram"
-        name="instagram"
-        placeholder="@yourband"
-      >
-
-
-      <label for="facebook">
-        Facebook
-      </label>
-
-      <input
-        type="text"
-        id="facebook"
-        name="facebook"
-      >
-
-
-      <label for="city">
-        City
-        <span class="required">*</span>
-      </label>
-
-      <input
-        type="text"
-        id="city"
-        name="city"
-        required
-      >
-
-
-      <label for="zip_code">
-        ZIP Code
-        <span class="required">*</span>
-      </label>
-
-      <input
-        type="text"
-        id="zip_code"
-        name="zip_code"
-        pattern="[0-9]{5}"
-        maxlength="5"
-        required
-      >
-
-
-      <label for="genre">
-        Genre
-      </label>
-
-      <input
-        type="text"
-        id="genre"
-        name="genre"
-        placeholder="Indie Rock, Country, Hip-Hop, etc."
-      >
-
-
-      <label for="bio">
-        Artist / Band Bio
-      </label>
-
-      <textarea
-        id="bio"
-        name="bio"
-        placeholder="Tell us a little about yourself or your band."
-      ></textarea>
-
-
-      <!-- =========================================
-           MUSIC INFORMATION
-           ========================================= -->
-
-      <h2>
-        Music Information
-      </h2>
-
-
-      <div class="info-box">
-
-        <h3>
-          What Music Can Be Submitted?
-        </h3>
+      <div class="ls-verification">
 
         <p>
-          Local Shuffle songs must be officially released and
-          distributed music. The artist must have the legal right
-          to provide the song to Local Shuffle for distribution
-          to customers.
+          Because Local Shuffle distributes a portion of its revenue among
+          participating artists, we take reasonable steps to verify that
+          applicants are actually authorized to represent the artist or band
+          they are submitting.
         </p>
 
-        <p class="small-note">
-          You'll be able to provide the actual MP3 file after your
-          artist application has been approved.
+        <p>
+          Before your application can be approved, please make a
+          <strong>public social-media post</strong> from an account associated
+          with the artist or band announcing that you are joining Local Shuffle.
+        </p>
+
+        <p>
+          The post should clearly include the
+          <strong>artist or band name</strong>.
+        </p>
+
+        <p>
+          <strong>Example:</strong><br>
+          "[Artist/Band Name] is joining Local Shuffle! We're excited to help
+          support local music. localshuffle.com"
+        </p>
+
+        <p>
+          After making the post, provide the link below. Local Shuffle will
+          review the post as part of the application approval process.
         </p>
 
       </div>
 
+      <div class="ls-field">
+        <label for="verification_platform">
+          Verification Platform *
+        </label>
 
-      <label for="primary_music_link">
-        Primary Music Link
-        <span class="required">*</span>
-      </label>
+        <select
+          id="verification_platform"
+          name="verification_platform"
+          required
+        >
+          <option value="">Select a platform</option>
+          <option value="Instagram">Instagram</option>
+          <option value="Facebook">Facebook</option>
+          <option value="TikTok">TikTok</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
 
-      <input
-        type="url"
-        id="primary_music_link"
-        name="primary_music_link"
-        placeholder="Spotify, Apple Music, Bandcamp, etc."
-        required
-      >
+      <div class="ls-field">
+        <label for="verification_post_url">
+          Link to Your Public Verification Post *
+        </label>
 
+        <input
+          type="url"
+          id="verification_post_url"
+          name="verification_post_url"
+          placeholder="https://..."
+          required
+        >
+      </div>
 
-      <label for="release_date">
-        Release Date
-        <span class="required">*</span>
-      </label>
+      <p class="ls-small">
+        The post must be publicly viewable so Local Shuffle can verify it.
+      </p>
 
-      <input
-        type="date"
-        id="release_date"
-        name="release_date"
-        required
-      >
-
-
-      <label for="official_song_url">
-        Official Song URL
-        <span class="required">*</span>
-      </label>
-
-      <input
-        type="url"
-        id="official_song_url"
-        name="official_song_url"
-        placeholder="Link to the officially released song"
-        required
-      >
-
-
-      <label for="distribution_platforms">
-        Distribution Platforms
-        <span class="required">*</span>
-      </label>
-
-      <input
-        type="text"
-        id="distribution_platforms"
-        name="distribution_platforms"
-        placeholder="Spotify, Apple Music, Amazon Music, etc."
-        required
-      >
-
-
-      <label for="artist_photo_url">
-        Artist Photo URL
-      </label>
-
-      <input
-        type="url"
-        id="artist_photo_url"
-        name="artist_photo_url"
-        placeholder="https://"
-      >
-
-
-      <!-- =========================================
-           AGREEMENT
-           ========================================= -->
-
-      <h2>
-        Artist Requirements & Agreement
-      </h2>
-
-
-      <div class="checkbox-area">
-
-
-        <label class="checkbox-label">
-
+      <div class="ls-checkbox">
+        <label>
           <input
             type="checkbox"
-            id="song_rights"
-            name="song_rights"
+            id="verification_post_confirmed"
+            name="verification_post_confirmed"
             required
           >
 
-          <span>
-            I confirm that I own or control the necessary rights
-            to the song I am submitting and have permission to
-            provide it to Local Shuffle.
-          </span>
+          I confirm that this public post was made by an account associated
+          with the artist or band named in this application and that the
+          information I have provided is accurate.
+        </label>
+      </div>
 
+
+      <h2>3. Local Eligibility</h2>
+
+      <p>
+        Local Shuffle initially operates within the
+        <strong>Tampa Bay geographic zone</strong>. As Local Shuffle grows,
+        this zone may be divided into smaller geographic zones.
+      </p>
+
+      <p>
+        To participate as a Local Shuffle Artist, an artist must both
+        <strong>live within the applicable geographic zone</strong> and
+        <strong>release music while operating within that geographic zone</strong>.
+      </p>
+
+      <div class="ls-field">
+        <label for="zip_code">Current ZIP Code *</label>
+        <input
+          type="text"
+          id="zip_code"
+          name="zip_code"
+          maxlength="10"
+          required
+        >
+      </div>
+
+      <div class="ls-field">
+        <label for="city">City *</label>
+        <input type="text" id="city" name="city" required>
+      </div>
+
+      <div class="ls-checkbox">
+        <label>
+          <input type="checkbox" name="local_residency" required>
+          I confirm that I currently live within the applicable Local Shuffle
+          geographic zone.
+        </label>
+      </div>
+
+      <div class="ls-checkbox">
+        <label>
+          <input type="checkbox" name="local_release" required>
+          I confirm that I release music while living and operating within the
+          applicable Local Shuffle geographic zone.
+        </label>
+      </div>
+
+      <div class="ls-checkbox">
+        <label>
+          <input type="checkbox" name="geographic_changes" required>
+          I understand that Local Shuffle may establish additional or more
+          localized geographic zones as the program expands.
+        </label>
+      </div>
+
+
+      <h2>4. Music Information</h2>
+
+      <div class="ls-field">
+        <label for="genre">Primary Genre *</label>
+        <input type="text" id="genre" name="genre" required>
+      </div>
+
+      <div class="ls-field">
+        <label for="artist_bio">Describe your music</label>
+        <textarea
+          id="artist_bio"
+          name="artist_bio"
+          placeholder="Tell listeners a little about your music."
+        ></textarea>
+      </div>
+
+      <div class="ls-field">
+        <label for="music_link">
+          Primary Music Profile / Streaming Link *
         </label>
 
+        <input
+          type="url"
+          id="music_link"
+          name="music_link"
+          required
+        >
+      </div>
 
-        <label class="checkbox-label">
 
-          <input
-            type="checkbox"
-            id="local_residency"
-            name="local_residency"
-            required
-          >
+      <h2>5. Song Information</h2>
 
-          <span>
-            I confirm that I currently live within the geographic
-            area served by Local Shuffle.
-          </span>
+      <p>
+        A Local Shuffle song must be a
+        <strong>released and distributed song</strong>.
+        Unreleased demos or unreleased recordings are not eligible.
+      </p>
 
+      <div class="ls-field">
+        <label for="song_title">Song Title *</label>
+        <input type="text" id="song_title" name="song_title" required>
+      </div>
+
+      <div class="ls-field">
+        <label for="release_date">Original Release Date *</label>
+        <input type="date" id="release_date" name="release_date" required>
+      </div>
+
+      <div class="ls-field">
+        <label for="song_link">
+          Officially Released Song Link *
         </label>
 
+        <input
+          type="url"
+          id="song_link"
+          name="song_link"
+          placeholder="Spotify, Apple Music, Bandcamp, etc."
+          required
+        >
+      </div>
 
-        <label class="checkbox-label">
-
-          <input
-            type="checkbox"
-            id="local_release"
-            name="local_release"
-            required
-          >
-
-          <span>
-            I confirm that the music I am submitting has been
-            officially released and distributed.
-          </span>
-
+      <div class="ls-field">
+        <label for="distribution">
+          Where is the song officially distributed?
         </label>
 
+        <input
+          type="text"
+          id="distribution"
+          name="distribution"
+          placeholder="Spotify, Apple Music, Bandcamp, etc."
+        >
+      </div>
 
-        <label class="checkbox-label">
-
-          <input
-            type="checkbox"
-            id="geographic_changes"
-            name="geographic_changes"
-            required
-          >
-
-          <span>
-            I understand that Local Shuffle's geographic zones
-            may change or expand over time.
-          </span>
-
+      <div class="ls-checkbox">
+        <label>
+          <input type="checkbox" name="song_released" required>
+          I confirm that this song has already been released and distributed
+          to the public.
         </label>
+      </div>
 
-
-        <label class="checkbox-label">
-
-          <input
-            type="checkbox"
-            id="song_released"
-            name="song_released"
-            required
-          >
-
-          <span>
-            I confirm that the song listed above has already been
-            released to the public.
-          </span>
-
+      <div class="ls-checkbox">
+        <label>
+          <input type="checkbox" name="song_rights" required>
+          I confirm that I own or control the rights necessary to grant Local
+          Shuffle permission to use this song as described in this agreement.
         </label>
+      </div>
 
 
-        <label class="checkbox-label">
+      <h2>6. Music Rights &amp; License</h2>
 
-          <input
-            type="checkbox"
-            id="license_agreement"
-            name="license_agreement"
-            required
-          >
+      <div class="ls-terms">
 
-          <span>
-            I agree to allow Local Shuffle to provide my submitted
-            song to customers who receive it through the Local
-            Shuffle program.
-          </span>
+        <p>
+          By submitting music to Local Shuffle, the artist grants Local Shuffle
+          a <strong>non-exclusive license</strong> to use the submitted music
+          for the purposes of operating and promoting the Local Shuffle program.
+        </p>
 
+        <p>This license permits Local Shuffle to:</p>
+
+        <ol>
+          <li>Include the submitted song in the Local Shuffle music catalog.</li>
+
+          <li>
+            Select one eligible song from the artist for inclusion in the
+            active Local Shuffle rotation.
+          </li>
+
+          <li>
+            Make the active song available to customers who have legitimately
+            redeemed a Local Shuffle purchase.
+          </li>
+
+          <li>
+            Digitally deliver the song through the Local Shuffle website or
+            associated technology.
+          </li>
+
+          <li>
+            Identify the artist and song title to customers.
+          </li>
+
+          <li>
+            Display the artist's name, approved biography, photograph, artwork,
+            website, and social-media links for Local Shuffle-related purposes.
+          </li>
+
+          <li>
+            Promote the artist and Local Shuffle participation through Local
+            Shuffle marketing.
+          </li>
+        </ol>
+
+        <p>
+          This agreement does <strong>not transfer ownership</strong> of the
+          song, recording, composition, trademark, artist name, or other
+          intellectual property to Local Shuffle.
+        </p>
+
+        <p>
+          The artist retains ownership of their music and may continue to
+          distribute, perform, license, and promote their music through other
+          services and platforms.
+        </p>
+
+      </div>
+
+      <div class="ls-checkbox">
+        <label>
+          <input type="checkbox" name="license_agreement" required>
+          I agree to grant Local Shuffle the non-exclusive license described
+          above.
         </label>
+      </div>
 
 
-        <label class="checkbox-label">
+      <h2>7. Artist Profile</h2>
 
-          <input
-            type="checkbox"
-            id="payment_setup"
-            name="payment_setup"
-            required
-          >
+      <p>
+        The following information may be displayed to customers who discover
+        your music through Local Shuffle.
+      </p>
 
-          <span>
-            I understand that artist payment information will need
-            to be provided before I can receive artist payouts.
-          </span>
+      <div class="ls-field">
+        <label for="profile_bio">Artist Bio</label>
 
+        <textarea
+          id="profile_bio"
+          name="profile_bio"
+          placeholder="50–150 words recommended."
+        ></textarea>
+      </div>
+
+
+      <h2>8. Artist Payments</h2>
+
+      <div class="ls-terms">
+
+        <p>
+          Fifteen percent (15%) of Local Shuffle purchase revenue is allocated
+          to the <strong>Local Shuffle Artist Pool</strong>.
+        </p>
+
+        <p>
+          The Artist Pool is divided
+          <strong>equally among all eligible active Local Shuffle Artists</strong>
+          for the applicable monthly payout period.
+        </p>
+
+        <p>
+          The number of times an artist's song is selected does not increase
+          that artist's share of the Artist Pool.
+        </p>
+
+        <p>
+          Artists may submit multiple songs, but submitting additional songs
+          does not create additional artist shares.
+        </p>
+
+        <p>
+          Local Shuffle currently uses a monthly enrollment cutoff.
+        </p>
+
+      </div>
+
+      <h3>Payment Setup</h3>
+
+      <p>
+        Local Shuffle will not collect bank-account numbers, credit-card
+        numbers, Social Security numbers, or other highly sensitive financial
+        information through this application form.
+      </p>
+
+      <p>
+        When payment processing is activated, artists may be directed to a
+        secure third-party payment provider to complete identity and payment
+        verification.
+      </p>
+
+      <div class="ls-field">
+        <label for="payment_email">Payment Email *</label>
+        <input
+          type="email"
+          id="payment_email"
+          name="payment_email"
+          required
+        >
+      </div>
+
+      <div class="ls-checkbox">
+        <label>
+          <input type="checkbox" name="payment_setup" required>
+          I understand that additional information may be required through
+          a secure third-party payment provider before Local Shuffle can issue
+          payments to me.
         </label>
+      </div>
 
 
-        <label class="checkbox-label">
+      <h2>9. Participation Terms</h2>
 
-          <input
-            type="checkbox"
-            id="final_agreement"
-            name="final_agreement"
-            required
-          >
+      <div class="ls-terms">
 
-          <span>
-            I agree to participate in Local Shuffle under the
-            current Local Shuffle Artist Agreement.
-          </span>
+        <ul>
 
-        </label>
+          <li>Participation in Local Shuffle is voluntary.</li>
 
+          <li>
+            Local Shuffle may review and approve or reject artist and song
+            submissions.
+          </li>
 
-        <label class="checkbox-label">
+          <li>
+            An artist may submit multiple songs, but only one song from that
+            artist will normally be active in the Shuffle rotation at a time.
+          </li>
 
-          <input
-            type="checkbox"
-            id="accuracy"
-            name="accuracy"
-            required
-          >
+          <li>
+            Local Shuffle may periodically change the song representing an
+            artist in the active rotation.
+          </li>
 
-          <span>
-            I confirm that the information I have provided is
-            accurate and complete.
-          </span>
+          <li>
+            Artists receive one equal share of the Artist Pool regardless of
+            how often their song is selected.
+          </li>
 
-        </label>
+          <li>
+            Local Shuffle may temporarily suspend a song or artist if
+            eligibility, rights ownership, authorization, or other participation
+            requirements become uncertain.
+          </li>
 
+          <li>
+            An artist may request removal of their music from the Local Shuffle
+            catalog. Previously issued customer redemptions will not be
+            retroactively revoked.
+          </li>
+
+          <li>
+            Artists are responsible for maintaining accurate contact,
+            geographic, music-rights, and payment information.
+          </li>
+
+          <li>
+            Artists are responsible for any taxes or other obligations
+            associated with payments they receive from Local Shuffle.
+          </li>
+
+        </ul>
 
       </div>
 
 
-      <!-- =========================================
-           ELECTRONIC SIGNATURE
-           ========================================= -->
+      <h2>10. Artist Representations</h2>
 
-      <h2>
-        Electronic Signature
-      </h2>
+      <p>
+        By submitting this application, I represent and warrant that:
+      </p>
 
+      <ul>
 
-      <label for="signature_name">
-        Full Name
-        <span class="required">*</span>
-      </label>
+        <li>
+          I am the artist or an authorized representative of the artist named
+          in this application.
+        </li>
 
-      <input
-        type="text"
-        id="signature_name"
-        name="signature_name"
-        required
-      >
+        <li>
+          The information provided in this application is accurate to the best
+          of my knowledge.
+        </li>
 
+        <li>
+          I have the authority to grant the license described in this agreement.
+        </li>
 
-      <label for="signature_date">
-        Date
-        <span class="required">*</span>
-      </label>
+        <li>
+          I have obtained any necessary permissions from co-writers, band
+          members, producers, labels, publishers, or other rights holders whose
+          permission is required for the uses described in this agreement.
+        </li>
 
-      <input
-        type="date"
-        id="signature_date"
-        name="signature_date"
-        required
-      >
+        <li>
+          I will notify Local Shuffle if my ownership or authorization
+          concerning a submitted song changes.
+        </li>
 
+        <li>
+          I understand that Local Shuffle may verify my claimed association
+          with the artist or band before approving my application.
+        </li>
 
-      <label for="signature">
-        Electronic Signature
-        <span class="required">*</span>
-      </label>
+        <li>
+          I understand that providing false information or falsely representing
+          an artist may result in rejection, suspension, removal, withholding
+          of payments, and/or other action available to Local Shuffle.
+        </li>
 
-      <input
-        type="text"
-        id="signature"
-        name="signature"
-        placeholder="Type your full name"
-        required
-      >
+      </ul>
 
 
-      <!-- =========================================
-           SUBMIT
-           ========================================= -->
+      <h2>11. Final Agreement</h2>
 
-      <button
-        type="submit"
-        id="submitButton"
-        class="submit-button"
-      >
-        Submit Artist Application
+      <div class="ls-checkbox">
+        <label>
+          <input type="checkbox" name="final_agreement" required>
+          I have read and understand this Local Shuffle Artist Application &
+          Participation Agreement and agree to its terms.
+        </label>
+      </div>
+
+      <div class="ls-checkbox">
+        <label>
+          <input type="checkbox" name="accuracy" required>
+          I certify that the information I have provided is accurate and that
+          I have the authority to submit this application and grant the
+          permissions described above.
+        </label>
+      </div>
+
+
+      <h2>12. Electronic Signature</h2>
+
+      <div class="ls-signature">
+
+        <div class="ls-field">
+          <label for="signature_name">
+            Artist / Authorized Representative Name *
+          </label>
+
+          <input
+            type="text"
+            id="signature_name"
+            name="signature_name"
+            required
+          >
+        </div>
+
+        <div class="ls-field">
+          <label for="signature_date">Date *</label>
+
+          <input
+            type="date"
+            id="signature_date"
+            name="signature_date"
+            required
+          >
+        </div>
+
+      </div>
+
+      <div class="ls-field">
+        <label for="signature">Electronic Signature *</label>
+
+        <input
+          type="text"
+          id="signature"
+          name="signature"
+          placeholder="Type your full legal name"
+          required
+        >
+      </div>
+
+      <p class="ls-small">
+        By typing my name above and submitting this application, I intend for
+        my electronic signature to have the same meaning as a handwritten
+        signature, to the extent permitted by applicable law.
+      </p>
+
+
+      <button type="submit" class="ls-submit">
+        Submit Local Shuffle Artist Application
       </button>
 
-
-      <div
-        id="status"
-        aria-live="polite"
-      ></div>
-
+      <div id="success-message" class="ls-message ls-success"></div>
+      <div id="error-message" class="ls-message ls-error"></div>
 
     </form>
 
-  </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script>
+
+      const SUPABASE_URL =
+        'https://yaqhqnuvlxfgfpnwufyw.supabase.co';
+
+      const SUPABASE_PUBLISHABLE_KEY =
+        'sb_publishable_Lo-gi0FFqCWN6JrZRumUIw_CK3yk9-i';
+
+      const supabaseClient =
+        window.supabase.createClient(
+          SUPABASE_URL,
+          SUPABASE_PUBLISHABLE_KEY
+        );
 
 
-  <!-- =========================================
-       SUPABASE
-       ========================================= -->
+      const form =
+        document.getElementById(
+          'local-shuffle-artist-form'
+        );
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+      const successMessage =
+        document.getElementById(
+          'success-message'
+        );
 
-
-  <script>
-
-    const SUPABASE_URL =
-      'https://yaqhqnuvlxfgfpnwufyw.supabase.co';
-
-
-    const SUPABASE_PUBLISHABLE_KEY =
-      'sb_publishable_Lo-gi0FFqCWN6JrZRumUIw_CK3yk9-i';
-
-
-    const supabaseClient =
-      window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_PUBLISHABLE_KEY
-      );
+      const errorMessage =
+        document.getElementById(
+          'error-message'
+        );
 
 
-    const artistForm =
-      document.getElementById('artistForm');
+      form.addEventListener(
+        'submit',
+        async function(event) {
+
+          event.preventDefault();
+
+          successMessage.style.display = 'none';
+          errorMessage.style.display = 'none';
+
+          const submitButton =
+            form.querySelector('.ls-submit');
+
+          const originalText =
+            submitButton.textContent;
+
+          submitButton.disabled = true;
+          submitButton.textContent = 'Submitting...';
 
 
-    const submitButton =
-      document.getElementById('submitButton');
+          const getValue = (name) => {
+
+            const field =
+              form.elements[name];
+
+            return field
+              ? field.value.trim()
+              : null;
+
+          };
 
 
-    const status =
-      document.getElementById('status');
+          const isChecked = (name) => {
 
+            const field =
+              form.elements[name];
 
-    function getValue(id) {
+            return field
+              ? field.checked
+              : false;
 
-      const element =
-        document.getElementById(id);
-
-      return element
-        ? element.value.trim()
-        : '';
-
-    }
-
-
-    function isChecked(id) {
-
-      const element =
-        document.getElementById(id);
-
-      return element
-        ? element.checked
-        : false;
-
-    }
-
-
-    function showStatus(message, type = '') {
-
-      status.textContent = message;
-
-      status.className = '';
-
-      if (type) {
-        status.classList.add(type);
-      }
-
-    }
-
-
-    artistForm.addEventListener(
-      'submit',
-      async function(event) {
-
-        event.preventDefault();
-
-
-        showStatus('');
-
-
-        submitButton.disabled = true;
-
-        submitButton.textContent =
-          'Submitting...';
-
-
-        try {
+          };
 
 
           const application = {
@@ -898,13 +748,13 @@
               getValue('phone'),
 
             website:
-              getValue('website') || null,
+              getValue('website'),
 
             instagram:
-              getValue('instagram') || null,
+              getValue('instagram'),
 
             facebook:
-              getValue('facebook') || null,
+              getValue('facebook'),
 
             city:
               getValue('city'),
@@ -913,39 +763,22 @@
               getValue('zip_code'),
 
             genre:
-              getValue('genre') || null,
+              getValue('genre'),
 
             bio:
-              getValue('bio') || null,
+              getValue('artist_bio'),
 
             primary_music_link:
-              getValue('primary_music_link'),
+              getValue('music_link'),
 
-            release_date:
-              getValue('release_date'),
-
-            official_song_url:
-              getValue('official_song_url'),
-
-            distribution_platforms:
-              getValue('distribution_platforms'),
-
-            artist_photo_url:
-              getValue('artist_photo_url') || null,
-
-
-            rights_confirmed:
-              isChecked('song_rights'),
+            payment_email:
+              getValue('payment_email'),
 
             local_residency_confirmed:
               isChecked('local_residency'),
 
             local_release_confirmed:
               isChecked('local_release'),
-
-            agreement_accepted:
-              isChecked('final_agreement'),
-
 
             geographic_changes_confirmed:
               isChecked('geographic_changes'),
@@ -968,6 +801,14 @@
             accuracy_confirmed:
               isChecked('accuracy'),
 
+            verification_platform:
+              getValue('verification_platform'),
+
+            verification_post_url:
+              getValue('verification_post_url'),
+
+            verification_post_confirmed:
+              isChecked('verification_post_confirmed'),
 
             signature_name:
               getValue('signature_name'),
@@ -987,67 +828,57 @@
           };
 
 
-          const {
-            data,
-            error
-          } = await supabaseClient
-            .from('artist_applications')
-            .insert([application])
-            .select()
-            .single();
+          const { error } =
+            await supabaseClient
+              .from('artist_applications')
+              .insert([application]);
 
 
           if (error) {
 
-            console.error(
-              'Artist application error:',
-              error
-            );
+            console.error(error);
 
-            throw error;
+            errorMessage.textContent =
+              'There was a problem submitting your application. Please try again.';
+
+            errorMessage.style.display =
+              'block';
+
+            submitButton.disabled = false;
+            submitButton.textContent =
+              originalText;
+
+            return;
 
           }
 
 
-          console.log(
-            'Artist application submitted:',
-            data
-          );
+          form.reset();
 
+          successMessage.textContent =
+            'Thank you! Your Local Shuffle artist application has been submitted. Your application will remain pending while we review your information and verification post.';
 
-          artistForm.reset();
-
-
-          showStatus(
-            'Thank you! Your artist application has been submitted and is pending review.',
-            'success'
-          );
-
-
-        } catch (error) {
-
-          console.error(error);
-
-          showStatus(
-            error.message ||
-            'Something went wrong submitting your application. Please try again.',
-            'error'
-          );
-
-        } finally {
+          successMessage.style.display =
+            'block';
 
           submitButton.disabled = false;
-
           submitButton.textContent =
-            'Submit Artist Application';
+            originalText;
+
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
 
         }
 
-      }
-    );
+      );
 
-  </script>
+    </script>
+
+  </section>
 
 </body>
-
 </html>
+```
+
