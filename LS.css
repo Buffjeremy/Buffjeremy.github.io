@@ -1,30 +1,12 @@
 
 /* ==========================================
-   NAVIGATION
+   LOCAL SHUFFLE
+   MASTER SITE STYLESHEET
    ========================================== */
-
-.topnav {
-  text-align: center;
-  color: white;
-  margin-bottom: 10px;
-  padding-top: 20px;
-}
-
-.topnav a {
-  text-align: center;
-  color: white;
-  margin: 0 10px;
-  text-decoration: none;
-}
-
-.topnav a:hover {
-  color: #cccccc;
-  text-decoration: underline;
-}
 
 
 /* ==========================================
-   PAGE
+   PAGE / BACKGROUND
    ========================================== */
 
 body {
@@ -33,200 +15,20 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+
   min-height: 100vh;
   margin: 0;
   padding: 0;
-}
 
-
-/* ==========================================
-   TAGLINE
-   ========================================== */
-
-.Local {
-  text-align: center;
-  color: white;
-  width: 100%;
-  margin: 0 0 30px 0;
-  padding: 0;
-}
-
-.Local h3 {
-  margin: 0;
-  padding: 0;
-}
-
-
-/* ==========================================
-   REDEMPTION AREA
-   ========================================== */
-
-.holder {
-  text-align: center;
-  color: black;
-  margin-top: 0;
-  width: 100%;
-}
-
-.holder label {
-  display: block;
-  color: white;
-  font-weight: bold;
-  margin-bottom: 8px;
-}
-
-
-/* ==========================================
-   INPUT AND DOWNLOAD BUTTON
-   ========================================== */
-
-.download-box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-#myInput {
-  width: 220px;
-  padding: 10px;
-  border: 2px solid white;
-  border-radius: 4px;
-  background-color: rgba(0, 0, 0, 0.75);
-  color: white;
-  text-align: center;
   box-sizing: border-box;
 }
 
-#myInput::placeholder {
-  color: #cccccc;
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
-#myButton {
-  padding: 10px 18px;
-  border: 2px solid white;
-  border-radius: 4px;
-  background-color: black;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-#myButton:hover {
-  background-color: #333333;
-}
-
-#myButton:disabled {
-  opacity: 0.5;
-  cursor: wait;
-}
-
-
-/* ==========================================
-   STATUS MESSAGES
-   ========================================== */
-
-.status {
-  color: white;
-  font-weight: bold;
-  margin-top: 20px;
-  min-height: 25px;
-}
-
-.status.error {
-  color: #ffaaaa;
-}
-
-.status.success {
-  color: #aaffaa;
-}
-
-
-/* ==========================================
-   DOWNLOAD RESULT
-   ========================================== */
-
-.download-area {
-  background-color: rgba(0, 0, 0, 0.75);
-  border: 2px solid white;
-  margin: 25px auto;
-  padding: 20px;
-  max-width: 500px;
-  box-sizing: border-box;
-}
-
-.download-area h2 {
-  margin-top: 0;
-}
-
-.download-button {
-  display: inline-block;
-  padding: 12px 20px;
-  background-color: black;
-  border: 2px solid white;
-  border-radius: 4px;
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.download-button:hover {
-  background-color: #333333;
-  color: white;
-  text-decoration: none;
-}
-
-
-/* ==========================================
-   GENERAL TEXT
-   ========================================== */
-
-h1,
-h2,
-h3,
-form,
-a,
-p {
-  text-align: center;
-  color: white;
-}
-
-
-/* ==========================================
-   MOBILE
-   ========================================== */
-
-@media (max-width: 600px) {
-
-  .topnav {
-    padding-top: 15px;
-    margin-bottom: 10px;
-  }
-
-  .topnav a {
-    margin: 0 5px;
-  }
-
-  .Local {
-    margin-bottom: 25px;
-  }
-
-  .download-box {
-    flex-direction: column;
-  }
-
-  #myInput {
-    width: 80%;
-    max-width: 300px;
-  }
-
-  #myButton {
-    width: auto;
-  }
-
-}
-```
 
 /* ==========================================
    NAVIGATION
@@ -253,18 +55,34 @@ p {
 
 
 /* ==========================================
-   PAGE
+   GENERAL TEXT
    ========================================== */
 
-body {
-  background-image: url("images/Metal--Mock-up.jpg");
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
+h1,
+h2,
+h3,
+h4,
+form,
+a,
+p {
+  text-align: center;
+  color: white;
+}
+
+
+/* ==========================================
+   TAGLINE
+   ========================================== */
+
+.Local {
+  text-align: center;
+  color: white;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.Local h3 {
+  margin-bottom: 0;
 }
 
 
@@ -302,12 +120,14 @@ body {
 #myInput {
   width: 220px;
   padding: 10px;
+
   border: 2px solid white;
   border-radius: 4px;
+
   background-color: rgba(0, 0, 0, 0.75);
   color: white;
+
   text-align: center;
-  box-sizing: border-box;
 }
 
 #myInput::placeholder {
@@ -316,10 +136,13 @@ body {
 
 #myButton {
   padding: 10px 18px;
+
   border: 2px solid white;
   border-radius: 4px;
+
   background-color: black;
   color: white;
+
   font-weight: bold;
   cursor: pointer;
 }
@@ -341,6 +164,7 @@ body {
 .status {
   color: white;
   font-weight: bold;
+
   margin-top: 20px;
   min-height: 25px;
 }
@@ -360,11 +184,13 @@ body {
 
 .download-area {
   background-color: rgba(0, 0, 0, 0.75);
+
   border: 2px solid white;
+
   margin: 25px auto;
   padding: 20px;
+
   max-width: 500px;
-  box-sizing: border-box;
 }
 
 .download-area h2 {
@@ -373,10 +199,14 @@ body {
 
 .download-button {
   display: inline-block;
+
   padding: 12px 20px;
+
   background-color: black;
+
   border: 2px solid white;
   border-radius: 4px;
+
   color: white;
   text-decoration: none;
   font-weight: bold;
@@ -390,33 +220,238 @@ body {
 
 
 /* ==========================================
-   GENERAL TEXT
+   REUSABLE CONTENT CONTAINER
    ========================================== */
 
-h1,
-h2,
-h3,
-form,
-a,
-p {
-  text-align: center;
-  color: white;
+.ls-container {
+  width: 90%;
+  max-width: 900px;
+
+  margin: 40px auto;
+  padding: 25px;
+
+  background-color: rgba(0, 0, 0, 0.75);
+
+  border: 2px solid white;
+  border-radius: 4px;
 }
 
 
 /* ==========================================
-   TAGLINE
+   REUSABLE FORM
    ========================================== */
 
-.Local {
-  text-align: center;
-  color: white;
+.ls-form {
   width: 100%;
-  margin-top: 40px;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
-.Local h3 {
-  margin-bottom: 0;
+
+/* ==========================================
+   FORM SECTIONS
+   ========================================== */
+
+.ls-section {
+  margin-bottom: 30px;
+}
+
+.ls-section h2 {
+  margin-bottom: 20px;
+}
+
+
+/* ==========================================
+   FORM FIELDS
+   ========================================== */
+
+.ls-field {
+  width: 100%;
+  margin-bottom: 18px;
+}
+
+.ls-field label {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: white;
+  font-weight: bold;
+
+  text-align: left;
+}
+
+.ls-field input,
+.ls-field textarea,
+.ls-field select {
+  width: 100%;
+
+  padding: 10px;
+
+  border: 2px solid white;
+  border-radius: 4px;
+
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+
+  font-family: inherit;
+}
+
+.ls-field textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.ls-field select option {
+  background-color: black;
+  color: white;
+}
+
+.ls-field input::placeholder,
+.ls-field textarea::placeholder {
+  color: #cccccc;
+}
+
+
+/* ==========================================
+   CHECKBOXES
+   ========================================== */
+
+.ls-checkbox {
+  margin: 18px 0;
+
+  color: white;
+
+  text-align: left;
+}
+
+.ls-checkbox label {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 10px;
+
+  color: white;
+
+  text-align: left;
+  line-height: 1.4;
+}
+
+.ls-checkbox input {
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+
+/* ==========================================
+   SMALL FORM TEXT
+   ========================================== */
+
+.ls-small {
+  font-size: 0.9em;
+  color: #cccccc;
+}
+
+
+/* ==========================================
+   VERIFICATION INFORMATION
+   ========================================== */
+
+.ls-verification {
+  margin-bottom: 25px;
+  padding: 15px;
+
+  background-color: rgba(0, 0, 0, 0.45);
+
+  border-left: 4px solid #964c4b;
+}
+
+.ls-verification p {
+  text-align: left;
+  line-height: 1.5;
+}
+
+
+/* ==========================================
+   FORM SUBMIT BUTTON
+   ========================================== */
+
+.ls-submit {
+  display: block;
+
+  margin: 25px auto 10px;
+  padding: 12px 25px;
+
+  background-color: black;
+  color: white;
+
+  border: 2px solid white;
+  border-radius: 4px;
+
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.ls-submit:hover {
+  background-color: #333333;
+}
+
+.ls-submit:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+
+/* ==========================================
+   FORM STATUS
+   ========================================== */
+
+.ls-form-status {
+  min-height: 25px;
+
+  margin: 20px 0;
+
+  color: white;
+  font-weight: bold;
+
+  text-align: center;
+}
+
+.ls-form-status.error {
+  color: #ffaaaa;
+}
+
+.ls-form-status.success {
+  color: #aaffaa;
+}
+
+
+/* ==========================================
+   GENERAL BUTTON
+   ========================================== */
+
+.ls-button {
+  display: inline-block;
+
+  padding: 10px 20px;
+
+  background-color: black;
+  color: white;
+
+  border: 2px solid white;
+  border-radius: 4px;
+
+  font-weight: bold;
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+.ls-button:hover {
+  background-color: #333333;
+  color: white;
+  text-decoration: none;
 }
 
 
@@ -456,5 +491,16 @@ p {
     margin-top: 30px;
   }
 
-}
+  .ls-container {
+    width: 94%;
+    padding: 15px;
+    margin-top: 30px;
+  }
 
+  .ls-field input,
+  .ls-field textarea,
+  .ls-field select {
+    font-size: 16px;
+  }
+
+}
