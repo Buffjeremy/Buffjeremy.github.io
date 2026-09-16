@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Local Shuffle - Submit a Song</title>
+
+  <link rel="stylesheet" href="LS.css">
+</head>
+
+<body>
+
+  <!-- ==========================================
+       NAVIGATION
+       ========================================== -->
+
+  <div class="topnav">
+    <a href="index.html">Home</a>
+    <a href="ls-bands.html">Bands</a>
+    <a class="active" href="artist-submit-form.html">Artists</a>
+    <a href="Business-Application.html">Businesses</a>
+    <a href="ls-Contact.html">Contact</a>
+    <a href="ls-about.html">About</a>
+  </div>
+
+  <!-- ==========================================
+       PAGE INTRO
+       ========================================== -->
+
+  <div class="Local">
+
+```
+<h1>Submit a Song</h1>
+
+<p>
+  Local Music ... Local Listeners
+</p>
+
+<p>
+  Submit a released song for consideration in Local Shuffle.
+</p>
+```
+
+  </div>
+
+  <!-- ==========================================
+       SONG SUBMISSION FORM
+       ========================================== -->
+
+  <div class="ls-container">
+
+```
+<form id="songForm" class="ls-form">
+
+  <div class="ls-section">
+
+    <h2>Song Information</h2>
+
+    <p>
+      Songs submitted to Local Shuffle are reviewed before they
+      become part of the active song rotation.
+    </p>
+
+
+    <!-- SONG TITLE -->
+
+    <div class="ls-field">
+
+      <label for="song_title">
+        Song Title *
+      </label>
+
+      <input
+        type="text"
+        id="song_title"
+        name="song_title"
+        required
+        maxlength="200"
+        placeholder="Enter the song title"
+      >
+
+    </div>
+
+
+    <!-- RELEASE DATE -->
+
+    <div class="ls-field">
+
+      <label for="release_date">
+        Release Date *
+      </label>
+
+      <input
+        type="date"
+        id="release_date"
+        name="release_date"
+        required
+      >
+
+    </div>
+
+
+    <!-- OFFICIAL URL -->
+
+    <div class="ls-field">
+
+      <label for="official_url">
+        Official Song / Music Link *
+      </label>
+
+      <input
+        type="url"
+        id="official_url"
+        name="official_url"
+        required
+        placeholder="https://..."
+      >
+
+      <p class="ls-small">
+        Provide a link to the song on an official website or
+        recognized music/distribution platform.
+      </p>
+
+    </div>
+
+
+    <!-- DISTRIBUTION PLATFORMS -->
+
+    <div class="ls-field">
+
+      <label for="distribution_platforms">
+        Distribution Platforms *
+      </label>
+
+      <input
+        type="text"
+        id="distribution_platforms"
+        name="distribution_platforms"
+        required
+        maxlength="500"
+        placeholder="Spotify, Apple Music, Bandcamp, etc."
+      >
+
+    </div>
+
+  </div>
+
+
+  <!-- ==========================================
+       MP3 UPLOAD
+       ========================================== -->
+
+  <div class="ls-section">
+
+    <h2>Song File</h2>
+
+    <p>
+      Upload the MP3 file that will be provided to a Local Shuffle
+      listener when this song is selected.
+    </p>
+
+    <div class="ls-field">
+
+      <label for="song_file">
+        MP3 File *
+      </label>
+
+      <input
+        type="file"
+        id="song_file"
+        name="song_file"
+        accept=".mp3,audio/mpeg"
+        required
+      >
+
+      <p class="ls-small">
+        Please upload an MP3 file. The file should be the same
+        released version represented by the information above.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- ==========================================
+       RIGHTS CONFIRMATION
+       ========================================== -->
+
+  <div class="ls-section">
+
+    <h2>Rights Confirmation</h2>
+
+    <div class="ls-checkbox">
+
+      <label>
+
+        <input
+          type="checkbox"
+          id="song_rights"
+          name="song_rights"
+          required
+        >
+
+        <span>
+          I confirm that I have the legal authority to submit this
+          recording to Local Shuffle and authorize Local Shuffle to
+          provide the submitted MP3 to listeners who receive it
+          through the Local Shuffle program.
+        </span>
+
+      </label>
+
+    </div>
+
+
+    <div class="ls-checkbox">
+
+      <label>
+
+        <input
+          type="checkbox"
+          id="song_released"
+          name="song_released"
+          required
+        >
+
+        <span>
+          I confirm that this song has already been officially
+          released and distributed.
+        </span>
+
+      </label>
+
+    </div>
+
+
+    <div class="ls-checkbox">
+
+      <label>
+
+        <input
+          type="checkbox"
+          id="song_information"
+          name="song_information"
+          required
+        >
+
+        <span>
+          I confirm that the information and song file submitted
+          above are accurate.
+        </span>
+
+      </label>
+
+    </div>
+
+  </div>
+
+
+  <!-- ==========================================
+       REVIEW INFORMATION
+       ========================================== -->
+
+  <div class="ls-verification">
+
+    <p>
+      <strong>What happens next?</strong>
+    </p>
+
+    <p>
+      Your song will initially be marked as pending. Local Shuffle
+      will review the submission before activating it.
+    </p>
+
+    <p>
+      An active song may be randomly selected when a customer
+      redeems a Local Shuffle code.
+    </p>
+
+    <p>
+      Only one song from an artist can be active in the Local
+      Shuffle rotation at a time.
+    </p>
+
+  </div>
+
+
+  <!-- ==========================================
+       STATUS
+       ========================================== -->
+
+  <div
+    id="songFormStatus"
+    class="ls-form-status"
+    aria-live="polite"
+  ></div>
+
+
+  <!-- ==========================================
+       SUBMIT
+       ========================================== -->
+
+  <button
+    type="submit"
+    id="songSubmitButton"
+    class="ls-submit"
+  >
+    Submit Song
+  </button>
+
+</form>
+```
+
+  </div>
+
+  <!-- ==========================================
+       NOTE
+       ========================================== -->
+
+  <div class="ls-container">
+
+```
+<p class="ls-small">
+  Artist identity and account verification will be connected
+  before this submission system is opened to the public.
+</p>
+```
+
+  </div>
+
+</body>
+</html>
