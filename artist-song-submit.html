@@ -331,6 +331,196 @@
 
 
   </div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+const SUPABASE_URL =
+  "https://yaqhqnuvlxfgfpnwufyw.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+  "sb_publishable_Lo-gi0FFqCWN6JrZRumUIw_CK3yk9-i";
+
+const supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
+
+
+const TEST_ARTIST_ID =
+  "d6c55776-50ae-4c90-be65-491b53af6a42";
+
+const BUCKET_NAME = "Music files";
+
+
+const songForm =
+  document.getElementById("songForm");
+
+const statusBox =
+  document.getElementById("songFormStatus");
+
+const submitButton =
+  document.getElementById("songSubmitButton");
+
+
+function showStatus(message, type = "") {
+
+  statusBox.textContent = message;
+
+  statusBox.className = "ls-form-status";
+
+  if (type) {
+    statusBox.classList.add(type);
+  }
+
+}
+
+
+songForm.addEventListener("submit", async function(event) {
+
+  event.preventDefault();
+
+  statusBox.textContent = "";
+  statusBox.className = "ls-form-status";
+
+  submitButton.disabled = true;
+
+  try {
+
+    const title =
+      document.getElementById("song_title").value.trim();
+
+    const releaseDate =
+      document.getElementById("release_date").value;
+
+    const officialUrl =
+      document.getElementById("official_url").value.trim();
+
+    const distributionPlatforms =
+      document.getElementById("distribution_platforms").value.trim();
+
+    const songFile =
+      document.getElementById("song_file").files[0];
+
+
+    if (!songFile) {
+      throw new Error("Please select an MP3 file.");
+    }
+
+
+    if (
+      songFile.type !== "audio/mpeg" &&
+      !songFile.name.toLowerCase().endsWith(".mp3")
+    ) {
+      throw new Error("Please upload an MP3 file.");
+    }
+
+
+    showStatus("Uploading your song...");
+
+
+    const safeFileName =
+      songFile.name.replace(/[^a-zA-Z0-9._-]/g, "_");
+
+
+    const storagePath =
+      "test/" +
+      TEST_ARTIST_ID +
+      "/" +
+      Date.now() +
+      "_" +
+      safeFileName;
+
+
+    const uploadResult =
+      await supabaseClient.storage
+        .from(BUCKET_NAME)
+        .upload(
+          storagePath,
+          songFile,
+          {
+            cacheControl: "3600",
+            upsert: false,
+            contentType: "audio/mpeg"
+          }
+        );
+
+
+    if (uploadResult.error) {
+      throw uploadResult.error;
+    }
+
+
+    showStatus("Song uploaded. Saving song information...");
+
+
+    const insertResult =
+      await supabaseClient
+        .from("artist_songs")
+        .insert({
+
+          artist_id: TEST_ARTIST_ID,
+
+          title: title,
+
+          release_date: releaseDate,
+
+          official_url: officialUrl,
+
+          distribution_platforms:
+            distributionPlatforms,
+
+          storage_path: storagePath,
+
+          filename: songFile.name,
+
+          status: "pending"
+
+        });
+
+
+    if (insertResult.error) {
+
+      await supabaseClient.storage
+        .from(BUCKET_NAME)
+        .remove([storagePath]);
+
+      throw insertResult.error;
+    }
+
+
+    showStatus(
+      "Song submitted successfully! It is now pending review.",
+      "success"
+    );
+
+
+    songForm.reset();
+
+
+  } catch (error) {
+
+    console.error(
+      "Local Shuffle song submission error:",
+      error
+    );
+
+    showStatus(
+      error.message ||
+      "Something went wrong while submitting the song.",
+      "error"
+    );
+
+  } finally {
+
+    submitButton.disabled = false;
+
+  }
+
+});
+
+</script>
 
 </body>
 </html>
