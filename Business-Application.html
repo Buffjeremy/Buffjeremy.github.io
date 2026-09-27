@@ -17,6 +17,87 @@
   <!-- Local Shuffle CSS -->
   <link rel="stylesheet" href="LS.css">
   <link rel="stylesheet" href="LS-nav.css">
+
+  <style>
+    /* Business application page */
+
+    .business-page {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 15px;
+    }
+
+    .business-panel {
+      background: rgba(20, 20, 20, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 10px;
+      padding: 35px;
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.6);
+      color: #f2f2f2;
+    }
+
+    .business-panel h1,
+    .business-panel h3 {
+      color: #ffffff;
+    }
+
+    .business-panel p,
+    .business-panel li,
+    .business-panel label {
+      color: #f2f2f2;
+    }
+
+    .business-panel h1 {
+      margin-bottom: 20px;
+    }
+
+    .business-panel h3 {
+      margin-top: 30px;
+      color: #d99a99;
+    }
+
+    .business-panel ul {
+      margin-bottom: 25px;
+    }
+
+    .business-panel .form-control {
+      background: #f7f7f7;
+      color: #222222;
+      border: 1px solid #999999;
+    }
+
+    .business-panel .form-control:focus {
+      background: #ffffff;
+      color: #222222;
+      border-color: #964c4b;
+      box-shadow: 0 0 0 0.2rem rgba(150, 76, 75, 0.25);
+    }
+
+    .business-panel .form-check {
+      margin-top: 12px;
+    }
+
+    .business-panel .form-check-label {
+      margin-left: 5px;
+    }
+
+    .business-panel .btn-primary {
+      background-color: #964c4b;
+      border-color: #964c4b;
+      padding: 10px 22px;
+      font-weight: bold;
+    }
+
+    .business-panel .btn-primary:hover {
+      background-color: #7d3f3e;
+      border-color: #7d3f3e;
+    }
+
+    #status {
+      color: #ffffff;
+      font-weight: bold;
+    }
+  </style>
 </head>
 
 <body>
@@ -31,177 +112,181 @@
     <a href="ls-about.html">About</a>
   </nav>
 
-  <div class="container">
+  <div class="business-page">
 
-    <h1>Local Shuffle Business Application</h1>
+    <div class="business-panel">
 
-    <p>
-      Bring local music to your customers with Local Shuffle.
-    </p>
+      <h1>Local Shuffle Business Application</h1>
 
-    <p>
-      Customers purchase a qualifying item at your business and can add
-      $1 to receive a randomly selected song from a local artist.
-      Your business provides the redemption code and the customer enters
-      that code on the Local Shuffle website to receive the MP3.
-    </p>
+      <p>
+        Bring local music to your customers with Local Shuffle.
+      </p>
 
-    <h3>The Split</h3>
+      <p>
+        Customers purchase a qualifying item at your business and can add
+        $1 to receive a randomly selected song from a local artist.
+        Your business provides the redemption code and the customer enters
+        that code on the Local Shuffle website to receive the MP3.
+      </p>
 
-    <ul>
-      <li><strong>75%</strong> — Your business</li>
-      <li><strong>15%</strong> — Local artists</li>
-      <li><strong>10%</strong> — Local Shuffle</li>
-    </ul>
+      <h3>The Split</h3>
 
-    <p>
-      Submit the application below. Your application will be reviewed
-      before your business is activated.
-    </p>
+      <ul>
+        <li><strong>75%</strong> — Your business</li>
+        <li><strong>15%</strong> — Local artists</li>
+        <li><strong>10%</strong> — Local Shuffle</li>
+      </ul>
 
-    <form id="businessForm">
+      <p>
+        Submit the application below. Your application will be reviewed
+        before your business is activated.
+      </p>
 
-      <div class="form-group">
-        <label for="business_name">Business Name *</label>
-        <input
-          type="text"
-          class="form-control"
-          id="business_name"
-          name="business_name"
-          required>
-      </div>
+      <form id="businessForm">
 
-      <div class="form-group">
-        <label for="website">Website</label>
-        <input
-          type="url"
-          class="form-control"
-          id="website"
-          name="website"
-          placeholder="https://">
-      </div>
+        <div class="form-group">
+          <label for="business_name">Business Name *</label>
+          <input
+            type="text"
+            class="form-control"
+            id="business_name"
+            name="business_name"
+            required>
+        </div>
 
-      <div class="form-group">
-        <label for="address">Address *</label>
-        <input
-          type="text"
-          class="form-control"
-          id="address"
-          name="address"
-          required>
-      </div>
+        <div class="form-group">
+          <label for="website">Website</label>
+          <input
+            type="url"
+            class="form-control"
+            id="website"
+            name="website"
+            placeholder="https://">
+        </div>
 
-      <div class="form-group">
-        <label for="city">City *</label>
-        <input
-          type="text"
-          class="form-control"
-          id="city"
-          name="city"
-          required>
-      </div>
+        <div class="form-group">
+          <label for="address">Address *</label>
+          <input
+            type="text"
+            class="form-control"
+            id="address"
+            name="address"
+            required>
+        </div>
 
-      <div class="form-group">
-        <label for="state">State *</label>
-        <input
-          type="text"
-          class="form-control"
-          id="state"
-          name="state"
-          value="FL"
-          required>
-      </div>
+        <div class="form-group">
+          <label for="city">City *</label>
+          <input
+            type="text"
+            class="form-control"
+            id="city"
+            name="city"
+            required>
+        </div>
 
-      <div class="form-group">
-        <label for="zip_code">ZIP Code *</label>
-        <input
-          type="text"
-          class="form-control"
-          id="zip_code"
-          name="zip_code"
-          pattern="[0-9]{5}"
-          maxlength="5"
-          required>
-      </div>
+        <div class="form-group">
+          <label for="state">State *</label>
+          <input
+            type="text"
+            class="form-control"
+            id="state"
+            name="state"
+            value="FL"
+            required>
+        </div>
 
-      <div class="form-group">
-        <label for="contact_name">Contact Name *</label>
-        <input
-          type="text"
-          class="form-control"
-          id="contact_name"
-          name="contact_name"
-          required>
-      </div>
+        <div class="form-group">
+          <label for="zip_code">ZIP Code *</label>
+          <input
+            type="text"
+            class="form-control"
+            id="zip_code"
+            name="zip_code"
+            pattern="[0-9]{5}"
+            maxlength="5"
+            required>
+        </div>
 
-      <div class="form-group">
-        <label for="email">Email *</label>
-        <input
-          type="email"
-          class="form-control"
-          id="email"
-          name="email"
-          required>
-      </div>
+        <div class="form-group">
+          <label for="contact_name">Contact Name *</label>
+          <input
+            type="text"
+            class="form-control"
+            id="contact_name"
+            name="contact_name"
+            required>
+        </div>
 
-      <div class="form-group">
-        <label for="phone">Phone</label>
-        <input
-          type="tel"
-          class="form-control"
-          id="phone"
-          name="phone">
-      </div>
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            required>
+        </div>
 
-      <div class="form-check">
-        <input
-          type="checkbox"
-          class="form-check-input"
-          id="understand_program"
-          required>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input
+            type="tel"
+            class="form-control"
+            id="phone"
+            name="phone">
+        </div>
 
-        <label class="form-check-label" for="understand_program">
-          I understand how the Local Shuffle program works. *
-        </label>
-      </div>
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="understand_program"
+            required>
 
-      <br>
+          <label class="form-check-label" for="understand_program">
+            I understand how the Local Shuffle program works. *
+          </label>
+        </div>
 
-      <div class="form-check">
-        <input
-          type="checkbox"
-          class="form-check-input"
-          id="understand_split"
-          required>
+        <br>
 
-        <label class="form-check-label" for="understand_split">
-          I understand the 75% / 15% / 10% revenue split. *
-        </label>
-      </div>
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="understand_split"
+            required>
 
-      <br>
+          <label class="form-check-label" for="understand_split">
+            I understand the 75% / 15% / 10% revenue split. *
+          </label>
+        </div>
 
-      <div class="form-check">
-        <input
-          type="checkbox"
-          class="form-check-input"
-          id="contact_permission"
-          required>
+        <br>
 
-        <label class="form-check-label" for="contact_permission">
-          I give Local Shuffle permission to contact me about this application. *
-        </label>
-      </div>
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="contact_permission"
+            required>
 
-      <br>
+          <label class="form-check-label" for="contact_permission">
+            I give Local Shuffle permission to contact me about this application. *
+          </label>
+        </div>
 
-      <button type="submit" class="btn btn-primary">
-        Submit Business Application
-      </button>
+        <br>
 
-    </form>
+        <button type="submit" class="btn btn-primary">
+          Submit Business Application
+        </button>
 
-    <div id="status" style="margin-top: 20px;"></div>
+      </form>
+
+      <div id="status"></div>
+
+    </div>
 
   </div>
 
