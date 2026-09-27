@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="LS-nav.css">
 
   <style>
+
     /* Business application page */
 
     .business-page {
@@ -96,13 +97,30 @@
     #status {
       color: #ffffff;
       font-weight: bold;
+      margin-top: 20px;
     }
+
+
+    /* Center the navigation bar */
+
+    nav {
+      width: 100%;
+      text-align: center;
+      padding: 15px 0;
+    }
+
+    nav a {
+      display: inline-block;
+      margin: 0 12px;
+    }
+
   </style>
 </head>
 
 <body>
 
   <!-- Navigation -->
+
   <nav>
     <a href="index.html">Home</a>
     <a href="ls-bands.html">Bands</a>
@@ -111,6 +129,7 @@
     <a href="ls-Contact.html">Contact</a>
     <a href="ls-about.html">About</a>
   </nav>
+
 
   <div class="business-page">
 
@@ -129,6 +148,7 @@
         that code on the Local Shuffle website to receive the MP3.
       </p>
 
+
       <h3>The Split</h3>
 
       <ul>
@@ -137,15 +157,18 @@
         <li><strong>10%</strong> — Local Shuffle</li>
       </ul>
 
+
       <p>
         Submit the application below. Your application will be reviewed
         before your business is activated.
       </p>
 
+
       <form id="businessForm">
 
         <div class="form-group">
           <label for="business_name">Business Name *</label>
+
           <input
             type="text"
             class="form-control"
@@ -154,8 +177,10 @@
             required>
         </div>
 
+
         <div class="form-group">
           <label for="website">Website</label>
+
           <input
             type="url"
             class="form-control"
@@ -164,8 +189,10 @@
             placeholder="https://">
         </div>
 
+
         <div class="form-group">
           <label for="address">Address *</label>
+
           <input
             type="text"
             class="form-control"
@@ -174,8 +201,10 @@
             required>
         </div>
 
+
         <div class="form-group">
           <label for="city">City *</label>
+
           <input
             type="text"
             class="form-control"
@@ -184,8 +213,10 @@
             required>
         </div>
 
+
         <div class="form-group">
           <label for="state">State *</label>
+
           <input
             type="text"
             class="form-control"
@@ -195,8 +226,10 @@
             required>
         </div>
 
+
         <div class="form-group">
           <label for="zip_code">ZIP Code *</label>
+
           <input
             type="text"
             class="form-control"
@@ -207,8 +240,10 @@
             required>
         </div>
 
+
         <div class="form-group">
           <label for="contact_name">Contact Name *</label>
+
           <input
             type="text"
             class="form-control"
@@ -217,8 +252,10 @@
             required>
         </div>
 
+
         <div class="form-group">
           <label for="email">Email *</label>
+
           <input
             type="email"
             class="form-control"
@@ -227,8 +264,10 @@
             required>
         </div>
 
+
         <div class="form-group">
           <label for="phone">Phone</label>
+
           <input
             type="tel"
             class="form-control"
@@ -236,7 +275,9 @@
             name="phone">
         </div>
 
+
         <div class="form-check">
+
           <input
             type="checkbox"
             class="form-check-input"
@@ -246,11 +287,15 @@
           <label class="form-check-label" for="understand_program">
             I understand how the Local Shuffle program works. *
           </label>
+
         </div>
+
 
         <br>
 
+
         <div class="form-check">
+
           <input
             type="checkbox"
             class="form-check-input"
@@ -260,11 +305,15 @@
           <label class="form-check-label" for="understand_split">
             I understand the 75% / 15% / 10% revenue split. *
           </label>
+
         </div>
+
 
         <br>
 
+
         <div class="form-check">
+
           <input
             type="checkbox"
             class="form-check-input"
@@ -274,9 +323,12 @@
           <label class="form-check-label" for="contact_permission">
             I give Local Shuffle permission to contact me about this application. *
           </label>
+
         </div>
 
+
         <br>
+
 
         <button type="submit" class="btn btn-primary">
           Submit Business Application
@@ -284,14 +336,18 @@
 
       </form>
 
+
       <div id="status"></div>
 
     </div>
 
   </div>
 
+
   <!-- Supabase -->
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 
   <script>
 
@@ -301,19 +357,26 @@
     const SUPABASE_PUBLISHABLE_KEY =
       'sb_publishable_Lo-gi0FFqCWN6JrZRumUIw_CK3yk9-i';
 
+
     const supabaseClient = supabase.createClient(
       SUPABASE_URL,
       SUPABASE_PUBLISHABLE_KEY
     );
 
-    const businessForm = document.getElementById('businessForm');
-    const statusDiv = document.getElementById('status');
+
+    const businessForm =
+      document.getElementById('businessForm');
+
+    const statusDiv =
+      document.getElementById('status');
+
 
     businessForm.addEventListener('submit', async function(event) {
 
       event.preventDefault();
 
       statusDiv.textContent = 'Submitting...';
+
 
       const businessName =
         document.getElementById('business_name').value.trim();
@@ -342,6 +405,7 @@
       const phone =
         document.getElementById('phone').value.trim();
 
+
       const { data, error } = await supabaseClient
         .from('businesses')
         .insert([
@@ -359,9 +423,13 @@
           }
         ]);
 
+
       if (error) {
 
-        console.error('Business application error:', error);
+        console.error(
+          'Business application error:',
+          error
+        );
 
         statusDiv.textContent =
           'There was a problem submitting your application: ' +
@@ -370,10 +438,13 @@
         return;
       }
 
+
       statusDiv.textContent =
         'Thank you! Your business application has been submitted and is pending review.';
 
+
       businessForm.reset();
+
 
       document.getElementById('state').value = 'FL';
 
