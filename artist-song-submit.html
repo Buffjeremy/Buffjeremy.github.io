@@ -7,20 +7,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Local Shuffle - Submit a Song</title>
+
   <link rel="icon" type="image/jpeg" href="images/Metal--Mock-up%20(2).jpg">
+
   <link rel="stylesheet" href="LS.css">
 </head>
 
 <body>
 
+  <!-- ==========================================
+       NAVIGATION
+       ========================================== -->
+
   <div class="topnav">
-    <a href="index.html">Home</a>
-    <a href="ls-bands.html">Bands</a>
-    <a class="active" href="artist-submit-form.html">Artists</a>
-    <a href="Business-Application.html">Businesses</a>
-    <a href="ls-Contact.html">Contact</a>
-    <a href="ls-about.html">About</a>
+
+```
+<a href="index.html">Home</a>
+
+<a href="ls-bands.html">Bands</a>
+
+<a class="active" href="artist-submit-form.html">Artists</a>
+
+<a href="Business-Application.html">Businesses</a>
+
+<a href="ls-Contact.html">Contact</a>
+
+<a href="ls-about.html">About</a>
+```
+
   </div>
+
+  <!-- ==========================================
+       PAGE INTRO
+       ========================================== -->
 
   <div class="Local">
 
@@ -38,6 +57,10 @@
 
   </div>
 
+  <!-- ==========================================
+       SONG SUBMISSION FORM
+       ========================================== -->
+
   <div class="ls-container">
 
 ```
@@ -51,6 +74,9 @@
       Songs submitted to Local Shuffle are reviewed before they
       become part of the active song rotation.
     </p>
+
+
+    <!-- SONG TITLE -->
 
     <div class="ls-field">
 
@@ -69,6 +95,9 @@
 
     </div>
 
+
+    <!-- RELEASE DATE -->
+
     <div class="ls-field">
 
       <label for="release_date">
@@ -83,6 +112,9 @@
       >
 
     </div>
+
+
+    <!-- OFFICIAL URL -->
 
     <div class="ls-field">
 
@@ -105,6 +137,9 @@
 
     </div>
 
+
+    <!-- DISTRIBUTION PLATFORMS -->
+
     <div class="ls-field">
 
       <label for="distribution_platforms">
@@ -123,6 +158,11 @@
     </div>
 
   </div>
+
+
+  <!-- ==========================================
+       MP3 UPLOAD
+       ========================================== -->
 
   <div class="ls-section">
 
@@ -156,6 +196,11 @@
 
   </div>
 
+
+  <!-- ==========================================
+       RIGHTS CONFIRMATION
+       ========================================== -->
+
   <div class="ls-section">
 
     <h2>Rights Confirmation</h2>
@@ -182,6 +227,7 @@
 
     </div>
 
+
     <div class="ls-checkbox">
 
       <label>
@@ -201,6 +247,7 @@
       </label>
 
     </div>
+
 
     <div class="ls-checkbox">
 
@@ -223,6 +270,11 @@
     </div>
 
   </div>
+
+
+  <!-- ==========================================
+       REVIEW INFORMATION
+       ========================================== -->
 
   <div class="ls-verification">
 
@@ -247,11 +299,21 @@
 
   </div>
 
+
+  <!-- ==========================================
+       STATUS
+       ========================================== -->
+
   <div
     id="songFormStatus"
     class="ls-form-status"
     aria-live="polite"
   ></div>
+
+
+  <!-- ==========================================
+       SUBMIT
+       ========================================== -->
 
   <button
     type="submit"
@@ -266,6 +328,10 @@
 
   </div>
 
+  <!-- ==========================================
+       NOTE
+       ========================================== -->
+
   <div class="ls-container">
 
 ```
@@ -277,135 +343,362 @@
 
   </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- ==========================================
+       SUPABASE + SONG SUBMISSION SCRIPT
+       ========================================== -->
 
-<script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-const SUPABASE_URL =
-  "https://yaqhqnuvlxfgfpnwufyw.supabase.co";
+  <script>
 
-const SUPABASE_PUBLISHABLE_KEY =
-  "sb_publishable_Lo-gi0FFqCWN6JrZRumUIw_CK3yk9-i";
+    document.addEventListener("DOMContentLoaded", function () {
 
-const supabaseClient =
-  window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY
-  );
+      const SUPABASE_URL =
+        "https://yaqhqnuvlxfgfpnwufyw.supabase.co";
 
-
-const FALTERBOY_ARTIST_ID =
-  "8f842a90-2dfd-473b-b5ed-422a0b19d359";
-
-const BUCKET_NAME = "Music files";
+      const SUPABASE_PUBLISHABLE_KEY =
+        "sb_publishable_Lo-gi0FFqCWN6JrZRumUIw_CK3yk9-i";
 
 
-const songForm =
-  document.getElementById("songForm");
-
-const statusBox =
-  document.getElementById("songFormStatus");
-
-const submitButton =
-  document.getElementById("songSubmitButton");
-
-
-function showStatus(message, type = "") {
-
-  statusBox.textContent = message;
-
-  statusBox.className = "ls-form-status";
-
-  if (type) {
-    statusBox.classList.add(type);
-  }
-
-}
-
-
-songForm.addEventListener("submit", async function(event) {
-
-  event.preventDefault();
-
-  statusBox.textContent = "";
-  statusBox.className = "ls-form-status";
-
-  submitButton.disabled = true;
-
-  try {
-
-    const title =
-      document.getElementById("song_title").value.trim();
-
-    const releaseDate =
-      document.getElementById("release_date").value;
-
-    const officialUrl =
-      document.getElementById("official_url").value.trim();
-
-    const distributionPlatforms =
-      document.getElementById("distribution_platforms").value.trim();
-
-    const songFile =
-      document.getElementById("song_file").files[0];
-
-
-    if (!songFile) {
-      throw new Error("Please select an MP3 file.");
-    }
-
-
-    if (
-      songFile.type !== "audio/mpeg" &&
-      !songFile.name.toLowerCase().endsWith(".mp3")
-    ) {
-      throw new Error("Please upload an MP3 file.");
-    }
-
-
-    showStatus("Uploading your song...");
-
-
-    const safeFileName =
-      songFile.name.replace(/[^a-zA-Z0-9._-]/g, "_");
-
-
-    const storagePath =
-      "artists/" +
-      FALTERBOY_ARTIST_ID +
-      "/" +
-      Date.now() +
-      "_" +
-      safeFileName;
-
-
-    const uploadResult =
-      await supabaseClient.storage
-        .from(BUCKET_NAME)
-        .upload(
-          storagePath,
-          songFile,
-          {
-            cacheControl: "3600",
-            upsert: false,
-            contentType: "audio/mpeg"
-          }
+      const supabaseClient =
+        window.supabase.createClient(
+          SUPABASE_URL,
+          SUPABASE_PUBLISHABLE_KEY
         );
 
 
-    if (uploadResult.error) {
-      throw uploadResult.error;
-    }
+      /*
+       * This is the approved Falterboy artist ID.
+       */
+      const FALTERBOY_ARTIST_ID =
+        "8f842a90-2dfd-473b-b5ed-422a0b19d359";
 
 
-    showStatus("Song uploaded. Saving song information...");
+      const BUCKET_NAME =
+        "Music files";
 
 
-    const insertResult =
-      await supabaseClient
-        .from("artist_songs")
-        .insert({
+      const songForm =
+        document.getElementById("songForm");
 
-          artist_id: FALTERBOY_ARTIST_ID,
+      const statusBox =
+        document.getElementById("songFormStatus");
 
-          title: title,
+      const submitButton =
+        document.getElementById("songSubmitButton");
+
+
+      /*
+       * Make sure the page elements exist.
+       */
+
+      if (!songForm) {
+
+        alert(
+          "Local Shuffle error: song form was not found."
+        );
+
+        return;
+      }
+
+
+      if (!statusBox) {
+
+        alert(
+          "Local Shuffle error: status box was not found."
+        );
+
+        return;
+      }
+
+
+      if (!submitButton) {
+
+        alert(
+          "Local Shuffle error: submit button was not found."
+        );
+
+        return;
+      }
+
+
+      /*
+       * Status message function.
+       */
+
+      function showStatus(message, type = "") {
+
+        statusBox.textContent = message;
+
+        statusBox.className =
+          "ls-form-status";
+
+        if (type) {
+
+          statusBox.classList.add(type);
+
+        }
+
+      }
+
+
+      /*
+       * This confirms that the JavaScript loaded.
+       */
+
+      showStatus(
+        "Song submission system loaded.",
+        "success"
+      );
+
+
+      /*
+       * Handle form submission.
+       */
+
+      songForm.addEventListener(
+        "submit",
+        async function (event) {
+
+          event.preventDefault();
+
+
+          statusBox.textContent = "";
+
+          statusBox.className =
+            "ls-form-status";
+
+
+          submitButton.disabled = true;
+
+
+          try {
+
+            /*
+             * Get form values.
+             */
+
+            const title =
+              document
+                .getElementById("song_title")
+                .value
+                .trim();
+
+
+            const releaseDate =
+              document
+                .getElementById("release_date")
+                .value;
+
+
+            const officialUrl =
+              document
+                .getElementById("official_url")
+                .value
+                .trim();
+
+
+            const distributionPlatforms =
+              document
+                .getElementById(
+                  "distribution_platforms"
+                )
+                .value
+                .trim();
+
+
+            const songFile =
+              document
+                .getElementById("song_file")
+                .files[0];
+
+
+            /*
+             * Make sure an MP3 was selected.
+             */
+
+            if (!songFile) {
+
+              throw new Error(
+                "Please select an MP3 file."
+              );
+
+            }
+
+
+            /*
+             * Check that the selected file is an MP3.
+             */
+
+            if (
+              songFile.type !== "audio/mpeg" &&
+              !songFile.name
+                .toLowerCase()
+                .endsWith(".mp3")
+            ) {
+
+              throw new Error(
+                "Please upload an MP3 file."
+              );
+
+            }
+
+
+            /*
+             * Upload the MP3.
+             */
+
+            showStatus(
+              "Uploading your song..."
+            );
+
+
+            const safeFileName =
+              songFile.name.replace(
+                /[^a-zA-Z0-9._-]/g,
+                "_"
+              );
+
+
+            const storagePath =
+              "artists/" +
+              FALTERBOY_ARTIST_ID +
+              "/" +
+              Date.now() +
+              "_" +
+              safeFileName;
+
+
+            const uploadResult =
+              await supabaseClient
+                .storage
+                .from(BUCKET_NAME)
+                .upload(
+                  storagePath,
+                  songFile,
+                  {
+                    cacheControl: "3600",
+                    upsert: false,
+                    contentType: "audio/mpeg"
+                  }
+                );
+
+
+            if (uploadResult.error) {
+
+              throw uploadResult.error;
+
+            }
+
+
+            /*
+             * MP3 upload succeeded.
+             * Now save the song information.
+             */
+
+            showStatus(
+              "Song uploaded. Saving song information..."
+            );
+
+
+            const insertResult =
+              await supabaseClient
+                .from("artist_songs")
+                .insert({
+
+                  artist_id:
+                    FALTERBOY_ARTIST_ID,
+
+                  title:
+                    title,
+
+                  release_date:
+                    releaseDate,
+
+                  official_url:
+                    officialUrl,
+
+                  distribution_platforms:
+                    distributionPlatforms,
+
+                  storage_path:
+                    storagePath,
+
+                  filename:
+                    songFile.name,
+
+                  status:
+                    "pending"
+
+                });
+
+
+            /*
+             * If the database insert fails,
+             * remove the uploaded file so we
+             * don't leave an orphaned MP3.
+             */
+
+            if (insertResult.error) {
+
+              await supabaseClient
+                .storage
+                .from(BUCKET_NAME)
+                .remove([
+                  storagePath
+                ]);
+
+
+              throw insertResult.error;
+
+            }
+
+
+            /*
+             * Everything succeeded.
+             */
+
+            showStatus(
+              "Song submitted successfully! It is now pending review.",
+              "success"
+            );
+
+
+            songForm.reset();
+
+          }
+
+
+          catch (error) {
+
+            console.error(
+              "Local Shuffle song submission error:",
+              error
+            );
+
+
+            showStatus(
+              error.message ||
+              "Something went wrong while submitting the song.",
+              "error"
+            );
+
+          }
+
+
+          finally {
+
+            submitButton.disabled = false;
+
+          }
+
+        }
+      );
+
+    });
+
+  </script>
+
+</body>
+
+</html>
