@@ -7,15 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Local Shuffle - Submit a Song</title>
-<link rel="icon" type="image/jpeg" href="images/Metal--Mock-up%20(2).jpg">
+  <link rel="icon" type="image/jpeg" href="images/Metal--Mock-up%20(2).jpg">
   <link rel="stylesheet" href="LS.css">
 </head>
 
 <body>
-
-  <!-- ==========================================
-       NAVIGATION
-       ========================================== -->
 
   <div class="topnav">
     <a href="index.html">Home</a>
@@ -26,13 +22,9 @@
     <a href="ls-about.html">About</a>
   </div>
 
-  <!-- ==========================================
-       PAGE INTRO
-       ========================================== -->
-
   <div class="Local">
 
-
+```
 <h1>Submit a Song</h1>
 
 <p>
@@ -42,17 +34,13 @@
 <p>
   Submit a released song for consideration in Local Shuffle.
 </p>
-
+```
 
   </div>
 
-  <!-- ==========================================
-       SONG SUBMISSION FORM
-       ========================================== -->
-
   <div class="ls-container">
 
-
+```
 <form id="songForm" class="ls-form">
 
   <div class="ls-section">
@@ -63,9 +51,6 @@
       Songs submitted to Local Shuffle are reviewed before they
       become part of the active song rotation.
     </p>
-
-
-    <!-- SONG TITLE -->
 
     <div class="ls-field">
 
@@ -84,9 +69,6 @@
 
     </div>
 
-
-    <!-- RELEASE DATE -->
-
     <div class="ls-field">
 
       <label for="release_date">
@@ -101,9 +83,6 @@
       >
 
     </div>
-
-
-    <!-- OFFICIAL URL -->
 
     <div class="ls-field">
 
@@ -126,9 +105,6 @@
 
     </div>
 
-
-    <!-- DISTRIBUTION PLATFORMS -->
-
     <div class="ls-field">
 
       <label for="distribution_platforms">
@@ -147,11 +123,6 @@
     </div>
 
   </div>
-
-
-  <!-- ==========================================
-       MP3 UPLOAD
-       ========================================== -->
 
   <div class="ls-section">
 
@@ -185,11 +156,6 @@
 
   </div>
 
-
-  <!-- ==========================================
-       RIGHTS CONFIRMATION
-       ========================================== -->
-
   <div class="ls-section">
 
     <h2>Rights Confirmation</h2>
@@ -216,7 +182,6 @@
 
     </div>
 
-
     <div class="ls-checkbox">
 
       <label>
@@ -236,7 +201,6 @@
       </label>
 
     </div>
-
 
     <div class="ls-checkbox">
 
@@ -259,11 +223,6 @@
     </div>
 
   </div>
-
-
-  <!-- ==========================================
-       REVIEW INFORMATION
-       ========================================== -->
 
   <div class="ls-verification">
 
@@ -288,21 +247,11 @@
 
   </div>
 
-
-  <!-- ==========================================
-       STATUS
-       ========================================== -->
-
   <div
     id="songFormStatus"
     class="ls-form-status"
     aria-live="polite"
   ></div>
-
-
-  <!-- ==========================================
-       SUBMIT
-       ========================================== -->
 
   <button
     type="submit"
@@ -313,24 +262,21 @@
   </button>
 
 </form>
-
+```
 
   </div>
 
-  <!-- ==========================================
-       NOTE
-       ========================================== -->
-
   <div class="ls-container">
 
-
+```
 <p class="ls-small">
   Artist identity and account verification will be connected
   before this submission system is opened to the public.
 </p>
-
+```
 
   </div>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
@@ -348,8 +294,8 @@ const supabaseClient =
   );
 
 
-const TEST_ARTIST_ID =
-  "d6c55776-50ae-4c90-be65-491b53af6a42";
+const FALTERBOY_ARTIST_ID =
+  "8f842a90-2dfd-473b-b5ed-422a0b19d359";
 
 const BUCKET_NAME = "Music files";
 
@@ -425,8 +371,8 @@ songForm.addEventListener("submit", async function(event) {
 
 
     const storagePath =
-      "test/" +
-      TEST_ARTIST_ID +
+      "artists/" +
+      FALTERBOY_ARTIST_ID +
       "/" +
       Date.now() +
       "_" +
@@ -460,67 +406,6 @@ songForm.addEventListener("submit", async function(event) {
         .from("artist_songs")
         .insert({
 
-          artist_id: TEST_ARTIST_ID,
+          artist_id: FALTERBOY_ARTIST_ID,
 
           title: title,
-
-          release_date: releaseDate,
-
-          official_url: officialUrl,
-
-          distribution_platforms:
-            distributionPlatforms,
-
-          storage_path: storagePath,
-
-          filename: songFile.name,
-
-          status: "pending"
-
-        });
-
-
-    if (insertResult.error) {
-
-      await supabaseClient.storage
-        .from(BUCKET_NAME)
-        .remove([storagePath]);
-
-      throw insertResult.error;
-    }
-
-
-    showStatus(
-      "Song submitted successfully! It is now pending review.",
-      "success"
-    );
-
-
-    songForm.reset();
-
-
-  } catch (error) {
-
-    console.error(
-      "Local Shuffle song submission error:",
-      error
-    );
-
-    showStatus(
-      error.message ||
-      "Something went wrong while submitting the song.",
-      "error"
-    );
-
-  } finally {
-
-    submitButton.disabled = false;
-
-  }
-
-});
-
-</script>
-
-</body>
-</html>
