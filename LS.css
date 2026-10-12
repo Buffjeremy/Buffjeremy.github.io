@@ -481,3 +481,23 @@ background-color: #333333;
     padding: 20px;
   }
 }
+
+/* ABOUT PAGE - CENTERED CTA BUTTONS */
+
+.about-cta {
+  text-align: center;
+}
+
+.about-cta-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  width: 100%;
+  margin: 25px auto 10px;
+}
+
+.about-cta-links .ls-button {
+  text-align: center;
+}
