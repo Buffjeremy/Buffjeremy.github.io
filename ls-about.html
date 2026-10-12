@@ -4,511 +4,263 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About Local Shuffle</title>
-  <meta name="description" content="Discover local independent music with Local Shuffle. Support local artists and the businesses that bring communities together through music.">
-
+  <title>About Local Shuffle | Discover Local Music</title>
+  <meta name="description" content="Discover how Local Shuffle connects music fans, independent artists, and local businesses through song downloads and local music discovery.">
   <link rel="stylesheet" href="LS.css">
-
-  <style>
-    :root {
-      --ls-red: #964c4b;
-      --ls-dark: #1a1a1a;
-      --ls-light: #f2f2f2;
-      --ls-card: #292929;
-      --ls-muted: #d0d0d0;
-    }
-
-    body {
-      font-size: 17px;
-      line-height: 1.75;
-    }
-
-    .about-container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 30px 20px 60px;
-    }
-
-    .about-hero {
-      text-align: center;
-      padding: 45px 20px;
-      margin-bottom: 30px;
-    }
-
-    .about-hero h1 {
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
-      line-height: 1.2;
-      margin-bottom: 18px;
-    }
-
-    .about-hero p {
-      max-width: 750px;
-      margin: 0 auto;
-      font-size: 1.15rem;
-    }
-
-    .about-section {
-      margin: 30px 0;
-      padding: 30px;
-      border-radius: 10px;
-      background-color: var(--ls-card);
-      color: var(--ls-light);
-    }
-
-    .about-section h2,
-    .about-section h3,
-    .about-section p,
-    .about-section li {
-      color: var(--ls-light);
-    }
-
-    .about-section h2 {
-      font-size: 1.7rem;
-      line-height: 1.3;
-      margin-top: 0;
-      margin-bottom: 18px;
-    }
-
-    .about-section h3 {
-      font-size: 1.2rem;
-      margin-top: 22px;
-      margin-bottom: 8px;
-    }
-
-    .about-section p {
-      margin-bottom: 16px;
-    }
-
-    .about-section p:last-child {
-      margin-bottom: 0;
-    }
-
-    .about-section a {
-      color: #f0aaa7;
-      text-decoration: underline;
-    }
-
-    .about-section a:hover {
-      color: #ffffff;
-    }
-
-    /* Special high-contrast section about downloading songs */
-    .download-section {
-      background-color: var(--ls-dark);
-      color: var(--ls-light);
-      border: 2px solid var(--ls-red);
-      padding: 35px;
-      border-radius: 10px;
-      margin: 35px 0;
-      line-height: 1.85;
-    }
-
-    .download-section h2,
-    .download-section h3,
-    .download-section p {
-      color: var(--ls-light);
-    }
-
-    .download-section h2 {
-      font-size: 1.8rem;
-      margin-top: 0;
-      margin-bottom: 20px;
-    }
-
-    .download-section p {
-      margin-bottom: 18px;
-    }
-
-    .download-section p:last-child {
-      margin-bottom: 0;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
-      margin: 25px 0;
-    }
-
-    .about-card {
-      background-color: var(--ls-card);
-      color: var(--ls-light);
-      border-radius: 10px;
-      padding: 25px;
-    }
-
-    .about-card h3 {
-      color: #f0aaa7;
-      margin-top: 0;
-    }
-
-    .about-card p {
-      color: var(--ls-light);
-      margin-bottom: 0;
-    }
-
-    .revenue-list {
-      list-style: none;
-      padding: 0;
-      margin: 20px 0;
-    }
-
-    .revenue-list li {
-      background: var(--ls-card);
-      border-left: 5px solid var(--ls-red);
-      border-radius: 5px;
-      padding: 14px 18px;
-      margin-bottom: 12px;
-      color: var(--ls-light);
-    }
-
-    .about-note {
-      font-size: 0.9rem;
-      color: var(--ls-muted) !important;
-    }
-
-    .about-cta {
-      text-align: center;
-      padding: 35px 20px;
-      margin-top: 35px;
-      background-color: var(--ls-card);
-      border-radius: 10px;
-      color: var(--ls-light);
-    }
-
-    .about-cta h2,
-    .about-cta p {
-      color: var(--ls-light);
-    }
-
-    .about-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-      margin-top: 25px;
-    }
-
-    .about-button {
-      display: inline-block;
-      padding: 12px 22px;
-      background-color: var(--ls-red);
-      color: #ffffff !important;
-      text-decoration: none !important;
-      border-radius: 6px;
-      font-weight: bold;
-    }
-
-    .about-button:hover {
-      background-color: #b2605e;
-      color: #ffffff !important;
-    }
-
-    @media (max-width: 650px) {
-      .about-container {
-        padding: 15px 12px 40px;
-      }
-
-      .about-hero {
-        padding: 30px 10px;
-      }
-
-      .about-section,
-      .download-section {
-        padding: 22px 18px;
-      }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .about-section h2,
-      .download-section h2 {
-        font-size: 1.5rem;
-      }
-    }
-  </style>
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
 
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">Local Shuffle</a>
-
-      <button class="navbar-toggler" type="button"
-              data-toggle="collapse" data-target="#navbarContent"
-              aria-controls="navbarContent" aria-expanded="false"
-              aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarContent">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="ls-bands.html">Discover Music</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="artist-submit-form.html">Artists</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="Business-Application.html">Businesses</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="ls-contact.html">Contact</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="ls-about.html">About</a>
-          </li>
-        </ul>
-      </div>
-    </div>
+  <nav class="topnav" aria-label="Main navigation">
+    <a href="index.html">Home</a>
+    <a href="ls-bands.html">Discover Music</a>
+    <a href="artist-submit-form.html">Artists</a>
+    <a href="Business-Application.html">Businesses</a>
+    <a href="ls-contact.html">Contact</a>
+    <a href="ls-about.html" aria-current="page">About</a>
   </nav>
 
   <main class="about-container">
 
-    <!-- Introduction -->
     <header class="about-hero">
+      <p class="about-eyebrow">LOCAL MUSIC. REAL CONNECTIONS.</p>
       <h1>Discover Your Next Favorite Band.</h1>
+      <p class="about-intro">
+        Great music is happening right around you. Local Shuffle helps you
+        discover independent artists while supporting the local businesses
+        that make our communities special.
+      </p>
       <p>
-        Local Shuffle connects independent musicians with the local
-        businesses and music fans who help keep a community's music
-        scene alive.
+        No endless scrolling. No complicated playlists. Just a chance to hear
+        something new, discover an artist, and take the music with you.
       </p>
     </header>
 
-    <!-- Why Local Shuffle exists -->
     <section class="about-section">
       <h2>Great Music Is Happening Right Here</h2>
 
       <p>
-        Every community has musicians making great music just around
-        the corner. They are writing songs, recording albums, playing
-        shows, and building something special, often without the
-        attention or resources that bigger acts receive.
+        Every day, independent musicians write songs, record albums, and play
+        shows for people who may never have heard their names. Their music
+        deserves opportunities to find an audience beyond the usual streaming
+        recommendations and social media feeds.
       </p>
 
       <p>
-        Finding those artists can take work. Streaming services are
-        convenient, but their recommendations often lead us back to
-        music we already know. Local Shuffle is designed to make
-        discovering an independent artist a little more personal,
-        unexpected, and fun.
+        At the same time, local coffee shops, breweries, bars, and other
+        independent businesses help create the places where communities come
+        together. They give people a place to meet, relax, and discover new
+        things.
       </p>
 
       <p>
-        We bring local music into places people already visit, such as
-        coffee shops, breweries, bars, and other participating
-        businesses. A regular stop can become an opportunity to hear
-        something new.
+        Local Shuffle brings these worlds together. Participating businesses
+        become places where customers can discover a song from a local artist,
+        download it, and explore more of the music they enjoy.
       </p>
     </section>
 
-    <!-- How it works -->
     <section class="about-section">
       <h2>How Local Shuffle Works</h2>
 
       <div class="about-grid">
-        <div class="about-card">
-          <h3>1. Visit a Local Business</h3>
-          <p>
-            Look for Local Shuffle at a participating business.
-            Scan its QR code to discover a song from an independent
-            artist in the local music community.
-          </p>
-        </div>
 
-        <div class="about-card">
-          <h3>2. Discover a Song</h3>
+        <article class="about-card">
+          <span class="about-number">01</span>
+          <h3>Visit a Local Business</h3>
           <p>
-            Each discovery gives you a chance to hear an artist you
-            might not have found on your own. The selection is meant
-            to introduce you to something outside your usual rotation.
+            Stop by a participating coffee shop, brewery, bar, or other local
+            business. Look for the Local Shuffle QR code.
           </p>
-        </div>
+        </article>
 
-        <div class="about-card">
-          <h3>3. Keep the Music</h3>
+        <article class="about-card">
+          <span class="about-number">02</span>
+          <h3>Discover a Song</h3>
           <p>
-            The idea is simple: receive a downloadable music file
-            that you can keep on your device and listen to later,
-            beyond the place where you discovered it.
+            Scan the QR code and get a chance to discover a song from an
+            independent artist. You might find your next favorite band, or
+            simply hear something you haven't heard before.
           </p>
-        </div>
+        </article>
 
-        <div class="about-card">
-          <h3>4. Support the Artist</h3>
+        <article class="about-card">
+          <span class="about-number">03</span>
+          <h3>Keep the Music</h3>
           <p>
-            If you enjoy the song, find the artist online, explore
-            their other releases, follow them, buy their music or
-            merchandise, and check out a live show.
+            Download the song file to your device and listen again later.
+            Your discovery doesn't have to end when you leave the business.
           </p>
-        </div>
+        </article>
+
+        <article class="about-card">
+          <span class="about-number">04</span>
+          <h3>Support the Artist</h3>
+          <p>
+            Enjoyed what you heard? Find the artist online, explore their
+            releases, follow them on social media, buy their music or
+            merchandise, or catch them at a live show.
+          </p>
+        </article>
+
       </div>
 
-      <p>
-        The planned model allows customers to choose whether to
-        contribute $1 for a song download. The goal is to make music
-        discovery accessible while creating a small source of support
-        for the local businesses and artists involved.
+      <p class="about-note">
+        Participating businesses can offer the download for free or invite
+        customers to contribute an optional dollar. The goal is to make music
+        discovery easy while creating another way to support the local music
+        community.
       </p>
     </section>
 
-    <!-- Download section with high-contrast text -->
     <section class="download-section">
       <h2>More Than Another Streaming Playlist</h2>
 
       <p>
-        We live in a world of streaming playlists, endless
-        recommendations, and songs that come and go in seconds.
-        Local Shuffle offers something a little different: an
-        actual song file you can keep on your device.
+        We live in a world of streaming playlists, endless recommendations,
+        and songs that come and go in seconds. Local Shuffle offers something
+        a little different: an actual song file you can keep on your device.
       </p>
 
       <p>
-        A download gives you a chance to listen beyond the bar,
-        the coffee shop, or the moment you discovered it. Put it
-        on later, share the artist's name with a friend, or follow
-        the music to its next stop.
+        A download gives you a chance to listen beyond the bar, the coffee
+        shop, or the moment you discovered it. Put it on later, share the
+        artist's name with a friend, or follow the music to its next stop.
       </p>
 
       <p>
-        And if you love what you hear, there is plenty more to
-        discover. Find the artist online, listen to the rest of
-        their catalog, buy their album or merchandise, follow
-        their social accounts, or go see them perform live.
+        And if you love what you hear, there is plenty more to discover.
+        Find the artist online, listen to the rest of their catalog, buy their
+        album or merchandise, follow their social accounts, or go see them
+        perform live.
       </p>
 
       <p>
-        If the song isn't for you, that's okay too. Discovery means
-        taking a chance on something new. The point is to make that
-        first step easier for everyone.
+        If the song isn't for you, that's okay too. Discovery means taking a
+        chance on something new. The point is to make that first step easier
+        for everyone.
       </p>
     </section>
 
-    <!-- Support for artists -->
     <section class="about-section">
       <h2>Built to Support the Local Music Community</h2>
 
       <p>
-        Local Shuffle is intended to create value for everyone
-        involved. Artists get another way to reach listeners.
-        Businesses get a unique experience to offer their customers.
-        Music fans get a chance to discover something new.
+        Local Shuffle is designed to share the value created by each
+        participating download among the people who make the experience
+        possible.
       </p>
 
-      <p>
-        Under the planned $1 purchase model, the revenue would be
-        divided like this:
-      </p>
+      <div class="about-share-list">
+        <div class="about-share">
+          <strong>75%</strong>
+          <div>
+            <h3>Participating Business</h3>
+            <p>
+              The largest share goes to the local business hosting the
+              discovery experience.
+            </p>
+          </div>
+        </div>
 
-      <ul class="revenue-list">
-        <li>
-          <strong>75% — Participating Business</strong><br>
-          The business hosting the discovery experience receives
-          the largest share.
-        </li>
-        <li>
-          <strong>15% — Artist Pool</strong><br>
-          This portion is shared equally among eligible active
-          artists participating in the applicable rotation.
-        </li>
-        <li>
-          <strong>10% — Local Shuffle</strong><br>
-          This supports the operation and development of the
-          platform.
-        </li>
-      </ul>
+        <div class="about-share">
+          <strong>15%</strong>
+          <div>
+            <h3>Participating Artists</h3>
+            <p>
+              A shared pool is distributed equally among eligible artists
+              included in the rotation for the applicable period.
+            </p>
+          </div>
+        </div>
+
+        <div class="about-share">
+          <strong>10%</strong>
+          <div>
+            <h3>Local Shuffle</h3>
+            <p>
+              Supports the platform and the work needed to keep the project
+              running and growing.
+            </p>
+          </div>
+        </div>
+      </div>
 
       <p class="about-note">
-        This describes the planned revenue model. Actual payment
-        availability and distribution depend on implementation
-        and the program's operating terms.
+        These percentages describe the planned allocation of each dollar
+        contributed through the program. They do not represent a guarantee
+        of earnings for any individual business or artist.
       </p>
     </section>
 
-    <!-- Businesses -->
     <section class="about-section">
       <h2>Why Local Businesses Matter</h2>
 
       <p>
-        Independent businesses are gathering places for their
-        communities. They give people a place to meet, relax,
-        discover new things, and support the people around them.
+        Local businesses are more than places to buy coffee, grab a drink,
+        or meet friends. They help shape the character of a community.
+        Local Shuffle gives participating businesses another way to offer
+        customers something memorable while helping independent musicians
+        reach new listeners.
       </p>
 
       <p>
-        Local Shuffle gives participating businesses another way
-        to stand out while introducing customers to local artists.
-        It is a small connection between two groups that deserve
-        more attention: the people making music and the people
-        building community.
+        For customers, it's a simple way to discover music while supporting
+        places they already enjoy. For artists, it creates another potential
+        connection with people who might never have found their music
+        otherwise.
       </p>
 
       <p>
-        We're starting in the Tampa Bay area and want to grow
-        thoughtfully, one community and one participating location
-        at a time.
+        We're starting in the Tampa Bay area, building relationships with
+        local artists and businesses, and working toward a model that can
+        grow into other communities.
       </p>
     </section>
 
-    <!-- Community -->
     <section class="about-section">
       <h2>Starting Local. Growing Together.</h2>
 
       <p>
-        Local Shuffle starts with local artists and businesses.
-        As the network grows, the goal is to make it easier for
-        listeners to discover independent music wherever they go,
-        while keeping the experience rooted in the communities
-        that make it possible.
+        Local Shuffle is being built around a simple idea: music discovery
+        can be more personal, more local, and more connected to the places
+        where people spend their time.
       </p>
 
       <p>
-        You don't have to know the band. You don't have to follow
-        a trend. You just have to be willing to give a song a chance.
+        We're starting small, learning what works, and building a community
+        of artists, businesses, and music fans who believe that great music
+        is worth discovering.
+      </p>
+
+      <p>
+        Every participating business, every artist who contributes a song,
+        and every customer who gives something new a listen helps move that
+        idea forward.
       </p>
     </section>
 
-    <!-- Call to action -->
     <section class="about-cta">
       <h2>Be Part of the Shuffle</h2>
 
       <p>
-        Are you a music fan, an independent artist, or a local
-        business? There's a place for you in the Local Shuffle
-        community.
+        Whether you're looking for new music, making music of your own, or
+        running a local business, there's a place for you here.
       </p>
 
-      <div class="about-buttons">
-        <a class="about-button" href="ls-bands.html">
-          Discover Music
-        </a>
-
-        <a class="about-button" href="artist-submit-form.html">
-          Submit Your Music
-        </a>
-
-        <a class="about-button" href="Business-Application.html">
-          Join as a Business
-        </a>
+      <div class="about-cta-links">
+        <a class="ls-button" href="ls-bands.html">Discover Artists</a>
+        <a class="ls-button" href="artist-submit-form.html">Join as an Artist</a>
+        <a class="ls-button" href="Business-Application.html">Join as a Business</a>
       </div>
     </section>
 
   </main>
 
-  <!-- Footer -->
-  <footer class="text-center py-4">
+  <footer class="about-footer">
     <p>&copy; 2026 Local Shuffle. Supporting local music, one song at a time.</p>
   </footer>
-
-  <!-- Bootstrap navigation scripts -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
