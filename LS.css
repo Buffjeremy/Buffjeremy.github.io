@@ -453,4 +453,31 @@ cursor: pointer;
 #songForm input[type="file"]::file-selector-button:hover {
 background-color: #333333;
 }
+.download-section {
+  background-color: #1a1a1a;
+  color: #f2f2f2;
+  padding: 30px;
+  border-radius: 10px;
+  margin: 25px 0;
+  line-height: 1.8;
+}
 
+.download-section h2,
+.download-section h3,
+.download-section p {
+  color: #f2f2f2;
+}
+
+.download-section a {
+  color: #e6a09e;
+}
+
+.download-section a:hover {
+  color: #ffffff;
+}
+
+@media (max-width: 600px) {
+  .download-section {
+    padding: 20px;
+  }
+}
