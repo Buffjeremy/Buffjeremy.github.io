@@ -1,454 +1,180 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-
-  <title>Local Shuffle - Business Application</title>
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Local Shuffle - Business Application</title>
+  <meta name="description" content="Bring local music to your customers. Apply to become a Local Shuffle participating business.">
+
   <link rel="icon" type="image/jpeg" href="images/Metal--Mock-up%20(2).jpg">
-
-  <!-- Bootstrap -->
-  <link rel="stylesheet"
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
-  <!-- Local Shuffle CSS -->
   <link rel="stylesheet" href="LS.css">
-  <style>
-
-    /* Business application page */
-
-    .business-page {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 15px;
-    }
-
-    .business-panel {
-      background: rgba(20, 20, 20, 0.92);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      border-radius: 10px;
-      padding: 35px;
-      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.6);
-      color: #f2f2f2;
-    }
-
-    .business-panel h1,
-    .business-panel h3 {
-      color: #ffffff;
-    }
-
-    .business-panel p,
-    .business-panel li,
-    .business-panel label {
-      color: #f2f2f2;
-    }
-
-    .business-panel h1 {
-      margin-bottom: 20px;
-    }
-
-    .business-panel h3 {
-      margin-top: 30px;
-      color: #d99a99;
-    }
-
-    .business-panel ul {
-      margin-bottom: 25px;
-    }
-
-    .business-panel .form-control {
-      background: #f7f7f7;
-      color: #222222;
-      border: 1px solid #999999;
-    }
-
-    .business-panel .form-control:focus {
-      background: #ffffff;
-      color: #222222;
-      border-color: #964c4b;
-      box-shadow: 0 0 0 0.2rem rgba(150, 76, 75, 0.25);
-    }
-
-    .business-panel .form-check {
-      margin-top: 12px;
-    }
-
-    .business-panel .form-check-label {
-      margin-left: 5px;
-    }
-
-    .business-panel .btn-primary {
-      background-color: #964c4b;
-      border-color: #964c4b;
-      padding: 10px 22px;
-      font-weight: bold;
-    }
-
-    .business-panel .btn-primary:hover {
-      background-color: #7d3f3e;
-      border-color: #7d3f3e;
-    }
-
-    #status {
-      color: #ffffff;
-      font-weight: bold;
-      margin-top: 20px;
-    }
-
-
-    /* Center the navigation bar */
-
-    nav {
-      width: 100%;
-      text-align: center;
-      padding: 15px 0;
-    }
-
-    nav a {
-      display: inline-block;
-      margin: 0 12px;
-    }
-
-  </style>
 </head>
 
-<body>
+<body class="interior-page">
 
-  <!-- Navigation -->
-
-  <nav>
+  <nav class="topnav" aria-label="Main navigation">
     <a href="index.html">Home</a>
     <a href="ls-bands.html">Bands</a>
     <a href="artists.html">Artists</a>
-    <a href="businesses.html">Businesses</a>
+    <a href="Business-Application.html" class="active" aria-current="page">Businesses</a>
     <a href="ls-Contact.html">Contact</a>
     <a href="ls-about.html">About</a>
   </nav>
 
+  <main class="page-main business-page">
 
-  <div class="business-page">
-
-    <div class="business-panel">
-
+    <header class="page-intro">
       <h1>Local Shuffle Business Application</h1>
+      <p>Bring local music to your customers.</p>
+    </header>
 
-      <p>
-        Bring local music to your customers with Local Shuffle.
-      </p>
+    <section class="ls-section business-panel">
+
+      <h2>How It Works</h2>
 
       <p>
         Customers purchase a qualifying item at your business and can add
         $1 to receive a randomly selected song from a local artist.
-        Your business provides the redemption code and the customer enters
-        that code on the Local Shuffle website to receive the MP3.
+        Your business provides the redemption code, and the customer enters
+        that code on the Local Shuffle website to receive an MP3 download.
       </p>
 
+      <div class="content-section">
+        <h2>The Revenue Split</h2>
 
-      <h3>The Split</h3>
+        <ul class="revenue-list">
+          <li><strong>75%</strong> — Your business</li>
+          <li><strong>15%</strong> — The Local Artist Pool</li>
+          <li><strong>10%</strong> — Local Shuffle operations and development</li>
+        </ul>
+      </div>
 
-      <ul>
-        <li><strong>75%</strong> — Your business</li>
-        <li><strong>15%</strong> — Local artists</li>
-        <li><strong>10%</strong> — Local Shuffle</li>
-      </ul>
+      <div class="content-section">
+        <h2>Apply to Participate</h2>
 
+        <p>
+          Complete the form below to express your interest. Your application
+          will be reviewed before your business is activated.
+        </p>
 
-      <p>
-        Submit the application below. Your application will be reviewed
-        before your business is activated.
-      </p>
-
+        <p class="form-note">Fields marked with * are required.</p>
+      </div>
 
       <form id="businessForm">
 
-        <div class="form-group">
+        <div class="ls-field">
           <label for="business_name">Business Name *</label>
-
           <input
             type="text"
-            class="form-control"
             id="business_name"
             name="business_name"
+            autocomplete="organization"
             required>
         </div>
 
-
-        <div class="form-group">
+        <div class="ls-field">
           <label for="website">Website</label>
-
           <input
             type="url"
-            class="form-control"
             id="website"
             name="website"
-            placeholder="https://">
+            placeholder="https://"
+            autocomplete="url">
         </div>
 
-
-        <div class="form-group">
-          <label for="address">Address *</label>
-
+        <div class="ls-field">
+          <label for="address">Street Address *</label>
           <input
             type="text"
-            class="form-control"
             id="address"
             name="address"
+            autocomplete="street-address"
             required>
         </div>
 
+        <div class="ls-row">
+          <div class="ls-field">
+            <label for="city">City *</label>
+            <input
+              type="text"
+              id="city"
+              name="city"
+              autocomplete="address-level2"
+              required>
+          </div>
 
-        <div class="form-group">
-          <label for="city">City *</label>
+          <div class="ls-field">
+            <label for="state">State *</label>
+            <input
+              type="text"
+              id="state"
+              name="state"
+              value="FL"
+              maxlength="2"
+              autocomplete="address-level1"
+              required>
+          </div>
 
-          <input
-            type="text"
-            class="form-control"
-            id="city"
-            name="city"
-            required>
+          <div class="ls-field">
+            <label for="zip_code">ZIP Code *</label>
+            <input
+              type="text"
+              id="zip_code"
+              name="zip_code"
+              inputmode="numeric"
+              pattern="[0-9]{5}"
+              maxlength="5"
+              autocomplete="postal-code"
+              required>
+          </div>
         </div>
 
-
-        <div class="form-group">
-          <label for="state">State *</label>
-
-          <input
-            type="text"
-            class="form-control"
-            id="state"
-            name="state"
-            value="FL"
-            required>
-        </div>
-
-
-        <div class="form-group">
-          <label for="zip_code">ZIP Code *</label>
-
-          <input
-            type="text"
-            class="form-control"
-            id="zip_code"
-            name="zip_code"
-            pattern="[0-9]{5}"
-            maxlength="5"
-            required>
-        </div>
-
-
-        <div class="form-group">
+        <div class="ls-field">
           <label for="contact_name">Contact Name *</label>
-
           <input
             type="text"
-            class="form-control"
             id="contact_name"
             name="contact_name"
+            autocomplete="name"
             required>
         </div>
 
-
-        <div class="form-group">
-          <label for="email">Email *</label>
-
+        <div class="ls-field">
+          <label for="email">Email Address *</label>
           <input
             type="email"
-            class="form-control"
             id="email"
             name="email"
+            autocomplete="email"
             required>
         </div>
 
-
-        <div class="form-group">
-          <label for="phone">Phone</label>
-
+        <div class="ls-field">
+          <label for="phone">Phone Number</label>
           <input
             type="tel"
-            class="form-control"
             id="phone"
-            name="phone">
+            name="phone"
+            autocomplete="tel">
         </div>
 
+        <div class="ls-checkbox-group">
 
-        <div class="form-check">
-
-          <input
-            type="checkbox"
-            class="form-check-input"
-            id="understand_program"
-            required>
-
-          <label class="form-check-label" for="understand_program">
-            I understand how the Local Shuffle program works. *
+          <label class="ls-checkbox" for="understand_program">
+            <input
+              type="checkbox"
+              id="understand_program"
+              name="understand_program"
+              required>
+            <span>I understand how the Local Shuffle program works. *</span>
           </label>
 
-        </div>
+          <label class="ls-checkbox" for="understand_split">
+            <input
+              type="checkbox"
+              id="understand_split"
+              name="understand_split
+```
 
-
-        <br>
-
-
-        <div class="form-check">
-
-          <input
-            type="checkbox"
-            class="form-check-input"
-            id="understand_split"
-            required>
-
-          <label class="form-check-label" for="understand_split">
-            I understand the 75% / 15% / 10% revenue split. *
-          </label>
-
-        </div>
-
-
-        <br>
-
-
-        <div class="form-check">
-
-          <input
-            type="checkbox"
-            class="form-check-input"
-            id="contact_permission"
-            required>
-
-          <label class="form-check-label" for="contact_permission">
-            I give Local Shuffle permission to contact me about this application. *
-          </label>
-
-        </div>
-
-
-        <br>
-
-
-        <button type="submit" class="btn btn-primary">
-          Submit Business Application
-        </button>
-
-      </form>
-
-
-      <div id="status"></div>
-
-    </div>
-
-  </div>
-
-
-  <!-- Supabase -->
-
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-
-  <script>
-
-    const SUPABASE_URL =
-      'https://yaqhqnuvlxfgfpnwufyw.supabase.co';
-
-    const SUPABASE_PUBLISHABLE_KEY =
-      'sb_publishable_Lo-gi0FFqCWN6JrZRumUIw_CK3yk9-i';
-
-
-    const supabaseClient = supabase.createClient(
-      SUPABASE_URL,
-      SUPABASE_PUBLISHABLE_KEY
-    );
-
-
-    const businessForm =
-      document.getElementById('businessForm');
-
-    const statusDiv =
-      document.getElementById('status');
-
-
-    businessForm.addEventListener('submit', async function(event) {
-
-      event.preventDefault();
-
-      statusDiv.textContent = 'Submitting...';
-
-
-      const businessName =
-        document.getElementById('business_name').value.trim();
-
-      const website =
-        document.getElementById('website').value.trim();
-
-      const address =
-        document.getElementById('address').value.trim();
-
-      const city =
-        document.getElementById('city').value.trim();
-
-      const state =
-        document.getElementById('state').value.trim();
-
-      const zipCode =
-        document.getElementById('zip_code').value.trim();
-
-      const contactName =
-        document.getElementById('contact_name').value.trim();
-
-      const email =
-        document.getElementById('email').value.trim();
-
-      const phone =
-        document.getElementById('phone').value.trim();
-
-
-      const { data, error } = await supabaseClient
-        .from('businesses')
-        .insert([
-          {
-            business_name: businessName,
-            contact_name: contactName,
-            email: email,
-            phone: phone,
-            website: website || null,
-            address: address,
-            city: city,
-            state: state,
-            zip_code: zipCode,
-            status: 'pending'
-          }
-        ]);
-
-
-      if (error) {
-
-        console.error(
-          'Business application error:',
-          error
-        );
-
-        statusDiv.textContent =
-          'There was a problem submitting your application: ' +
-          error.message;
-
-        return;
-      }
-
-
-      statusDiv.textContent =
-        'Thank you! Your business application has been submitted and is pending review.';
-
-
-      businessForm.reset();
-
-
-      document.getElementById('state').value = 'FL';
-
-    });
-
-  </script>
-
-</body>
-</html>
