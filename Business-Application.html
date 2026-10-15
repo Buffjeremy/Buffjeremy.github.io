@@ -1,4 +1,4 @@
-```html
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -175,6 +175,133 @@
             <input
               type="checkbox"
               id="understand_split"
-              name="understand_split
-```
+              name="understand_split"
+              required>
+            <span>I understand the 75% / 15% / 10% revenue split. *</span>
+          </label>
+
+          <label class="ls-checkbox" for="contact_permission">
+            <input
+              type="checkbox"
+              id="contact_permission"
+              name="contact_permission"
+              required>
+            <span>I give Local Shuffle permission to contact me about this application. *</span>
+          </label>
+
+        </div>
+
+        <button type="submit" class="ls-button ls-submit">
+          Submit Business Application
+        </button>
+
+      </form>
+
+      <div id="status" class="ls-message" role="status" aria-live="polite"></div>
+
+    </section>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+    const SUPABASE_URL =
+      'https://yaqhqnuvlxfgfpnwufyw.supabase.co';
+
+    const SUPABASE_PUBLISHABLE_KEY =
+      'sb_publishable_Lo-gi0FFqCWN6JrZRumUIw_CK3yk9-i';
+
+    const supabaseClient = supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
+    );
+
+    const businessForm = document.getElementById('businessForm');
+    const statusDiv = document.getElementById('status');
+
+    businessForm.addEventListener('submit', async function(event) {
+      event.preventDefault();
+
+      statusDiv.textContent = 'Submitting your application...';
+
+      const submitButton = businessForm.querySelector(
+        'button[type="submit"]'
+      );
+
+      submitButton.disabled = true;
+
+      const businessName =
+        document.getElementById('business_name').value.trim();
+
+      const website =
+        document.getElementById('website').value.trim();
+
+      const address =
+        document.getElementById('address').value.trim();
+
+      const city =
+        document.getElementById('city').value.trim();
+
+      const state =
+        document.getElementById('state').value.trim();
+
+      const zipCode =
+        document.getElementById('zip_code').value.trim();
+
+      const contactName =
+        document.getElementById('contact_name').value.trim();
+
+      const email =
+        document.getElementById('email').value.trim();
+
+      const phone =
+        document.getElementById('phone').value.trim();
+
+      try {
+        const { error } = await supabaseClient
+          .from('businesses')
+          .insert([{
+            business_name: businessName,
+            contact_name: contactName,
+            email: email,
+            phone: phone || null,
+            website: website || null,
+            address: address,
+            city: city,
+            state: state,
+            zip_code: zipCode,
+            status: 'pending'
+          }]);
+
+        if (error) {
+          console.error('Business application error:', error);
+
+          statusDiv.textContent =
+            'There was a problem submitting your application. Please try again.';
+
+          return;
+        }
+
+        statusDiv.textContent =
+          'Thank you! Your business application has been submitted and is pending review.';
+
+        businessForm.reset();
+        document.getElementById('state').value = 'FL';
+
+      } catch (error) {
+        console.error('Unexpected business application error:', error);
+
+        statusDiv.textContent =
+          'We could not submit your application due to a connection problem. Please try again.';
+
+      } finally {
+        submitButton.disabled = false;
+      }
+    });
+  </script>
+
+</body>
+</html>
+
 
