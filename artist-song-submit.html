@@ -1,124 +1,81 @@
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
 <head>
-
   <meta charset="utf-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1"
-  >
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Submit a Song - Local Shuffle</title>
 
-  <link
-    rel="stylesheet"
-    href="LS.css"
-  >
-
-  <link
-    rel="icon"
-    type="image/jpeg"
-    href="images/Metal--Mock-up%20(2).jpg"
-  >
-
+  <link rel="stylesheet" href="LS.css">
+  <link rel="icon" type="image/jpeg" href="images/Metal--Mock-up%20(2).jpg">
 </head>
 
-<body>
+<body class="interior-page">
 
-  <div class="topnav">
-
+  <nav class="topnav" aria-label="Main navigation">
     <a href="index.html">Home</a>
-
     <a href="ls-bands.html">Bands</a>
-
-    <a href="artists.html">Artists</a>
-
+    <a href="artists.html" class="active" aria-current="page">Artists</a>
     <a href="Business-Application.html">Businesses</a>
-
     <a href="ls-Contact.html">Contact</a>
-
     <a href="ls-about.html">About</a>
+  </nav>
 
-  </div>
-
-
-  <div class="ls-container">
-
-    <div class="ls-form">
-
+  <main class="page-main">
+    <header class="page-intro">
+      <p class="page-eyebrow">LOCAL SHUFFLE ARTISTS</p>
       <h1>Submit a Song</h1>
-
       <p>
-        Submit a released song for consideration
-        in the Local Shuffle rotation.
+        Have a released song you'd like considered for Local Shuffle?
+        Submit the details and an MP3 for review.
       </p>
+    </header>
 
-
+    <section class="ls-section ls-artist-form">
       <form id="songForm">
 
-
-        <div class="ls-section">
-
+        <div class="form-section">
           <h2>Song Information</h2>
 
-
           <div class="ls-field">
-
-            <label for="song_title">
-              Song Title
-            </label>
-
+            <label for="song_title">Song Title</label>
             <input
               type="text"
               id="song_title"
               name="title"
+              autocomplete="off"
               required
             >
-
           </div>
 
-
           <div class="ls-field">
-
-            <label for="release_date">
-              Release Date
-            </label>
-
+            <label for="release_date">Release Date</label>
             <input
               type="date"
               id="release_date"
               name="release_date"
               required
             >
-
           </div>
 
-
           <div class="ls-field">
-
-            <label for="official_url">
-              Official Song Link
-            </label>
-
+            <label for="official_url">Official Song Link</label>
             <input
               type="url"
               id="official_url"
               name="official_url"
-              placeholder="Spotify, Apple Music, Bandcamp, etc."
+              placeholder="https://..."
               required
             >
-
+            <small class="ls-small">
+              Link to the released song on Spotify, Apple Music,
+              Bandcamp, or another official platform.
+            </small>
           </div>
 
-
           <div class="ls-field">
-
-            <label for="distribution_platforms">
-              Distribution Platforms
-            </label>
-
+            <label for="distribution_platforms">Distribution Platforms</label>
             <input
               type="text"
               id="distribution_platforms"
@@ -126,16 +83,10 @@
               placeholder="Spotify, Apple Music, Amazon, etc."
               required
             >
-
           </div>
 
-
           <div class="ls-field">
-
-            <label for="song_file">
-              MP3 File
-            </label>
-
+            <label for="song_file">MP3 File</label>
             <input
               type="file"
               id="song_file"
@@ -143,81 +94,66 @@
               accept=".mp3,audio/mpeg"
               required
             >
-
             <small class="ls-small">
-              Please upload an MP3 version of the released song.
+              Upload an MP3 version of the officially released recording.
             </small>
-
           </div>
-
         </div>
 
-
-        <div class="ls-section">
-
+        <div class="form-section">
           <h2>Confirm Your Submission</h2>
 
-
           <label class="ls-checkbox">
-
             <input
               type="checkbox"
               id="song_rights"
               name="song_rights"
               required
             >
-
-            I confirm that I have the right to submit
-            this recording to Local Shuffle.
-
+            <span>
+              I confirm that I have the rights and permission necessary
+              to submit this recording to Local Shuffle.
+            </span>
           </label>
 
-
           <label class="ls-checkbox">
-
             <input
               type="checkbox"
               id="song_released"
               name="song_released"
               required
             >
-
-            I confirm that this song has been officially
-            released and distributed.
-
+            <span>
+              I confirm that this song has been officially released
+              and distributed.
+            </span>
           </label>
 
-
           <label class="ls-checkbox">
-
             <input
               type="checkbox"
               id="song_information"
               name="song_information"
               required
             >
-
-            I confirm that the information above is accurate.
-
+            <span>
+              I confirm that the information above is accurate.
+            </span>
           </label>
-
         </div>
 
-
-        <div class="ls-section">
-
+        <div class="form-section">
           <p class="ls-small">
-            Your song will be reviewed before it becomes
-            part of the Local Shuffle rotation.
+            Your song will be reviewed before it becomes part of the
+            Local Shuffle rotation. Submission does not guarantee
+            acceptance.
           </p>
 
           <p class="ls-small">
-            Artist identity and account verification will
-            be connected before Local Shuffle opens publicly.
+            Artist identity and account verification will be connected
+            before Local Shuffle opens publicly.
           </p>
-
         </div>
-
 
         <button
           type="submit"
@@ -227,37 +163,33 @@
           Submit Song
         </button>
 
-
         <div
           id="songFormStatus"
           class="ls-form-status"
+          role="status"
           aria-live="polite"
         ></div>
 
-
       </form>
+    </section>
 
-    </div>
-
-  </div>
-
+    <p class="form-note">
+      Need to register as an artist first?
+      <a href="artist-submit-form.html">Apply to join Local Shuffle</a>.
+    </p>
+  </main>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-
   <script>
-
     const SUPABASE_URL =
       "https://yaqhqnuvlxfgfpnwufyw.supabase.co";
-
 
     const SUPABASE_PUBLISHABLE_KEY =
       "sb_publishable_Lo-gi0FFqCWN6JrZRumUIw_CK3yk9-i";
 
-
     const SUBMIT_SONG_FUNCTION_URL =
       "https://yaqhqnuvlxfgfpnwufyw.supabase.co/functions/v1/submit-song";
-
 
     const supabaseClient =
       window.supabase.createClient(
@@ -265,133 +197,79 @@
         SUPABASE_PUBLISHABLE_KEY
       );
 
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("songForm");
+      const status = document.getElementById("songFormStatus");
+      const submitButton = document.getElementById("songSubmitButton");
 
-    document.addEventListener(
-      "DOMContentLoaded",
-      function() {
+      form.addEventListener("submit", async function (event) {
+        event.preventDefault();
 
-        const form =
-          document.getElementById(
-            "songForm"
-          );
+        if (!form.reportValidity()) {
+          return;
+        }
 
+        status.textContent = "Submitting your song...";
+        status.className = "ls-form-status";
+        submitButton.disabled = true;
 
-        const status =
-          document.getElementById(
-            "songFormStatus"
-          );
+        try {
+          const formData = new FormData(form);
 
-
-        const submitButton =
-          document.getElementById(
-            "songSubmitButton"
-          );
-
-
-        form.addEventListener(
-          "submit",
-          async function(event) {
-
-            event.preventDefault();
-
-
-            status.textContent =
-              "Submitting your song...";
-
-
-            status.className =
-              "ls-form-status";
-
-
-            submitButton.disabled =
-              true;
-
-
-            try {
-
-              const formData =
-                new FormData(form);
-
-
-              const response =
-                await fetch(
-                  SUBMIT_SONG_FUNCTION_URL,
-                  {
-                    method: "POST",
-
-                    headers: {
-                      "Authorization":
-                        "Bearer " +
-                        SUPABASE_PUBLISHABLE_KEY,
-
-                      "apikey":
-                        SUPABASE_PUBLISHABLE_KEY
-                    },
-
-                    body: formData
-                  }
-                );
-
-
-              const data =
-                await response.json();
-              console.log("submit-song response:", response.status, data);
-
-
-              if (!response.ok) {
-
-                throw new Error(
-                  data.error ||
-                  "Song submission failed."
-                );
-
-              }
-
-
-              status.textContent =
-                "Song submitted successfully! It is now waiting for review.";
-
-
-              status.className =
-                "ls-form-status success";
-
-
-              form.reset();
-
-
-            } catch (error) {
-
-              console.error(
-                "Local Shuffle song submission error:",
-                error
-              );
-
-
-              status.textContent =
-                error.message ||
-                "Something went wrong. Please try again.";
-
-
-              status.className =
-                "ls-form-status error";
-
-            } finally {
-
-              submitButton.disabled =
-                false;
-
+          const response = await fetch(
+            SUBMIT_SONG_FUNCTION_URL,
+            {
+              method: "POST",
+              headers: {
+                "Authorization": "Bearer " + SUPABASE_PUBLISHABLE_KEY,
+                "apikey": SUPABASE_PUBLISHABLE_KEY
+              },
+              body: formData
             }
+          );
 
+          const responseText = await response.text();
+          let data = {};
+
+          try {
+            data = responseText ? JSON.parse(responseText) : {};
+          } catch {
+            throw new Error(
+              "The server returned an unexpected response. Please try again."
+            );
           }
-        );
 
-      }
-    );
+          if (!response.ok) {
+            throw new Error(
+              data.error ||
+              data.message ||
+              "Song submission failed. Please try again."
+            );
+          }
 
+          status.textContent =
+            "Song submitted successfully! It is now waiting for review.";
+
+          status.className = "ls-form-status success";
+          form.reset();
+
+        } catch (error) {
+          console.error("Local Shuffle song submission error:", error);
+
+          status.textContent =
+            error.message ||
+            "Something went wrong. Please try again.";
+
+          status.className = "ls-form-status error";
+
+        } finally {
+          submitButton.disabled = false;
+        }
+      });
+    });
   </script>
 
 </body>
-
 </html>
 
-</html>
+
