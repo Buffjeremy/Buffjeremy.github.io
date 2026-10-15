@@ -1,131 +1,124 @@
+```html
 <!DOCTYPE html>
-
 <html lang="en" dir="ltr">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Local Shuffle - Bands</title>
-<link rel="icon" type="image/jpeg" href="images/Metal--Mock-up%20(2).jpg">
+  <title>Local Shuffle - Bands &amp; Artists</title>
+
+  <meta name="description"
+        content="Discover bands and independent artists participating in Local Shuffle in the Tampa Bay area.">
+
+  <link rel="icon"
+        type="image/jpeg"
+        href="images/Metal--Mock-up%20(2).jpg">
 
   <link rel="stylesheet" href="LS.css">
 </head>
 
-<body>
+<body class="interior-page">
 
-  <!-- ==========================================
-       NAVIGATION
-       ========================================== -->
+  <!-- NAVIGATION -->
 
-  <div class="topnav">
+  <nav class="topnav" aria-label="Main navigation">
     <a href="index.html">Home</a>
-    <a class="active" href="ls-bands.html">Bands</a>
-    <a href="artist-submit-form.html">Artists</a>
+    <a class="active" href="ls-bands.html" aria-current="page">Bands</a>
+    <a href="artists.html">Artists</a>
     <a href="Business-Application.html">Businesses</a>
     <a href="ls-Contact.html">Contact</a>
     <a href="ls-about.html">About</a>
-  </div>
-
-  <!-- ==========================================
-       PAGE INTRO
-       ========================================== -->
-
-  <div class="Local">
-    <h1>Local Bands & Artists</h1>
-
-```
-<p>
-  Local Music ... Local Listeners
-</p>
-
-<p>
-  Meet the artists participating in Local Shuffle.
-</p>
-```
-
-  </div>
-
-  <!-- ==========================================
-       BAND DIRECTORY
-       ========================================== -->
-
-  <div class="ls-container">
-
-```
-<div class="ls-section">
-
-  <h2>Participating Artists</h2>
-
-  <p>
-    Discover music from artists in the Tampa Bay area.
-    Every artist featured here has gone through the Local Shuffle
-    application and approval process.
-  </p>
-
-</div>
+  </nav>
 
 
-<!-- ==========================================
-     FALTERBOY
-     ========================================== -->
+  <main class="page-main">
 
-<div class="band-card">
+    <!-- PAGE INTRODUCTION -->
 
-  <h2>Falterboy</h2>
+    <header class="page-intro">
+      <h1>Local Bands &amp; Artists</h1>
 
-  <p class="band-genre">
-    Indie Rock / Indie Pop Rock
-  </p>
+      <p class="tagline">Local Music ... Local Listeners</p>
 
-  <p>
-    Falterboy is an indie rock project blending catchy,
-    rhythmic rock with songs about nostalgia, heartbreak,
-    procrastination, and the occasional existential crisis.
-  </p>
-
-  <p>
-    <a
-      class="ls-button"
-      href="https://www.falterboy.com"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      Visit Falterboy
-    </a>
-  </p>
-
-</div>
+      <p>
+        Meet the artists participating in Local Shuffle and
+        discover music made right here in the Tampa Bay area.
+      </p>
+    </header>
 
 
-<!-- ==========================================
-     FUTURE ARTISTS
-     ========================================== -->
+    <!-- DIRECTORY INTRODUCTION -->
 
-<div class="band-directory-note">
+    <section class="ls-section content-section">
+      <h2>Participating Artists</h2>
 
-  <h3>More Local Music Coming Soon</h3>
+      <p>
+        Discover music from artists in the Tampa Bay area.
+        Artists featured here are added as they complete the
+        Local Shuffle application and approval process.
+      </p>
+    </section>
 
-  <p>
-    We're currently building the Local Shuffle community.
-    As Tampa Bay artists join and are approved, they'll be
-    added to the directory.
-  </p>
 
-  <p>
-    Are you a local artist?
-  </p>
+    <!-- ARTIST DIRECTORY -->
 
-  <p>
-    <a class="ls-button" href="artist-submit-form.html">
-      Join Local Shuffle
-    </a>
-  </p>
+    <section class="card-grid" aria-label="Artist directory">
 
-</div>
-```
+      <article class="band-card ls-section">
 
-  </div>
+        <h2>Falterboy</h2>
+
+        <p class="band-genre">
+          Indie Rock / Indie Pop Rock
+        </p>
+
+        <p>
+          Falterboy is an indie rock project blending catchy,
+          rhythmic rock with songs about nostalgia, heartbreak,
+          procrastination, and the occasional existential crisis.
+        </p>
+
+        <a
+          class="ls-button"
+          href="https://www.falterboy.com"
+          target="_blank"
+          rel="noopener noreferrer">
+
+          Visit Falterboy
+
+        </a>
+
+      </article>
+
+    </section>
+
+
+    <!-- FUTURE ARTISTS -->
+
+    <section class="ls-section content-section band-directory-note">
+
+      <h2>More Local Music Coming Soon</h2>
+
+      <p>
+        We're building the Local Shuffle community. As more
+        Tampa Bay artists join and are approved, they'll be
+        added to this directory.
+      </p>
+
+      <p>
+        Are you a local artist interested in participating?
+      </p>
+
+      <a class="ls-button" href="artist-submit-form.html">
+        Join Local Shuffle
+      </a>
+
+    </section>
+
+  </main>
 
 </body>
 </html>
+```
+
