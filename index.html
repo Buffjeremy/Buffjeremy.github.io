@@ -1,37 +1,29 @@
-
+```html
 <!DOCTYPE html>
-
 <html lang="en" dir="ltr">
 
 <head>
-
   <meta charset="utf-8">
 
   <meta name="viewport"
-        content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet"
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-        integrity="sha384-GJqzFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-        crossorigin="anonymous">
-
-  <title>Local Shuffle</title>
+  <title>Local Shuffle | Local Music ... Local Listeners</title>
 
   <link rel="icon"
         type="image/jpeg"
         href="images/Metal--Mock-up%20(2).jpg">
 
   <link rel="stylesheet" href="LS.css">
-
 </head>
 
-<body>
+<body class="landing-page">
 
   <!-- ==========================================
        NAVIGATION
        ========================================== -->
 
-  <div class="topnav">
+  <nav class="topnav" aria-label="Main navigation">
 
     <a class="active" href="index.html">Home</a>
 
@@ -45,87 +37,193 @@
 
     <a href="ls-about.html">About</a>
 
-  </div>
+  </nav>
+
 
   <!-- ==========================================
-       TAGLINE
+       LANDING PAGE
        ========================================== -->
 
-  <div class="Local">
+  <main class="landing-main">
 
-    <h3>
-      Local Music ... Local Listeners
-    </h3>
+    <!-- Logo / Brand Area -->
 
-  </div>
+    <section class="hero">
 
-  <!-- ==========================================
-       REDEMPTION AREA
-       ========================================== -->
+      <img
+        class="site-logo"
+        src="images/Metal--Mock-up%20(2).jpg"
+        alt="Local Shuffle">
 
-  <div class="holder">
+      <p class="tagline">
+        Local Music ... Local Listeners
+      </p>
 
-    <label for="myInput">
-      Enter your redemption code:
-    </label>
+      <p class="hero-intro">
+        Discover music from artists in your own community.
+        Enter the redemption code from a participating local business
+        to download a random local song.
+      </p>
 
-    <div class="download-box">
+    </section>
 
-      <input
-        id="myInput"
-        type="text"
-        autocomplete="off"
-        placeholder="Redemption Code">
 
-      <button
-        id="myButton"
-        type="button">
+    <!-- ==========================================
+         REDEMPTION AREA
+         ========================================== -->
 
-        Download Now!
+    <section class="holder">
 
-      </button>
+      <div class="section-heading">
 
-    </div>
+        <h1>
+          Get Your Local Song
+        </h1>
 
-    <!-- Status messages -->
+        <p>
+          Enter the redemption code you received.
+        </p>
 
-    <div
-      id="status"
-      class="status"
-      aria-live="polite">
-    </div>
+      </div>
 
-    <!-- Download result -->
 
-    <div
-      id="downloadArea"
-      class="download-area"
-      hidden>
+      <div class="download-box">
 
-      <h2 id="songTitle">
-        Your song is ready!
-      </h2>
+        <label for="myInput" class="sr-only">
+          Enter your redemption code
+        </label>
 
-      <p id="artistName"></p>
+        <input
+          id="myInput"
+          type="text"
+          autocomplete="off"
+          placeholder="Redemption Code"
+          aria-label="Redemption Code">
 
-      <a
-        id="downloadLink"
-        class="download-button"
-        href="#">
+        <button
+          id="myButton"
+          type="button">
 
-        Download Song
+          Download Now!
 
-      </a>
+        </button>
 
-    </div>
+      </div>
 
-  </div>
+
+      <!-- Status messages -->
+
+      <div
+        id="status"
+        class="status"
+        aria-live="polite">
+      </div>
+
+
+      <!-- Download result -->
+
+      <div
+        id="downloadArea"
+        class="download-area"
+        hidden>
+
+        <h2 id="songTitle">
+          Your song is ready!
+        </h2>
+
+        <p id="artistName"></p>
+
+        <a
+          id="downloadLink"
+          class="download-button"
+          href="#">
+
+          Download Song
+
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         HOW IT WORKS
+         ========================================== -->
+
+    <section class="how-it-works">
+
+      <div class="section-heading">
+
+        <h2>
+          How Local Shuffle Works
+        </h2>
+
+      </div>
+
+
+      <div class="steps">
+
+        <div class="step">
+
+          <div class="step-number">1</div>
+
+          <h3>
+            Get a Code
+          </h3>
+
+          <p>
+            Visit a participating local business and get a
+            Local Shuffle redemption code.
+          </p>
+
+        </div>
+
+
+        <div class="step">
+
+          <div class="step-number">2</div>
+
+          <h3>
+            Enter Your Code
+          </h3>
+
+          <p>
+            Enter your code here to discover a song from
+            a local artist.
+          </p>
+
+        </div>
+
+
+        <div class="step">
+
+          <div class="step-number">3</div>
+
+          <h3>
+            Discover Local Music
+          </h3>
+
+          <p>
+            Download the song and discover someone making
+            music right here in your community.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
 
   <!-- ==========================================
        REDEMPTION SCRIPT
        ========================================== -->
 
   <script src="LS-Switch.js"></script>
+
 
   <!-- ==========================================
        QR CODE AUTO-FILL
@@ -152,3 +250,4 @@
 </body>
 
 </html>
+```
