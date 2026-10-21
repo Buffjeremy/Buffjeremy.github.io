@@ -1,0 +1,375 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Local Shuffle Admin</title>
+  <link rel="stylesheet" href="LS.css">
+  <link rel="icon" type="image/jpeg" href="images/Metal--Mock-up%20(2).jpg">
+  <style>
+    [hidden] { display: none !important; }
+    .admin-wrap { max-width: 1100px; margin: 2rem auto; padding: 1rem; }
+    .admin-panel, .admin-card {
+      background: white; border: 1px solid #ddd; border-radius: 12px;
+      padding: 1.25rem; margin-bottom: 1rem;
+    }
+    .admin-panel { max-width: 520px; }
+    .admin-panel input {
+      box-sizing: border-box; width: 100%; padding: .7rem;
+      margin: .35rem 0 1rem;
+    }
+    .admin-card h3 { margin-top: 0; }
+    .admin-meta { color: #555; overflow-wrap: anywhere; }
+    .admin-actions { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1rem; }
+    .admin-actions button, .admin-panel button, .admin-toolbar button {
+      padding: .65rem 1rem; border: 0; border-radius: 6px;
+      background: #964c4b; color: white; cursor: pointer;
+    }
+    button:disabled { opacity: .55; cursor: wait; }
+    .admin-actions .reject { background: #555; }
+    .admin-status { margin: 1rem 0; overflow-wrap: anywhere; }
+    .admin-error { color: #a12626; }
+    .admin-success { color: #256b3a; }
+    .admin-toolbar { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; }
+    .admin-section { margin-top: 2rem; }
+    .admin-empty { color: #666; }
+    .admin-field { margin: .35rem 0; overflow-wrap: anywhere; }
+    .admin-field strong { color: #333; }
+  </style>
+</head>
+<body class="interior-page">
+
+  <nav class="topnav" aria-label="Main navigation">
+    <a href="index.html">Home</a>
+    <a href="ls-bands.html">Bands</a>
+    <a href="artists.html">Artists</a>
+    <a href="Business-Application.html">Businesses</a>
+    <a href="ls-Contact.html">Contact</a>
+    <a href="ls-about.html">About</a>
+  </nav>
+
+  <main class="admin-wrap">
+    <header class="page-intro">
+      <p class="page-eyebrow">LOCAL SHUFFLE</p>
+      <h1>Admin Dashboard</h1>
+      <p>Review artist applications, song submissions, and business applications.</p>
+    </header>
+
+    <section id="loginPanel" class="admin-panel">
+      <h2>Administrator Sign In</h2>
+      <p>Use your verified Local Shuffle administrator account.</p>
+
+      <form id="loginForm">
+        <label for="email">Email address</label>
+        <input id="email" type="email" autocomplete="username" required>
+
+        <label for="password">Password</label>
+        <input id="password" type="password"
+               autocomplete="current-password" required>
+
+        <button id="loginButton" type="submit">Sign In</button>
+      </form>
+    </section>
+
+    <section id="dashboard" hidden>
+      <div class="admin-toolbar">
+        <p>Signed in as <strong id="adminEmail"></strong></p>
+        <button id="refreshButton" type="button">Refresh Queue</button>
+        <button id="logoutButton" type="button">Sign Out</button>
+      </div>
+    </section>
+
+    <p id="status" class="admin-status" role="status" aria-live="polite"></p>
+    <div id="queues" hidden></div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const SUPABASE_URL = "https://yaqhqnuvlxfgfpnwufyw.supabase.co";
+    const SUPABASE_PUBLISHABLE_KEY =
+      "sb_publishable_Lo-gi0FFqCWN6JrZRumUIw_CK3yk9-i";
+    const ADMIN_FUNCTION_URL =
+      SUPABASE_URL + "/functions/v1/admin-dashboard";
+
+    const supabaseClient = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
+    );
+
+    const $ = id => document.getElementById(id);
+    let currentSession = null;
+    let busy = false;
+
+    function setStatus(message, type = "") {
+      $("status").textContent = message;
+      $("status").className = "admin-status" +
+        (type ? " admin-" + type : "");
+    }
+
+    function make(tag, className, text) {
+      const element = document.createElement(tag);
+      if (className) element.className = className;
+      if (text !== undefined && text !== null) {
+        element.textContent = String(text);
+      }
+      return element;
+    }
+
+    function addField(parent, label, value) {
+      if (value === null || value === undefined || value === "") return;
+      const line = make("p", "admin-field");
+      const strong = make("strong", "", label + ": ");
+      line.append(strong, document.createTextNode(String(value)));
+      parent.appendChild(line);
+    }
+
+    async function callAdmin(payload) {
+      const { data: sessionData, error: sessionError } =
+        await supabaseClient.auth.getSession();
+
+      if (sessionError || !sessionData.session) {
+        throw new Error("Please sign in again.");
+      }
+
+      currentSession = sessionData.session;
+
+      const response = await fetch(ADMIN_FUNCTION_URL, {
+        method: "POST",
+        headers: {
+          "Authorization": "Bearer " + currentSession.access_token,
+          "apikey": SUPABASE_PUBLISHABLE_KEY,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const raw = await response.text();
+      let result = {};
+
+      try {
+        result = raw ? JSON.parse(raw) : {};
+      } catch {
+        throw new Error(
+          "Unexpected server response. Check that the admin function is deployed."
+        );
+      }
+
+      if (!response.ok) {
+        throw new Error(result.error || "The request failed.");
+      }
+
+      return result;
+    }
+
+    function showLoggedOut() {
+      currentSession = null;
+      $("loginPanel").hidden = false;
+      $("dashboard").hidden = true;
+      $("queues").hidden = true;
+      $("queues").replaceChildren();
+    }
+
+    function showLoggedIn(session) {
+      currentSession = session;
+      $("loginPanel").hidden = true;
+      $("dashboard").hidden = false;
+      $("adminEmail").textContent = session.user.email || "";
+    }
+
+    function renderCard(kind, item) {
+      const card = make("article", "admin-card");
+      const title =
+        item.artist_name || item.business_name || item.title || "Untitled";
+      card.appendChild(make("h3", "", title));
+
+      if (kind === "artist") {
+        addField(card, "Contact", item.contact_name);
+        addField(card, "Email", item.email);
+        addField(card, "Phone", item.phone);
+        addField(card, "Location", [item.city, item.zip_code].filter(Boolean).join(" "));
+        addField(card, "Genre", item.genre);
+        addField(card, "Website", item.website);
+        addField(card, "Instagram", item.instagram);
+        addField(card, "Facebook", item.facebook);
+        addField(card, "Primary music link", item.primary_music_link);
+        addField(card, "Application song", item.song_title);
+        addField(card, "Release date", item.release_date);
+        addField(card, "Official song link", item.official_song_url);
+        addField(card, "Distribution platforms", item.distribution_platforms);
+        addField(card, "Verification platform", item.verification_platform);
+        addField(card, "Verification post", item.verification_post_url);
+        addField(card, "Submitted", item.submitted_at);
+      } else if (kind === "song") {
+        addField(card, "Artist record ID", item.artist_id);
+        addField(card, "Release date", item.release_date);
+        addField(card, "Official link", item.official_url);
+        addField(card, "Platforms", item.distribution_platforms);
+        addField(card, "Filename", item.filename);
+        addField(card, "Submitted", item.submitted_at);
+        addField(card, "Song ID", item.id);
+      } else {
+        addField(card, "Contact", item.contact_name);
+        addField(card, "Email", item.email);
+        addField(card, "Phone", item.phone);
+        addField(card, "Address", item.address);
+        addField(card, "City", item.city);
+        addField(card, "State", item.state);
+        addField(card, "ZIP", item.zip_code);
+        addField(card, "Website", item.website);
+        addField(card, "Submitted", item.created_at);
+      }
+
+      const actions = make("div", "admin-actions");
+
+      const approve = make("button", "", kind === "song"
+        ? "Approve Song" : kind === "artist"
+        ? "Approve Artist" : "Activate Business");
+      approve.type = "button";
+      approve.addEventListener("click", () =>
+        review(kind, item.id, "approve", approve, reject));
+
+      const reject = make("button", "reject",
+        kind === "song" ? "Reject Song" : "Reject");
+      reject.type = "button";
+      reject.addEventListener("click", () =>
+        review(kind, item.id, "reject", reject, approve));
+
+      actions.append(approve, reject);
+      card.appendChild(actions);
+      return card;
+    }
+
+    function renderSection(container, title, kind, records) {
+      const section = make("section", "admin-section");
+      section.appendChild(make("h2", "", title));
+
+      if (!records || records.length === 0) {
+        section.appendChild(make("p", "admin-empty", "Nothing awaiting review."));
+      } else {
+        for (const item of records) {
+          section.appendChild(renderCard(kind, item));
+        }
+      }
+
+      container.appendChild(section);
+    }
+
+    async function loadQueue() {
+      if (busy) return;
+      busy = true;
+      $("refreshButton").disabled = true;
+      setStatus("Loading review queue...");
+
+      try {
+        const data = await callAdmin({ action: "list" });
+        const queues = $("queues");
+        queues.replaceChildren();
+
+        renderSection(queues, "Artist Applications", "artist",
+          data.artist_applications);
+        renderSection(queues, "Song Submissions", "song",
+          data.song_submissions);
+        renderSection(queues, "Business Applications", "business",
+          data.business_applications);
+
+        queues.hidden = false;
+        setStatus("Review queue loaded.", "success");
+      } catch (error) {
+        $("queues").hidden = true;
+        setStatus(error.message || "Unable to load the review queue.", "error");
+      } finally {
+        busy = false;
+        $("refreshButton").disabled = false;
+      }
+    }
+
+    async function review(kind, id, decision, clicked, other) {
+      const labels = {
+        artist: "artist application",
+        song: "song submission",
+        business: "business application"
+      };
+
+      const verb = decision === "approve" ? "approve" : "reject";
+      if (!confirm("Are you sure you want to " + verb + " this " +
+                   labels[kind] + "?")) return;
+
+      clicked.disabled = true;
+      other.disabled = true;
+      setStatus("Processing review...");
+
+      try {
+        const data = await callAdmin({
+          action: kind === "artist" ? "artist_application" : kind,
+          id,
+          decision
+        });
+
+        setStatus(data.message || "Review completed.", "success");
+        await loadQueue();
+      } catch (error) {
+        setStatus(error.message || "Review failed.", "error");
+        clicked.disabled = false;
+        other.disabled = false;
+      }
+    }
+
+    $("loginForm").addEventListener("submit", async event => {
+      event.preventDefault();
+
+      const button = $("loginButton");
+      button.disabled = true;
+      setStatus("Signing in...");
+
+      try {
+        const { data, error } =
+          await supabaseClient.auth.signInWithPassword({
+            email: $("email").value.trim(),
+            password: $("password").value
+          });
+
+        if (error) throw error;
+        if (!data.session) {
+          throw new Error("No active session was returned.");
+        }
+
+        showLoggedIn(data.session);
+
+        // The server confirms whether this user is an administrator.
+        await loadQueue();
+      } catch (error) {
+        showLoggedOut();
+        setStatus(error.message || "Sign-in failed.", "error");
+      } finally {
+        button.disabled = false;
+      }
+    });
+
+    $("refreshButton").addEventListener("click", loadQueue);
+
+    $("logoutButton").addEventListener("click", async () => {
+      await supabaseClient.auth.signOut();
+      showLoggedOut();
+      setStatus("Signed out.");
+    });
+
+    (async function initialize() {
+      const { data } = await supabaseClient.auth.getSession();
+
+      if (data.session) {
+        showLoggedIn(data.session);
+        await loadQueue();
+      } else {
+        showLoggedOut();
+      }
+    })();
+
+    supabaseClient.auth.onAuthStateChange((event, session) => {
+      if (event === "SIGNED_OUT" || !session) {
+        showLoggedOut();
+      }
+    });
+  </script>
+</body>
+</html>
