@@ -1,7 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,6 +8,66 @@
 
   <link rel="stylesheet" href="LS.css">
   <link rel="icon" type="image/jpeg" href="images/Metal--Mock-up%20(2).jpg">
+
+  <style>
+    [hidden] {
+      display: none !important;
+    }
+
+    .account-panel {
+      max-width: 720px;
+      margin: 0 auto 2rem;
+    }
+
+    .account-panel input {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .account-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .account-message {
+      margin-top: 1rem;
+      overflow-wrap: anywhere;
+    }
+
+    .account-message.error {
+      color: #a12626;
+    }
+
+    .account-message.success {
+      color: #256b3a;
+    }
+
+    .account-email {
+      overflow-wrap: anywhere;
+      font-weight: 600;
+    }
+
+    .account-secondary {
+      margin-top: 1rem;
+    }
+
+    .account-secondary button {
+      background: none;
+      border: none;
+      padding: 0;
+      color: #964c4b;
+      text-decoration: underline;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: wait;
+    }
+  </style>
 </head>
 
 <body class="interior-page">
@@ -28,35 +87,104 @@
       <h1>Submit a Song</h1>
       <p>
         Have a released song you'd like considered for Local Shuffle?
-        Submit the details and an MP3 for review.
+        Sign in with your verified account to submit your song for review.
       </p>
     </header>
 
-    <section class="ls-section ls-artist-form">
-      <form id="songForm">
+    <section class="ls-section account-panel">
+      <h2 id="accountHeading">Artist Account</h2>
 
+      <p id="accountIntro">
+        Create an account or sign in to check your artist submission access.
+        Your login must be linked to an approved Local Shuffle artist account.
+      </p>
+
+      <div id="signedOutPanel">
+        <div class="ls-field">
+          <label for="accountEmail">Email address</label>
+          <input
+            type="email"
+            id="accountEmail"
+            autocomplete="email"
+            required
+          >
+        </div>
+
+        <div class="ls-field">
+          <label for="accountPassword">Password</label>
+          <input
+            type="password"
+            id="accountPassword"
+            autocomplete="current-password"
+            minlength="8"
+            required
+          >
+          <small class="ls-small">
+            Use at least 8 characters.
+          </small>
+        </div>
+
+        <div class="account-actions">
+          <button type="button" id="signInButton" class="ls-submit">
+            Sign In
+          </button>
+
+          <button type="button" id="signUpButton" class="ls-submit">
+            Create Account
+          </button>
+        </div>
+
+        <p class="account-secondary">
+          <button type="button" id="resetPasswordButton">
+            Forgot your password?
+          </button>
+        </p>
+      </div>
+
+      <div id="signedInPanel" hidden>
+        <p>
+          Signed in as:
+          <span id="signedInEmail" class="account-email"></span>
+        </p>
+
+        <p id="accessMessage" class="account-message" role="status"
+           aria-live="polite">
+          Checking artist access...
+        </p>
+
+        <div class="account-actions">
+          <button type="button" id="checkAccessButton" class="ls-submit">
+            Check Access Again
+          </button>
+
+          <button type="button" id="signOutButton" class="ls-submit">
+            Sign Out
+          </button>
+        </div>
+      </div>
+
+      <p id="accountStatus" class="account-message" role="status"
+         aria-live="polite"></p>
+    </section>
+
+    <section id="songSubmissionSection" class="ls-section ls-artist-form"
+             hidden>
+      <h2 id="submissionHeading">Song Submission</h2>
+
+      <p id="approvedArtistMessage" class="ls-small"></p>
+
+      <form id="songForm">
         <div class="form-section">
           <h2>Song Information</h2>
 
           <div class="ls-field">
             <label for="song_title">Song Title</label>
-            <input
-              type="text"
-              id="song_title"
-              name="title"
-              autocomplete="off"
-              required
-            >
+            <input type="text" id="song_title" name="title" required>
           </div>
 
           <div class="ls-field">
             <label for="release_date">Release Date</label>
-            <input
-              type="date"
-              id="release_date"
-              name="release_date"
-              required
-            >
+            <input type="date" id="release_date" name="release_date" required>
           </div>
 
           <div class="ls-field">
@@ -96,6 +224,7 @@
             >
             <small class="ls-small">
               Upload an MP3 version of the officially released recording.
+              Maximum file size: 25 MB.
             </small>
           </div>
         </div>
@@ -104,12 +233,7 @@
           <h2>Confirm Your Submission</h2>
 
           <label class="ls-checkbox">
-            <input
-              type="checkbox"
-              id="song_rights"
-              name="song_rights"
-              required
-            >
+            <input type="checkbox" id="song_rights" name="song_rights" required>
             <span>
               I confirm that I have the rights and permission necessary
               to submit this recording to Local Shuffle.
@@ -117,12 +241,7 @@
           </label>
 
           <label class="ls-checkbox">
-            <input
-              type="checkbox"
-              id="song_released"
-              name="song_released"
-              required
-            >
+            <input type="checkbox" id="song_released" name="song_released" required>
             <span>
               I confirm that this song has been officially released
               and distributed.
@@ -130,12 +249,8 @@
           </label>
 
           <label class="ls-checkbox">
-            <input
-              type="checkbox"
-              id="song_information"
-              name="song_information"
-              required
-            >
+            <input type="checkbox" id="song_information"
+                   name="song_information" required>
             <span>
               I confirm that the information above is accurate.
             </span>
@@ -145,31 +260,16 @@
         <div class="form-section">
           <p class="ls-small">
             Your song will be reviewed before it becomes part of the
-            Local Shuffle rotation. Submission does not guarantee
-            acceptance.
-          </p>
-
-          <p class="ls-small">
-            Artist identity and account verification will be connected
-            before Local Shuffle opens publicly.
+            Local Shuffle rotation. Submission does not guarantee acceptance.
           </p>
         </div>
 
-        <button
-          type="submit"
-          id="songSubmitButton"
-          class="ls-submit"
-        >
+        <button type="submit" id="songSubmitButton" class="ls-submit">
           Submit Song
         </button>
 
-        <div
-          id="songFormStatus"
-          class="ls-form-status"
-          role="status"
-          aria-live="polite"
-        ></div>
-
+        <div id="songFormStatus" class="ls-form-status"
+             role="status" aria-live="polite"></div>
       </form>
     </section>
 
@@ -188,88 +288,466 @@
     const SUPABASE_PUBLISHABLE_KEY =
       "sb_publishable_Lo-gi0FFqCWN6JrZRumUIw_CK3yk9-i";
 
-    const SUBMIT_SONG_FUNCTION_URL =
-      "https://yaqhqnuvlxfgfpnwufyw.supabase.co/functions/v1/submit-song";
+    const CHECK_ACCESS_URL =
+      SUPABASE_URL + "/functions/v1/check-artist-access";
 
-    const supabaseClient =
-      window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_PUBLISHABLE_KEY
-      );
+    const SUBMIT_SONG_URL =
+      SUPABASE_URL + "/functions/v1/submit-song";
 
-    document.addEventListener("DOMContentLoaded", function () {
-      const form = document.getElementById("songForm");
-      const status = document.getElementById("songFormStatus");
-      const submitButton = document.getElementById("songSubmitButton");
+    const supabaseClient = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
+    );
 
-      form.addEventListener("submit", async function (event) {
-        event.preventDefault();
+    const $ = (id) => document.getElementById(id);
 
-        if (!form.reportValidity()) {
+    let currentSession = null;
+    let accessApproved = false;
+    let accessCheckRunning = false;
+
+    function setAccountStatus(message, type = "") {
+      const element = $("accountStatus");
+      element.textContent = message;
+      element.className = "account-message" + (type ? " " + type : "");
+    }
+
+    function setAccessMessage(message, type = "") {
+      const element = $("accessMessage");
+      element.textContent = message;
+      element.className = "account-message" + (type ? " " + type : "");
+    }
+
+    function setSongStatus(message, type = "") {
+      const element = $("songFormStatus");
+      element.textContent = message;
+      element.className = "ls-form-status" + (type ? " " + type : "");
+    }
+
+    function showSignedOut() {
+      currentSession = null;
+      accessApproved = false;
+
+      $("signedOutPanel").hidden = false;
+      $("signedInPanel").hidden = true;
+      $("songSubmissionSection").hidden = true;
+      $("accountIntro").hidden = false;
+      $("accountHeading").textContent = "Artist Account";
+      $("accountPassword").value = "";
+      setAccountStatus("");
+    }
+
+    async function checkArtistAccess(session) {
+      if (!session || !session.access_token) {
+        showSignedOut();
+        return;
+      }
+
+      currentSession = session;
+      accessApproved = false;
+
+      $("signedOutPanel").hidden = true;
+      $("signedInPanel").hidden = false;
+      $("songSubmissionSection").hidden = true;
+      $("accountIntro").hidden = true;
+      $("accountHeading").textContent = "Your Artist Account";
+      $("signedInEmail").textContent = session.user.email || "Signed-in user";
+      $("checkAccessButton").disabled = true;
+      setAccessMessage("Checking your artist account...");
+
+      if (accessCheckRunning) {
+        $("checkAccessButton").disabled = false;
+        return;
+      }
+
+      accessCheckRunning = true;
+
+      try {
+        const response = await fetch(CHECK_ACCESS_URL, {
+          method: "POST",
+          headers: {
+            "Authorization": "Bearer " + session.access_token,
+            "apikey": SUPABASE_PUBLISHABLE_KEY,
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({})
+        });
+
+        const text = await response.text();
+        let data = {};
+
+        try {
+          data = text ? JSON.parse(text) : {};
+        } catch {
+          throw new Error("The access check returned an unexpected response.");
+        }
+
+        if (response.status === 401) {
+          throw new Error(
+            "Your session has expired. Please sign in again."
+          );
+        }
+
+        if (!response.ok) {
+          throw new Error(
+            data.error || "Unable to check artist access right now."
+          );
+        }
+
+        if (data.approved !== true) {
+          setAccessMessage(
+            data.reason ||
+            "Your login is not linked to an approved artist account.",
+            "error"
+          );
+          $("songSubmissionSection").hidden = true;
           return;
         }
 
-        status.textContent = "Submitting your song...";
-        status.className = "ls-form-status";
-        submitButton.disabled = true;
+        // Confirm that the same session is still current.
+        const { data: sessionData } = await supabaseClient.auth.getSession();
+
+        if (
+          !sessionData.session ||
+          sessionData.session.user.id !== session.user.id
+        ) {
+          showSignedOut();
+          return;
+        }
+
+        currentSession = sessionData.session;
+        accessApproved = true;
+
+        $("approvedArtistMessage").textContent =
+          "Submitting as: " + data.artist_name;
+
+        $("songSubmissionSection").hidden = false;
+
+        setAccessMessage(
+          "Your artist account is approved for song submissions.",
+          "success"
+        );
+      } catch (error) {
+        console.error("Artist access check error:", error);
+        accessApproved = false;
+        $("songSubmissionSection").hidden = true;
+        setAccessMessage(
+          error.message || "Unable to check access. Please try again.",
+          "error"
+        );
+      } finally {
+        accessCheckRunning = false;
+        $("checkAccessButton").disabled = false;
+      }
+    }
+
+    async function getCurrentSession() {
+      const { data, error } = await supabaseClient.auth.getSession();
+
+      if (error) {
+        setAccountStatus(error.message, "error");
+        showSignedOut();
+        return null;
+      }
+
+      return data.session;
+    }
+
+    $("signUpButton").addEventListener("click", async () => {
+      const email = $("accountEmail").value.trim();
+      const password = $("accountPassword").value;
+
+      if (!email || !password) {
+        setAccountStatus("Enter your email address and password.", "error");
+        return;
+      }
+
+      if (password.length < 8) {
+        setAccountStatus(
+          "Please use a password with at least 8 characters.",
+          "error"
+        );
+        return;
+      }
+
+      $("signUpButton").disabled = true;
+      $("signInButton").disabled = true;
+      setAccountStatus("Creating your account...");
+
+      try {
+        const redirectTo =
+          window.location.origin + window.location.pathname;
+
+        const { data, error } = await supabaseClient.auth.signUp({
+          email,
+          password,
+          options: {
+            emailRedirectTo: redirectTo
+          }
+        });
+
+        if (error) throw error;
+
+        if (data.session) {
+          await checkArtistAccess(data.session);
+          setAccountStatus(
+            "Account created. If prompted, verify your email before continuing.",
+            "success"
+          );
+        } else {
+          setAccountStatus(
+            "Account request received. Check your email for the verification link. After verifying, return here and sign in.",
+            "success"
+          );
+        }
+      } catch (error) {
+        console.error("Account creation error:", error);
+        setAccountStatus(
+          error.message || "Unable to create your account.",
+          "error"
+        );
+      } finally {
+        $("signUpButton").disabled = false;
+        $("signInButton").disabled = false;
+      }
+    });
+
+    $("signInButton").addEventListener("click", async () => {
+      const email = $("accountEmail").value.trim();
+      const password = $("accountPassword").value;
+
+      if (!email || !password) {
+        setAccountStatus("Enter your email address and password.", "error");
+        return;
+      }
+
+      $("signUpButton").disabled = true;
+      $("signInButton").disabled = true;
+      setAccountStatus("Signing in...");
+
+      try {
+        const { data, error } =
+          await supabaseClient.auth.signInWithPassword({
+            email,
+            password
+          });
+
+        if (error) throw error;
+
+        await checkArtistAccess(data.session);
+        setAccountStatus("");
+      } catch (error) {
+        console.error("Sign-in error:", error);
+        setAccountStatus(
+          error.message || "Unable to sign in.",
+          "error"
+        );
+      } finally {
+        $("signUpButton").disabled = false;
+        $("signInButton").disabled = false;
+      }
+    });
+
+    $("resetPasswordButton").addEventListener("click", async () => {
+      const email = $("accountEmail").value.trim();
+
+      if (!email) {
+        setAccountStatus(
+          "Enter your email address first, then select Forgot your password.",
+          "error"
+        );
+        $("accountEmail").focus();
+        return;
+      }
+
+      $("resetPasswordButton").disabled = true;
+      setAccountStatus("Requesting a password reset...");
+
+      try {
+        const redirectTo =
+          window.location.origin + window.location.pathname;
+
+        const { error } =
+          await supabaseClient.auth.resetPasswordForEmail(email, {
+            redirectTo
+          });
+
+        if (error) throw error;
+
+        setAccountStatus(
+          "If an account exists for that email, a password reset message will be sent.",
+          "success"
+        );
+      } catch (error) {
+        setAccountStatus(
+          error.message || "Unable to request a password reset.",
+          "error"
+        );
+      } finally {
+        $("resetPasswordButton").disabled = false;
+      }
+    });
+
+    $("checkAccessButton").addEventListener("click", async () => {
+      const session = await getCurrentSession();
+
+      if (!session) {
+        showSignedOut();
+        setAccountStatus("Please sign in again.", "error");
+        return;
+      }
+
+      await checkArtistAccess(session);
+    });
+
+    $("signOutButton").addEventListener("click", async () => {
+      $("signOutButton").disabled = true;
+
+      try {
+        const { error } = await supabaseClient.auth.signOut();
+        if (error) throw error;
+
+        showSignedOut();
+        setAccountStatus("You have signed out.", "success");
+      } catch (error) {
+        setAccessMessage(
+          error.message || "Unable to sign out.",
+          "error"
+        );
+      } finally {
+        $("signOutButton").disabled = false;
+      }
+    });
+
+    $("songForm").addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const form = $("songForm");
+      const submitButton = $("songSubmitButton");
+
+      if (!form.reportValidity()) return;
+
+      // Re-check server access immediately before submitting.
+      const session = await getCurrentSession();
+
+      if (!session) {
+        showSignedOut();
+        setSongStatus("Please sign in again before submitting.", "error");
+        return;
+      }
+
+      submitButton.disabled = true;
+      setSongStatus("Verifying access and submitting your song...");
+
+      try {
+        const accessResponse = await fetch(CHECK_ACCESS_URL, {
+          method: "POST",
+          headers: {
+            "Authorization": "Bearer " + session.access_token,
+            "apikey": SUPABASE_PUBLISHABLE_KEY,
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({})
+        });
+
+        const accessText = await accessResponse.text();
+        let accessData = {};
 
         try {
-          const formData = new FormData(form);
-
-          const response = await fetch(
-            SUBMIT_SONG_FUNCTION_URL,
-            {
-              method: "POST",
-              headers: {
-                "Authorization": "Bearer " + SUPABASE_PUBLISHABLE_KEY,
-                "apikey": SUPABASE_PUBLISHABLE_KEY
-              },
-              body: formData
-            }
-          );
-
-          const responseText = await response.text();
-          let data = {};
-
-          try {
-            data = responseText ? JSON.parse(responseText) : {};
-          } catch {
-            throw new Error(
-              "The server returned an unexpected response. Please try again."
-            );
-          }
-
-          if (!response.ok) {
-            throw new Error(
-              data.error ||
-              data.message ||
-              "Song submission failed. Please try again."
-            );
-          }
-
-          status.textContent =
-            "Song submitted successfully! It is now waiting for review.";
-
-          status.className = "ls-form-status success";
-          form.reset();
-
-        } catch (error) {
-          console.error("Local Shuffle song submission error:", error);
-
-          status.textContent =
-            error.message ||
-            "Something went wrong. Please try again.";
-
-          status.className = "ls-form-status error";
-
-        } finally {
-          submitButton.disabled = false;
+          accessData = accessText ? JSON.parse(accessText) : {};
+        } catch {
+          throw new Error("Unable to verify your artist access.");
         }
-      });
+
+        if (!accessResponse.ok || accessData.approved !== true) {
+          accessApproved = false;
+          $("songSubmissionSection").hidden = true;
+          setAccessMessage(
+            accessData.reason ||
+            accessData.error ||
+            "Your account is not approved for song submissions.",
+            "error"
+          );
+          throw new Error("Artist access could not be verified.");
+        }
+
+        const formData = new FormData(form);
+
+        const response = await fetch(SUBMIT_SONG_URL, {
+          method: "POST",
+          headers: {
+            "Authorization": "Bearer " + session.access_token,
+            "apikey": SUPABASE_PUBLISHABLE_KEY
+          },
+          body: formData
+        });
+
+        const responseText = await response.text();
+        let data = {};
+
+        try {
+          data = responseText ? JSON.parse(responseText) : {};
+        } catch {
+          throw new Error(
+            "The server returned an unexpected response. Please try again."
+          );
+        }
+
+        if (!response.ok) {
+          throw new Error(
+            data.error ||
+            data.message ||
+            "Song submission failed. Please try again."
+          );
+        }
+
+        setSongStatus(
+          "Song submitted successfully! It is now waiting for review.",
+          "success"
+        );
+
+        form.reset();
+      } catch (error) {
+        console.error("Local Shuffle song submission error:", error);
+
+        if (error.message !== "Artist access could not be verified.") {
+          setSongStatus(
+            error.message || "Something went wrong. Please try again.",
+            "error"
+          );
+        } else {
+          setSongStatus(
+            "Your access could not be verified, so the song was not submitted.",
+            "error"
+          );
+        }
+      } finally {
+        submitButton.disabled = false;
+      }
+    });
+
+    // Restore an existing login when the page loads.
+    (async function initialize() {
+      const session = await getCurrentSession();
+
+      if (session) {
+        await checkArtistAccess(session);
+      } else {
+        showSignedOut();
+      }
+    })();
+
+    // Keep the page in sync if the session expires or changes.
+    supabaseClient.auth.onAuthStateChange((event, session) => {
+      if (event === "SIGNED_OUT" || !session) {
+        showSignedOut();
+      } else if (event === "SIGNED_IN" || event === "TOKEN_REFRESHED") {
+        checkArtistAccess(session);
+      }
     });
   </script>
 
 </body>
 </html>
+
 
 
