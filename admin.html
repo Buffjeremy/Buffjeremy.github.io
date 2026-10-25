@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,37 +6,201 @@
   <title>Local Shuffle Admin</title>
   <link rel="stylesheet" href="LS.css">
   <link rel="icon" type="image/jpeg" href="images/Metal--Mock-up%20(2).jpg">
+
   <style>
-    [hidden] { display: none !important; }
-    .admin-wrap { max-width: 1100px; margin: 2rem auto; padding: 1rem; }
-    .admin-panel, .admin-card {
-      background: white; border: 1px solid #ddd; border-radius: 12px;
-      padding: 1.25rem; margin-bottom: 1rem;
+    [hidden] {
+      display: none !important;
     }
-    .admin-panel { max-width: 520px; }
-    .admin-panel input {
-      box-sizing: border-box; width: 100%; padding: .7rem;
+
+    .admin-wrap {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    .admin-panel,
+    .admin-card {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .admin-panel {
+      max-width: 520px;
+    }
+
+    .admin-panel input,
+    .payout-panel input {
+      box-sizing: border-box;
+      width: 100%;
+      padding: .7rem;
       margin: .35rem 0 1rem;
     }
-    .admin-card h3 { margin-top: 0; }
-    .admin-meta { color: #555; overflow-wrap: anywhere; }
-    .admin-actions { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1rem; }
-    .admin-actions button, .admin-panel button, .admin-toolbar button {
-      padding: .65rem 1rem; border: 0; border-radius: 6px;
-      background: #964c4b; color: white; cursor: pointer;
+
+    .admin-card h3 {
+      margin-top: 0;
     }
-    button:disabled { opacity: .55; cursor: wait; }
-    .admin-actions .reject { background: #555; }
-    .admin-status { margin: 1rem 0; overflow-wrap: anywhere; }
-    .admin-error { color: #a12626; }
-    .admin-success { color: #256b3a; }
-    .admin-toolbar { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; }
-    .admin-section { margin-top: 2rem; }
-    .admin-empty { color: #666; }
-    .admin-field { margin: .35rem 0; overflow-wrap: anywhere; }
-    .admin-field strong { color: #333; }
+
+    .admin-meta {
+      color: #555;
+      overflow-wrap: anywhere;
+    }
+
+    .admin-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+      margin-top: 1rem;
+    }
+
+    .admin-actions button,
+    .admin-panel button,
+    .admin-toolbar button,
+    .payout-panel button {
+      padding: .65rem 1rem;
+      border: 0;
+      border-radius: 6px;
+      background: #964c4b;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: .55;
+      cursor: not-allowed;
+    }
+
+    .admin-actions .reject {
+      background: #555;
+    }
+
+    .admin-status {
+      margin: 1rem 0;
+      overflow-wrap: anywhere;
+    }
+
+    .admin-error {
+      color: #a12626;
+    }
+
+    .admin-success {
+      color: #256b3a;
+    }
+
+    .admin-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      align-items: center;
+    }
+
+    .admin-section {
+      margin-top: 2rem;
+    }
+
+    .admin-empty {
+      color: #666;
+    }
+
+    .admin-field {
+      margin: .35rem 0;
+      overflow-wrap: anywhere;
+    }
+
+    .admin-field strong {
+      color: #333;
+    }
+
+    .payout-panel {
+      max-width: none;
+      margin-top: 2rem;
+    }
+
+    .payout-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .payout-grid label {
+      display: block;
+      font-weight: 600;
+    }
+
+    .payout-help {
+      color: #555;
+      font-size: .94rem;
+    }
+
+    .payout-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .7rem;
+      margin: .5rem 0 1rem;
+    }
+
+    .payout-summary {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: .75rem;
+      margin: 1rem 0;
+    }
+
+    .payout-stat {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: .9rem;
+    }
+
+    .payout-stat span {
+      display: block;
+      color: #555;
+      font-size: .9rem;
+    }
+
+    .payout-stat strong {
+      display: block;
+      font-size: 1.25rem;
+      margin-top: .3rem;
+    }
+
+    .payout-table-wrap {
+      overflow-x: auto;
+    }
+
+    .payout-table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    .payout-table th,
+    .payout-table td {
+      border-bottom: 1px solid #ddd;
+      padding: .7rem;
+      text-align: left;
+    }
+
+    .payout-table th {
+      background: #f5f5f5;
+    }
+
+    .payout-note {
+      font-size: .9rem;
+      color: #555;
+    }
+
+    @media (max-width: 700px) {
+      .payout-grid,
+      .payout-summary {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
+
 <body class="interior-page">
 
   <nav class="topnav" aria-label="Main navigation">
@@ -50,11 +213,17 @@
   </nav>
 
   <main class="admin-wrap">
+
     <header class="page-intro">
       <p class="page-eyebrow">LOCAL SHUFFLE</p>
       <h1>Admin Dashboard</h1>
-      <p>Review artist applications, song submissions, and business applications.</p>
+      <p>
+        Review artist applications, song submissions, business applications,
+        and artist-payout calculations.
+      </p>
     </header>
+
+    <!-- ADMIN SIGN-IN -->
 
     <section id="loginPanel" class="admin-panel">
       <h2>Administrator Sign In</h2>
@@ -62,44 +231,80 @@
 
       <form id="loginForm">
         <label for="email">Email address</label>
-        <input id="email" type="email" autocomplete="username" required>
+        <input
+          id="email"
+          type="email"
+          autocomplete="username"
+          required
+        >
 
         <label for="password">Password</label>
-        <input id="password" type="password"
-               autocomplete="current-password" required>
+        <input
+          id="password"
+          type="password"
+          autocomplete="current-password"
+          required
+        >
 
-        <button id="loginButton" type="submit">Sign In</button>
+        <button id="loginButton" type="submit">
+          Sign In
+        </button>
       </form>
     </section>
 
-    
+    <!-- ADMIN DASHBOARD -->
+
     <section id="dashboard" hidden>
+
       <div class="admin-toolbar">
-        <p>Signed in as <strong id="adminEmail"></strong></p>
-        <button id="refreshButton" type="button">Refresh Queue</button>
-        <button id="logoutButton" type="button">Sign Out</button>
+        <p>
+          Signed in as <strong id="adminEmail"></strong>
+        </p>
+
+        <button id="refreshButton" type="button">
+          Refresh Queue
+        </button>
+
+        <button id="logoutButton" type="button">
+          Sign Out
+        </button>
       </div>
 
-      <section id="payoutPanel" class="admin-panel admin-section">
-        <h2>Artist Payouts</h2>
+      <!-- ARTIST PAYOUTS -->
+
+      <section
+        class="admin-panel payout-panel"
+        aria-labelledby="payoutHeading"
+      >
+        <h2 id="payoutHeading">Artist Payouts</h2>
+
         <p>
-          Preview the monthly artist pool, review each artist's allocation,
-          and finalize the period when you are satisfied with the results.
+          Calculate the monthly artist pool from money actually collected.
+          This tool prepares and finalizes allocations; it does not send payments.
         </p>
 
         <div class="payout-grid">
+
           <div>
             <label for="payoutMonth">Payout month</label>
-            <input id="payoutMonth" type="month" required>
+            <input
+              id="payoutMonth"
+              type="month"
+              required
+            >
           </div>
 
           <div>
             <label for="payoutCutoff">Artist enrollment cutoff</label>
-            <input id="payoutCutoff" type="date" required>
+            <input
+              id="payoutCutoff"
+              type="date"
+              required
+            >
           </div>
 
           <div>
-            <label for="payoutRevenue">Actual revenue collected ($)</label>
+            <label for="payoutRevenue">Money collected ($)</label>
             <input
               id="payoutRevenue"
               type="number"
@@ -109,42 +314,78 @@
               required
             >
           </div>
+
         </div>
 
-        <div class="payout-actions">
+        <p class="payout-help">
+          The artist pool is 15% of the money collected. Eligible active artists
+          enrolled on or before the cutoff share that pool equally. Enter actual
+          collected revenue, not the number of downloads.
+        </p>
+
+        <div class="payout-buttons">
           <button id="previewPayoutButton" type="button">
-            Preview Allocations
+            Preview Calculation
           </button>
-          <button id="finalizePayoutButton" type="button" disabled>
+
+          <button
+            id="finalizePayoutButton"
+            type="button"
+            disabled
+          >
             Finalize Allocations
           </button>
         </div>
 
-        <p id="payoutStatus" class="admin-status"
-           role="status" aria-live="polite"></p>
+        <p
+          id="payoutStatus"
+          class="admin-status"
+          role="status"
+          aria-live="polite"
+        ></p>
 
         <div id="payoutSummary" hidden></div>
-        <div id="payoutAllocationTableWrap" hidden></div>
 
-        <p class="admin-empty">
-          Only enter money actually collected. Finalizing locks the
-          allocations; it does not send payments to artists.
+        <div
+          id="payoutAllocationTableWrap"
+          class="payout-table-wrap"
+          hidden
+        ></div>
+
+        <p class="payout-note">
+          Finalizing records the allocation for review. You must still make
+          payments separately and keep your payment records.
         </p>
       </section>
     </section>
 
+    <p
+      id="status"
+      class="admin-status"
+      role="status"
+      aria-live="polite"
+    ></p>
 
-    <p id="status" class="admin-status" role="status" aria-live="polite"></p>
     <div id="queues" hidden></div>
+
   </main>
 
+  <!-- SUPABASE JAVASCRIPT LIBRARY -->
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
   <script>
-    const SUPABASE_URL = "https://yaqhqnuvlxfgfpnwufyw.supabase.co";
+    const SUPABASE_URL =
+      "https://yaqhqnuvlxfgfpnwufyw.supabase.co";
+
     const SUPABASE_PUBLISHABLE_KEY =
       "sb_publishable_Lo-gi0FFqCWN6JrZRumUIw_CK3yk9-i";
+
     const ADMIN_FUNCTION_URL =
       SUPABASE_URL + "/functions/v1/admin-dashboard";
+
+    const PAYOUT_FUNCTION_URL =
+      SUPABASE_URL + "/functions/v1/admin-payouts";
 
     const supabaseClient = window.supabase.createClient(
       SUPABASE_URL,
@@ -152,35 +393,70 @@
     );
 
     const $ = id => document.getElementById(id);
+
     let currentSession = null;
     let busy = false;
+    let payoutPreview = null;
+    let payoutBusy = false;
+
+
+    // GENERAL STATUS MESSAGE
 
     function setStatus(message, type = "") {
       $("status").textContent = message;
-      $("status").className = "admin-status" +
-        (type ? " admin-" + type : "");
+
+      $("status").className =
+        "admin-status" + (type ? " admin-" + type : "");
     }
+
+
+    // CREATE HTML ELEMENTS SAFELY
 
     function make(tag, className, text) {
       const element = document.createElement(tag);
-      if (className) element.className = className;
+
+      if (className) {
+        element.className = className;
+      }
+
       if (text !== undefined && text !== null) {
         element.textContent = String(text);
       }
+
       return element;
     }
 
+
+    // DISPLAY A FIELD ON AN APPLICATION CARD
+
     function addField(parent, label, value) {
-      if (value === null || value === undefined || value === "") return;
+      if (
+        value === null ||
+        value === undefined ||
+        value === ""
+      ) {
+        return;
+      }
+
       const line = make("p", "admin-field");
       const strong = make("strong", "", label + ": ");
-      line.append(strong, document.createTextNode(String(value)));
+
+      line.append(
+        strong,
+        document.createTextNode(String(value))
+      );
+
       parent.appendChild(line);
     }
 
-    async function callAdmin(payload) {
-      const { data: sessionData, error: sessionError } =
-        await supabaseClient.auth.getSession();
+
+    // CALL A SUPABASE EDGE FUNCTION
+
+    async function callFunction(url, payload) {
+      const {
+        data: sessionData,
+        error: sessionError
+      } = await supabaseClient.auth.getSession();
 
       if (sessionError || !sessionData.session) {
         throw new Error("Please sign in again.");
@@ -188,80 +464,171 @@
 
       currentSession = sessionData.session;
 
-      const response = await fetch(ADMIN_FUNCTION_URL, {
+      const response = await fetch(url, {
         method: "POST",
+
         headers: {
-          "Authorization": "Bearer " + currentSession.access_token,
+          "Authorization":
+            "Bearer " + currentSession.access_token,
+
           "apikey": SUPABASE_PUBLISHABLE_KEY,
+
           "Content-Type": "application/json"
         },
+
         body: JSON.stringify(payload)
       });
 
       const raw = await response.text();
+
       let result = {};
 
       try {
         result = raw ? JSON.parse(raw) : {};
       } catch {
         throw new Error(
-          "Unexpected server response. Check that the admin function is deployed."
+          "Unexpected server response. Check that the Edge Function is deployed."
         );
       }
 
       if (!response.ok) {
-        throw new Error(result.error || "The request failed.");
+        throw new Error(
+          result.error || "The request failed."
+        );
       }
 
       return result;
     }
 
+
+    // CALL THE EXISTING ADMIN DASHBOARD FUNCTION
+
+    async function callAdmin(payload) {
+      return callFunction(ADMIN_FUNCTION_URL, payload);
+    }
+
+
+    // SHOW THE SIGNED-OUT SCREEN
+
     function showLoggedOut() {
       currentSession = null;
+
       $("loginPanel").hidden = false;
       $("dashboard").hidden = true;
+
       $("queues").hidden = true;
       $("queues").replaceChildren();
+
+      clearPayoutDisplay();
     }
+
+
+    // SHOW THE SIGNED-IN DASHBOARD
 
     function showLoggedIn(session) {
       currentSession = session;
+
       $("loginPanel").hidden = true;
       $("dashboard").hidden = false;
-      $("adminEmail").textContent = session.user.email || "";
+
+      $("adminEmail").textContent =
+        session.user.email || "";
     }
+
+
+    // BUILD AN APPLICATION CARD
 
     function renderCard(kind, item) {
       const card = make("article", "admin-card");
+
       const title =
-        item.artist_name || item.business_name || item.title || "Untitled";
+        item.artist_name ||
+        item.business_name ||
+        item.title ||
+        "Untitled";
+
       card.appendChild(make("h3", "", title));
+
+
+      // ARTIST APPLICATION DETAILS
 
       if (kind === "artist") {
         addField(card, "Contact", item.contact_name);
         addField(card, "Email", item.email);
         addField(card, "Phone", item.phone);
-        addField(card, "Location", [item.city, item.zip_code].filter(Boolean).join(" "));
+
+        addField(
+          card,
+          "Location",
+          [item.city, item.zip_code].filter(Boolean).join(" ")
+        );
+
         addField(card, "Genre", item.genre);
         addField(card, "Website", item.website);
         addField(card, "Instagram", item.instagram);
         addField(card, "Facebook", item.facebook);
-        addField(card, "Primary music link", item.primary_music_link);
+
+        addField(
+          card,
+          "Primary music link",
+          item.primary_music_link
+        );
+
         addField(card, "Application song", item.song_title);
         addField(card, "Release date", item.release_date);
-        addField(card, "Official song link", item.official_song_url);
-        addField(card, "Distribution platforms", item.distribution_platforms);
-        addField(card, "Verification platform", item.verification_platform);
-        addField(card, "Verification post", item.verification_post_url);
+
+        addField(
+          card,
+          "Official song link",
+          item.official_song_url
+        );
+
+        addField(
+          card,
+          "Distribution platforms",
+          item.distribution_platforms
+        );
+
+        addField(
+          card,
+          "Verification platform",
+          item.verification_platform
+        );
+
+        addField(
+          card,
+          "Verification post",
+          item.verification_post_url
+        );
+
         addField(card, "Submitted", item.submitted_at);
+
+
+      // SONG SUBMISSION DETAILS
+
       } else if (kind === "song") {
         addField(card, "Artist record ID", item.artist_id);
         addField(card, "Release date", item.release_date);
-        addField(card, "Official link", item.official_url);
-        addField(card, "Platforms", item.distribution_platforms);
+
+        addField(
+          card,
+          "Official link",
+          item.official_url
+        );
+
+        addField(
+          card,
+          "Platforms",
+          item.distribution_platforms
+        );
+
         addField(card, "Filename", item.filename);
         addField(card, "Submitted", item.submitted_at);
         addField(card, "Song ID", item.id);
+
+
+      // BUSINESS APPLICATION DETAILS
+
       } else {
         addField(card, "Contact", item.contact_name);
         addField(card, "Email", item.email);
@@ -274,32 +641,63 @@
         addField(card, "Submitted", item.created_at);
       }
 
+
+      // APPROVE AND REJECT BUTTONS
+
       const actions = make("div", "admin-actions");
 
-      const approve = make("button", "", kind === "song"
-        ? "Approve Song" : kind === "artist"
-        ? "Approve Artist" : "Activate Business");
-      approve.type = "button";
-      approve.addEventListener("click", () =>
-        review(kind, item.id, "approve", approve, reject));
+      const approve = make(
+        "button",
+        "",
+        kind === "song"
+          ? "Approve Song"
+          : kind === "artist"
+            ? "Approve Artist"
+            : "Activate Business"
+      );
 
-      const reject = make("button", "reject",
-        kind === "song" ? "Reject Song" : "Reject");
+      approve.type = "button";
+
+      approve.addEventListener("click", () =>
+        review(kind, item.id, "approve", approve, reject)
+      );
+
+
+      const reject = make(
+        "button",
+        "reject",
+        kind === "song" ? "Reject Song" : "Reject"
+      );
+
       reject.type = "button";
+
       reject.addEventListener("click", () =>
-        review(kind, item.id, "reject", reject, approve));
+        review(kind, item.id, "reject", reject, approve)
+      );
 
       actions.append(approve, reject);
+
       card.appendChild(actions);
+
       return card;
     }
 
+
+    // BUILD EACH REVIEW SECTION
+
     function renderSection(container, title, kind, records) {
       const section = make("section", "admin-section");
+
       section.appendChild(make("h2", "", title));
 
       if (!records || records.length === 0) {
-        section.appendChild(make("p", "admin-empty", "Nothing awaiting review."));
+        section.appendChild(
+          make(
+            "p",
+            "admin-empty",
+            "Nothing awaiting review."
+          )
+        );
       } else {
         for (const item of records) {
           section.appendChild(renderCard(kind, item));
@@ -309,107 +707,594 @@
       container.appendChild(section);
     }
 
+
+    // LOAD APPLICATIONS FROM THE EXISTING ADMIN FUNCTION
+
     async function loadQueue() {
       if (busy) return;
+
       busy = true;
       $("refreshButton").disabled = true;
+
       setStatus("Loading review queue...");
 
       try {
-        const data = await callAdmin({ action: "list" });
+        const data = await callAdmin({
+          action: "list"
+        });
+
         const queues = $("queues");
+
         queues.replaceChildren();
 
-        renderSection(queues, "Artist Applications", "artist",
-          data.artist_applications);
-        renderSection(queues, "Song Submissions", "song",
-          data.song_submissions);
-        renderSection(queues, "Business Applications", "business",
-          data.business_applications);
+        renderSection(
+          queues,
+          "Artist Applications",
+          "artist",
+          data.artist_applications
+        );
+
+        renderSection(
+          queues,
+          "Song Submissions",
+          "song",
+          data.song_submissions
+        );
+
+        renderSection(
+          queues,
+          "Business Applications",
+          "business",
+          data.business_applications
+        );
 
         queues.hidden = false;
-        setStatus("Review queue loaded.", "success");
+
+        setStatus(
+          "Review queue loaded.",
+          "success"
+        );
+
       } catch (error) {
         $("queues").hidden = true;
-        setStatus(error.message || "Unable to load the review queue.", "error");
+
+        setStatus(
+          error.message || "Unable to load the review queue.",
+          "error"
+        );
+
       } finally {
         busy = false;
         $("refreshButton").disabled = false;
       }
     }
 
-    async function review(kind, id, decision, clicked, other) {
+
+    // APPROVE OR REJECT AN APPLICATION
+
+    async function review(
+      kind,
+      id,
+      decision,
+      clicked,
+      other
+    ) {
       const labels = {
         artist: "artist application",
         song: "song submission",
         business: "business application"
       };
 
-      const verb = decision === "approve" ? "approve" : "reject";
-      if (!confirm("Are you sure you want to " + verb + " this " +
-                   labels[kind] + "?")) return;
+      const verb =
+        decision === "approve" ? "approve" : "reject";
+
+      if (
+        !confirm(
+          "Are you sure you want to " +
+          verb +
+          " this " +
+          labels[kind] +
+          "?"
+        )
+      ) {
+        return;
+      }
 
       clicked.disabled = true;
       other.disabled = true;
+
       setStatus("Processing review...");
 
       try {
         const data = await callAdmin({
-          action: kind === "artist" ? "artist_application" : kind,
+          action:
+            kind === "artist"
+              ? "artist_application"
+              : kind,
+
           id,
           decision
         });
 
-        setStatus(data.message || "Review completed.", "success");
+        setStatus(
+          data.message || "Review completed.",
+          "success"
+        );
+
         await loadQueue();
+
       } catch (error) {
-        setStatus(error.message || "Review failed.", "error");
+        setStatus(
+          error.message || "Review failed.",
+          "error"
+        );
+
         clicked.disabled = false;
         other.disabled = false;
       }
     }
 
-    $("loginForm").addEventListener("submit", async event => {
-      event.preventDefault();
 
-      const button = $("loginButton");
-      button.disabled = true;
-      setStatus("Signing in...");
+    // PAYOUT INTERFACE
+
+
+    function setPayoutStatus(message, type = "") {
+      $("payoutStatus").textContent = message;
+
+      $("payoutStatus").className =
+        "admin-status" + (type ? " admin-" + type : "");
+    }
+
+
+    // CLEAR THE PREVIOUS PAYOUT PREVIEW
+
+    function clearPayoutDisplay() {
+      payoutPreview = null;
+
+      $("payoutSummary").replaceChildren();
+      $("payoutSummary").hidden = true;
+
+      $("payoutAllocationTableWrap").replaceChildren();
+      $("payoutAllocationTableWrap").hidden = true;
+
+      $("finalizePayoutButton").disabled = true;
+
+      $("payoutStatus").textContent = "";
+    }
+
+
+    // VALIDATE THE PAYOUT INPUTS
+
+    function payoutInputs() {
+      const month = $("payoutMonth").value;
+      const cutoff = $("payoutCutoff").value;
+      const revenueText = $("payoutRevenue").value;
+
+      if (!/^\d{4}-\d{2}$/.test(month)) {
+        throw new Error("Choose a payout month.");
+      }
+
+      if (!cutoff) {
+        throw new Error(
+          "Choose an artist enrollment cutoff date."
+        );
+      }
+
+      if (
+        revenueText === "" ||
+        !Number.isFinite(Number(revenueText)) ||
+        Number(revenueText) < 0
+      ) {
+        throw new Error(
+          "Enter a valid amount of money collected."
+        );
+      }
+
+      const monthStart = month + "-01";
+
+      const revenueCents = Math.round(
+        Number(revenueText) * 100
+      );
+
+      if (!Number.isSafeInteger(revenueCents)) {
+        throw new Error(
+          "The revenue amount is too large."
+        );
+      }
+
+      return {
+        month_start: monthStart,
+        enrollment_cutoff: cutoff,
+        revenue_collected_cents: revenueCents
+      };
+    }
+
+
+    // FORMAT MONEY IN US DOLLARS
+
+    function money(cents) {
+      return (
+        Number(cents || 0) / 100
+      ).toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD"
+      });
+    }
+
+
+    // FIND A VALUE IN THE SERVER RESPONSE
+
+    function firstValue(
+      object,
+      keys,
+      fallback = undefined
+    ) {
+      for (const key of keys) {
+        if (
+          object &&
+          object[key] !== undefined &&
+          object[key] !== null
+        ) {
+          return object[key];
+        }
+      }
+
+      return fallback;
+    }
+
+
+    // DISPLAY THE PAYOUT PREVIEW
+
+    function renderPayoutPreview(result, inputs) {
+      payoutPreview = { ...inputs };
+
+      const period =
+        result.period ||
+        result.payout_period ||
+        result;
+
+      const allocations =
+        result.allocations ||
+        result.payouts ||
+        result.artist_payouts ||
+        [];
+
+      const poolCents = firstValue(
+        period,
+        ["artist_pool_cents"],
+        Math.floor(
+          inputs.revenue_collected_cents * 0.15
+        )
+      );
+
+      const eligibleCount = firstValue(
+        period,
+        ["eligible_artist_count"],
+        allocations.length
+      );
+
+      const summary = $("payoutSummary");
+
+      summary.replaceChildren();
+
+      const stats = [
+        [
+          "Revenue collected",
+          money(inputs.revenue_collected_cents)
+        ],
+        [
+          "Artist pool (15%)",
+          money(poolCents)
+        ],
+        [
+          "Eligible artists",
+          String(eligibleCount)
+        ]
+      ];
+
+      const statGrid = make(
+        "div",
+        "payout-summary"
+      );
+
+      for (const [label, value] of stats) {
+        const stat = make("div", "payout-stat");
+
+        stat.append(
+          make("span", "", label),
+          make("strong", "", value)
+        );
+
+        statGrid.appendChild(stat);
+      }
+
+      summary.appendChild(statGrid);
+      summary.hidden = false;
+
+      const wrap = $("payoutAllocationTableWrap");
+
+      wrap.replaceChildren();
+
+      if (
+        !Array.isArray(allocations) ||
+        allocations.length === 0
+      ) {
+        wrap.appendChild(
+          make(
+            "p",
+            "admin-empty",
+            "The server did not return individual allocations. Check the function response before finalizing."
+          )
+        );
+
+        wrap.hidden = false;
+
+        $("finalizePayoutButton").disabled = true;
+
+        return;
+      }
+
+      const table = make("table", "payout-table");
+
+      const thead = document.createElement("thead");
+      const headerRow = document.createElement("tr");
+
+      ["Artist", "Allocation", "Status"].forEach(label => {
+        headerRow.appendChild(
+          make("th", "", label)
+        );
+      });
+
+      thead.appendChild(headerRow);
+      table.appendChild(thead);
+
+      const tbody = document.createElement("tbody");
+
+      for (const allocation of allocations) {
+        const tr = document.createElement("tr");
+
+        const artist = firstValue(
+          allocation,
+          ["artist_name", "name"],
+          "Artist"
+        );
+
+        const cents = firstValue(
+          allocation,
+          ["amount_cents", "payout_cents", "cents"],
+          0
+        );
+
+        const status = firstValue(
+          allocation,
+          ["status"],
+          "pending"
+        );
+
+        tr.append(
+          make("td", "", artist),
+          make("td", "", money(cents)),
+          make("td", "", status)
+        );
+
+        tbody.appendChild(tr);
+      }
+
+      table.appendChild(tbody);
+      wrap.appendChild(table);
+
+      wrap.hidden = false;
+
+      $("finalizePayoutButton").disabled = false;
+    }
+
+
+    // PREVIEW THE PAYOUT CALCULATION
+
+    async function previewPayout() {
+      if (payoutBusy) return;
+
+      payoutBusy = true;
+
+      $("previewPayoutButton").disabled = true;
+      $("finalizePayoutButton").disabled = true;
+
+      clearPayoutDisplay();
 
       try {
-        const { data, error } =
-          await supabaseClient.auth.signInWithPassword({
+        const inputs = payoutInputs();
+
+        setPayoutStatus(
+          "Calculating preview..."
+        );
+
+        const result = await callFunction(
+          PAYOUT_FUNCTION_URL,
+          {
+            action: "preview",
+            ...inputs
+          }
+        );
+
+        renderPayoutPreview(result, inputs);
+
+        setPayoutStatus(
+          "Preview saved. Review the figures and allocations before finalizing.",
+          "success"
+        );
+
+      } catch (error) {
+        setPayoutStatus(
+          error.message || "Unable to preview payouts.",
+          "error"
+        );
+
+      } finally {
+        payoutBusy = false;
+        $("previewPayoutButton").disabled = false;
+      }
+    }
+
+
+    // FINALIZE THE PAYOUT ALLOCATIONS
+
+    async function finalizePayout() {
+      if (payoutBusy || !payoutPreview) return;
+
+      if (
+        !confirm(
+          "Finalize these artist payout allocations? This records the period as calculated but does not send any money."
+        )
+      ) {
+        return;
+      }
+
+      payoutBusy = true;
+
+      $("previewPayoutButton").disabled = true;
+      $("finalizePayoutButton").disabled = true;
+
+      try {
+        setPayoutStatus(
+          "Finalizing allocations..."
+        );
+
+        const result = await callFunction(
+          PAYOUT_FUNCTION_URL,
+          {
+            action: "finalize",
+            ...payoutPreview
+          }
+        );
+
+        setPayoutStatus(
+          result.message ||
+          "Allocations finalized. No payments have been sent.",
+          "success"
+        );
+
+      } catch (error) {
+        setPayoutStatus(
+          error.message || "Unable to finalize allocations.",
+          "error"
+        );
+
+        $("finalizePayoutButton").disabled = false;
+
+      } finally {
+        payoutBusy = false;
+        $("previewPayoutButton").disabled = false;
+      }
+    }
+
+
+    // CLEAR THE PREVIEW WHEN INPUTS CHANGE
+
+    $("payoutMonth").addEventListener(
+      "input",
+      clearPayoutDisplay
+    );
+
+    $("payoutCutoff").addEventListener(
+      "input",
+      clearPayoutDisplay
+    );
+
+    $("payoutRevenue").addEventListener(
+      "input",
+      clearPayoutDisplay
+    );
+
+
+    // PAYOUT BUTTONS
+
+    $("previewPayoutButton").addEventListener(
+      "click",
+      previewPayout
+    );
+
+    $("finalizePayoutButton").addEventListener(
+      "click",
+      finalizePayout
+    );
+
+
+    // SIGN IN
+
+    $("loginForm").addEventListener(
+      "submit",
+      async event => {
+        event.preventDefault();
+
+        const button = $("loginButton");
+
+        button.disabled = true;
+
+        setStatus("Signing in...");
+
+        try {
+          const {
+            data,
+            error
+          } = await supabaseClient.auth.signInWithPassword({
             email: $("email").value.trim(),
             password: $("password").value
           });
 
-        if (error) throw error;
-        if (!data.session) {
-          throw new Error("No active session was returned.");
+          if (error) throw error;
+
+          if (!data.session) {
+            throw new Error(
+              "No active session was returned."
+            );
+          }
+
+          showLoggedIn(data.session);
+
+          await loadQueue();
+
+        } catch (error) {
+          showLoggedOut();
+
+          setStatus(
+            error.message || "Sign-in failed.",
+            "error"
+          );
+
+        } finally {
+          button.disabled = false;
         }
-
-        showLoggedIn(data.session);
-
-        // The server confirms whether this user is an administrator.
-        await loadQueue();
-      } catch (error) {
-        showLoggedOut();
-        setStatus(error.message || "Sign-in failed.", "error");
-      } finally {
-        button.disabled = false;
       }
-    });
+    );
 
-    $("refreshButton").addEventListener("click", loadQueue);
 
-    $("logoutButton").addEventListener("click", async () => {
-      await supabaseClient.auth.signOut();
-      showLoggedOut();
-      setStatus("Signed out.");
-    });
+    // REFRESH THE REVIEW QUEUE
+
+    $("refreshButton").addEventListener(
+      "click",
+      loadQueue
+    );
+
+
+    // SIGN OUT
+
+    $("logoutButton").addEventListener(
+      "click",
+      async () => {
+        await supabaseClient.auth.signOut();
+
+        showLoggedOut();
+
+        setStatus("Signed out.");
+      }
+    );
+
+
+    // CHECK WHETHER AN ADMIN SESSION ALREADY EXISTS
 
     (async function initialize() {
-      const { data } = await supabaseClient.auth.getSession();
+      const { data } =
+        await supabaseClient.auth.getSession();
 
       if (data.session) {
         showLoggedIn(data.session);
@@ -419,11 +1304,16 @@
       }
     })();
 
-    supabaseClient.auth.onAuthStateChange((event, session) => {
-      if (event === "SIGNED_OUT" || !session) {
-        showLoggedOut();
+
+    // RESPOND TO AUTHENTICATION CHANGES
+
+    supabaseClient.auth.onAuthStateChange(
+      (event, session) => {
+        if (event === "SIGNED_OUT" || !session) {
+          showLoggedOut();
+        }
       }
-    });
+    );
   </script>
 </body>
 </html>
