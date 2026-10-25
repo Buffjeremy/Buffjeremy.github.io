@@ -1,0 +1,543 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Business Dashboard | Local Shuffle</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+    :root {
+      --bg: #f2f2f2;
+      --card: #fff;
+      --text: #1a1a1a;
+      --muted: #666;
+      --accent: #964c4b;
+      --accent-dark: #753b3a;
+      --border: #ddd;
+      --success: #28653e;
+      --error: #9b3030;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    header {
+      background: var(--text);
+      color: white;
+      padding: 18px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    header h1 {
+      font-size: 1.25rem;
+      margin: 0;
+    }
+
+    header button {
+      width: auto;
+      margin: 0;
+      background: transparent;
+      border: 1px solid #aaa;
+    }
+
+    main {
+      width: min(1100px, 92%);
+      margin: 32px auto 60px;
+    }
+
+    h2 { margin-top: 0; }
+
+    .muted { color: var(--muted); }
+
+    .notice {
+      padding: 14px 16px;
+      border-radius: 7px;
+      margin: 18px 0;
+      background: #fff;
+      border: 1px solid var(--border);
+      overflow-wrap: anywhere;
+    }
+
+    .notice.success {
+      background: #e8f4ec;
+      color: var(--success);
+    }
+
+    .notice.error {
+      background: #f9e8e8;
+      color: var(--error);
+    }
+
+    .hidden { display: none !important; }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      min-width: 0;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .stat-value {
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-weight: bold;
+      margin-top: 8px;
+      overflow-wrap: anywhere;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin: 14px 0 5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 11px;
+      font: inherit;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: white;
+    }
+
+    input[readonly] {
+      background: #eee;
+      color: #555;
+    }
+
+    button {
+      padding: 11px 16px;
+      border: 0;
+      border-radius: 6px;
+      background: var(--accent);
+      color: white;
+      font: inherit;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 18px;
+    }
+
+    button:hover { background: var(--accent-dark); }
+
+    button:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+    }
+
+    .secondary {
+      background: #555;
+    }
+
+    .secondary:hover { background: #333; }
+
+    .table-wrap { overflow-x: auto; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .94rem;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 11px 9px;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    th { color: var(--muted); }
+
+    .empty {
+      color: var(--muted);
+      padding: 14px 0;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 700px) {
+      .stats { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: 1fr; }
+      header { align-items: flex-start; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Local Shuffle | Business Dashboard</h1>
+    <button id="sign-out-button" type="button">Sign Out</button>
+  </header>
+
+  <main>
+    <div id="message" class="notice" role="status" aria-live="polite">
+      Checking your business account...
+    </div>
+
+    <section id="dashboard" class="hidden">
+      <h2 id="welcome">Welcome</h2>
+      <p class="muted">
+        View your redemption activity, estimated earnings, and business profile.
+      </p>
+
+      <div class="stats">
+        <article class="card">
+          <div class="stat-label">Total Redemptions</div>
+          <div id="total-redemptions" class="stat-value">—</div>
+        </article>
+
+        <article class="card">
+          <div class="stat-label">Codes Created</div>
+          <div id="total-codes" class="stat-value">—</div>
+        </article>
+
+        <article class="card">
+          <div class="stat-label">Estimated Business Earnings</div>
+          <div id="estimated-earnings" class="stat-value">—</div>
+          <p class="muted">
+            Estimated at $0.75 per recorded redemption. This is not a payment statement.
+          </p>
+        </article>
+      </div>
+
+      <div class="grid">
+        <section class="card">
+          <h2>Business Profile</h2>
+          <p class="muted">
+            Update your business and contact details. Your approval status and account email cannot be changed here.
+          </p>
+
+          <form id="profile-form">
+            <label for="business_name">Business Name</label>
+            <input id="business_name" maxlength="200" required>
+
+            <label for="contact_name">Contact Name</label>
+            <input id="contact_name" maxlength="200">
+
+            <label for="email">Account Email</label>
+            <input id="email" type="email" readonly>
+
+            <label for="phone">Phone</label>
+            <input id="phone" type="tel" maxlength="50">
+
+            <label for="website">Website</label>
+            <input id="website" type="text" maxlength="500">
+
+            <label for="address">Street Address</label>
+            <input id="address" maxlength="300">
+
+            <label for="city">City</label>
+            <input id="city" maxlength="100">
+
+            <label for="state">State</label>
+            <input id="state" maxlength="50">
+
+            <label for="zip_code">ZIP Code</label>
+            <input id="zip_code" maxlength="20">
+
+            <div class="actions">
+              <button id="save-profile-button" type="submit">Save Profile</button>
+              <button id="refresh-button" class="secondary" type="button">Refresh Data</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="card">
+          <h2>Recent Redemptions</h2>
+          <p class="muted">Your 10 most recent recorded redemptions.</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Code Record</th>
+                </tr>
+              </thead>
+              <tbody id="redemptions-body"></tbody>
+            </table>
+          </div>
+          <p id="redemptions-empty" class="empty hidden">
+            No redemptions have been recorded yet.
+          </p>
+        </section>
+      </div>
+
+      <section class="card" style="margin-top:20px">
+        <h2>Recent Codes</h2>
+        <p class="muted">Your 10 most recently created codes.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Code</th>
+                <th>Status</th>
+                <th>Created</th>
+                <th>Redeemed</th>
+              </tr>
+            </thead>
+            <tbody id="codes-body"></tbody>
+          </table>
+        </div>
+        <p id="codes-empty" class="empty hidden">
+          No codes have been created for this business yet.
+        </p>
+      </section>
+    </section>
+  </main>
+
+<script>
+  const SUPABASE_URL =
+    "https://yaqhqnuvlxfgfpnwufyw.supabase.co";
+
+  const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_Lo-gi0FFqCWN6JrZRumUIw_CK3yk9-i";
+
+  const client = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
+
+  const message = document.getElementById("message");
+  const dashboard = document.getElementById("dashboard");
+
+  let currentBusiness = null;
+
+  function showMessage(text, type = "") {
+    message.textContent = text;
+    message.className = "notice" + (type ? " " + type : "");
+    message.classList.remove("hidden");
+  }
+
+  function setField(id, value) {
+    document.getElementById(id).value = value ?? "";
+  }
+
+  function formatDate(value) {
+    if (!value) return "—";
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return "—";
+    return date.toLocaleString();
+  }
+
+  function addCell(row, value) {
+    const cell = document.createElement("td");
+    cell.textContent = value == null || value === "" ? "—" : String(value);
+    row.appendChild(cell);
+  }
+
+  function renderProfile(business) {
+    currentBusiness = business;
+    document.getElementById("welcome").textContent =
+      "Welcome, " + business.business_name;
+
+    [
+      "business_name",
+      "contact_name",
+      "phone",
+      "website",
+      "address",
+      "city",
+      "state",
+      "zip_code"
+    ].forEach((field) => setField(field, business[field]));
+
+    setField("email", business.email);
+  }
+
+  function renderRedemptions(rows) {
+    const tbody = document.getElementById("redemptions-body");
+    tbody.replaceChildren();
+
+    document.getElementById("redemptions-empty")
+      .classList.toggle("hidden", rows.length > 0);
+
+    rows.forEach((item) => {
+      const row = document.createElement("tr");
+      addCell(row, formatDate(item.redeemed_at));
+      addCell(row, item.code_id);
+      tbody.appendChild(row);
+    });
+  }
+
+  function renderCodes(rows) {
+    const tbody = document.getElementById("codes-body");
+    tbody.replaceChildren();
+
+    document.getElementById("codes-empty")
+      .classList.toggle("hidden", rows.length > 0);
+
+    rows.forEach((item) => {
+      const row = document.createElement("tr");
+      addCell(row, item.code);
+      addCell(row, item.status);
+      addCell(row, formatDate(item.created_at));
+      addCell(row, formatDate(item.redeemed_at));
+      tbody.appendChild(row);
+    });
+  }
+
+  async function loadDashboard() {
+    showMessage("Loading your business dashboard...");
+
+    const { data: sessionData, error: sessionError } =
+      await client.auth.getSession();
+
+    if (sessionError || !sessionData.session) {
+      dashboard.classList.add("hidden");
+      showMessage(
+        "Please sign in to view your business dashboard.",
+        "error"
+      );
+      return;
+    }
+
+    const { data, error } = await client.functions.invoke(
+      "business-dashboard",
+      { body: { action: "load" } }
+    );
+
+    if (error) {
+      console.error("Dashboard request failed:", error);
+      dashboard.classList.add("hidden");
+      showMessage(
+        "We couldn't load your dashboard. Check that you claimed your business invitation and that the business-dashboard function is deployed. Details: " +
+        error.message,
+        "error"
+      );
+      return;
+    }
+
+    if (!data?.success) {
+      dashboard.classList.add("hidden");
+      showMessage(data?.error || "Unable to load your business dashboard.", "error");
+      return;
+    }
+
+    dashboard.classList.remove("hidden");
+    renderProfile(data.business);
+
+    document.getElementById("total-redemptions").textContent =
+      data.stats.totalRedemptions ?? 0;
+
+    document.getElementById("total-codes").textContent =
+      data.stats.totalCodes ?? 0;
+
+    document.getElementById("estimated-earnings").textContent =
+      Number(data.stats.estimatedBusinessEarnings ?? 0).toLocaleString(
+        "en-US",
+        { style: "currency", currency: "USD" }
+      );
+
+    renderRedemptions(data.recentRedemptions ?? []);
+    renderCodes(data.recentCodes ?? []);
+
+    showMessage("Your business dashboard is up to date.", "success");
+  }
+
+  document.getElementById("profile-form")
+    .addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const button = document.getElementById("save-profile-button");
+      button.disabled = true;
+      button.textContent = "Saving...";
+
+      const profile = {};
+      [
+        "business_name",
+        "contact_name",
+        "phone",
+        "website",
+        "address",
+        "city",
+        "state",
+        "zip_code"
+      ].forEach((field) => {
+        profile[field] = document.getElementById(field).value.trim();
+      });
+
+      try {
+        const { data, error } = await client.functions.invoke(
+          "business-dashboard",
+          { body: { action: "update_profile", profile } }
+        );
+
+        if (error) throw error;
+        if (!data?.success) {
+          throw new Error(data?.error || "Profile could not be saved.");
+        }
+
+        renderProfile(data.business);
+        showMessage("Your business profile was saved.", "success");
+      } catch (error) {
+        console.error(error);
+        showMessage(error.message || "Unable to save your profile.", "error");
+      } finally {
+        button.disabled = false;
+        button.textContent = "Save Profile";
+      }
+    });
+
+  document.getElementById("refresh-button")
+    .addEventListener("click", loadDashboard);
+
+  document.getElementById("sign-out-button")
+    .addEventListener("click", async () => {
+      const button = document.getElementById("sign-out-button");
+      button.disabled = true;
+
+      try {
+        const { error } = await client.auth.signOut();
+        if (error) throw error;
+        window.location.href = "business-login.html";
+      } catch (error) {
+        console.error(error);
+        showMessage(error.message || "Unable to sign out.", "error");
+        button.disabled = false;
+      }
+    });
+
+  loadDashboard().catch((error) => {
+    console.error(error);
+    dashboard.classList.add("hidden");
+    showMessage("Unexpected error loading the dashboard.", "error");
+  });
+</script>
+</body>
+</html>
