@@ -72,13 +72,67 @@
       </form>
     </section>
 
+    
     <section id="dashboard" hidden>
       <div class="admin-toolbar">
         <p>Signed in as <strong id="adminEmail"></strong></p>
         <button id="refreshButton" type="button">Refresh Queue</button>
         <button id="logoutButton" type="button">Sign Out</button>
       </div>
+
+      <section id="payoutPanel" class="admin-panel admin-section">
+        <h2>Artist Payouts</h2>
+        <p>
+          Preview the monthly artist pool, review each artist's allocation,
+          and finalize the period when you are satisfied with the results.
+        </p>
+
+        <div class="payout-grid">
+          <div>
+            <label for="payoutMonth">Payout month</label>
+            <input id="payoutMonth" type="month" required>
+          </div>
+
+          <div>
+            <label for="payoutCutoff">Artist enrollment cutoff</label>
+            <input id="payoutCutoff" type="date" required>
+          </div>
+
+          <div>
+            <label for="payoutRevenue">Actual revenue collected ($)</label>
+            <input
+              id="payoutRevenue"
+              type="number"
+              min="0"
+              step="0.01"
+              placeholder="e.g. 125.00"
+              required
+            >
+          </div>
+        </div>
+
+        <div class="payout-actions">
+          <button id="previewPayoutButton" type="button">
+            Preview Allocations
+          </button>
+          <button id="finalizePayoutButton" type="button" disabled>
+            Finalize Allocations
+          </button>
+        </div>
+
+        <p id="payoutStatus" class="admin-status"
+           role="status" aria-live="polite"></p>
+
+        <div id="payoutSummary" hidden></div>
+        <div id="payoutAllocationTableWrap" hidden></div>
+
+        <p class="admin-empty">
+          Only enter money actually collected. Finalizing locks the
+          allocations; it does not send payments to artists.
+        </p>
+      </section>
     </section>
+
 
     <p id="status" class="admin-status" role="status" aria-live="polite"></p>
     <div id="queues" hidden></div>
